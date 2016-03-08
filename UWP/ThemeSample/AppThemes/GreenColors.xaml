@@ -1,0 +1,7 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ThemeSample.AppThemes">
+    <Color x:Key="ButtonBackgroundThemeBrush">Green</Color>
+    <Color x:Key="ButtonBorderThemeBrush">DarkGreen</Color>
+</ResourceDictionary>

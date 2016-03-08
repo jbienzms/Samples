@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="ThemeSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ThemeSample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="ThemeButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="40" />
+            <Setter Property="Background" Value="{ThemeResource ButtonBackgroundThemeBrush}" />
+            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderThemeBrush}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="Template" Value="{ThemeResource ThemeButtonTemplate}" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Viewbox>
+            <Grid Width="800" Height="450">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="RedButton" Content="Red Theme" Style="{ThemeResource ThemeButtonStyle}" Grid.Row="0" Grid.Column="0" Click="RedButton_Click" />
+                <Button x:Name="GreenButton" Content="Green Theme" Style="{ThemeResource ThemeButtonStyle}" Grid.Row="0" Grid.Column="1" Click="GreenButton_Click" />
+                <Button x:Name="EllipseButton" Content="Ellipse Theme" Style="{ThemeResource ThemeButtonStyle}" Grid.Row="1" Grid.Column="0" Click="EllipseButton_Click" />
+                <Button x:Name="RectButton" Content="Rect Theme" Style="{ThemeResource ThemeButtonStyle}" Grid.Row="1" Grid.Column="1" Click="RectButton_Click" />
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Page>
