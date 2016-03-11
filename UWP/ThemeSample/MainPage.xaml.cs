@@ -26,20 +26,20 @@ namespace ThemeSample
 
         public MainPage()
         {
-            ThemeManager.Initialize();
-            this.InitializeComponent();
-        }
+            // Remove merged resources that are there to support design time
+            App.Current.Resources.MergedDictionaries.Clear();
 
-        private void Reload()
-        {
-            ((Frame)Window.Current.Content).Navigate(typeof(MainPage));
+            // Initialize the theme manager
+            ThemeManager.Initialize();
+
+            this.InitializeComponent();
         }
 
         private void UpdateColors(string name)
         {
             if (ThemeManager.UpdateColors(name))
             {
-                Reload();
+                ThemeManager.ReloadResources(this);
             }
         }
 
@@ -47,7 +47,7 @@ namespace ThemeSample
         {
             if (ThemeManager.UpdateShapes(name))
             {
-                Reload();
+                ThemeManager.ReloadResources(this);
             }
         }
 

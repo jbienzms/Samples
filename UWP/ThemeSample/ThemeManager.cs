@@ -75,9 +75,43 @@ namespace ThemeSample
             currentShapes = GetShapeResources("Default");
 
             // Remove the merged dictionaries (there to support design time) and change them to dynamic theme versions
-            // App.Current.Resources.MergedDictionaries.Clear();
             App.Current.Resources.MergedDictionaries.Add(currentColors);
             App.Current.Resources.MergedDictionaries.Add(currentShapes);
+        }
+
+        /// <summary>
+        /// Forces the element to reload its resources.
+        /// </summary>
+        static public void ReloadResources(FrameworkElement element)
+        {
+            // Can force re-navigating to the same page, but there is a better way.
+            // ((Frame)Window.Current.Content).Navigate(Window.Current.Content.GetType());
+
+            // Validate
+            if (element == null) throw new ArgumentNullException(nameof(element));
+
+            // Find the original theme, walking visual tree if necessary
+            FrameworkElement source = element;
+            var originalTheme = source.RequestedTheme;
+            while ((originalTheme == ElementTheme.Default) && (source != null))
+            {
+                // Try to get the parent
+                source = source.Parent as FrameworkElement;
+                if (source != null) { originalTheme = source.RequestedTheme; }
+            }
+            
+            // Figure out what theme to switch to in order to force a change
+            ElementTheme newTheme = ElementTheme.Light;
+            if ((originalTheme == ElementTheme.Default) || (originalTheme == ElementTheme.Light))
+            {
+                newTheme = ElementTheme.Dark;
+            }
+
+            // Change theme
+            element.RequestedTheme = newTheme;
+
+            // Switch back
+            element.RequestedTheme = originalTheme;
         }
 
         /// <summary>

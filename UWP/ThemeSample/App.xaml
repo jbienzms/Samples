@@ -5,7 +5,12 @@
     xmlns:local="using:ThemeSample"
     RequestedTheme="Light">
     <Application.Resources>
-        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="AppThemes/DefaultColors.xaml" />
+                <ResourceDictionary Source="AppThemes/DefaultShapes.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 
 </Application>
