@@ -3,6 +3,7 @@
 
 using HoloToolkit.Unity.InputModule;
 using UnityEngine;
+using UnityEngine.VR.WSA.Input;
 
 namespace HoloToolkit.Unity
 {
@@ -36,11 +37,16 @@ namespace HoloToolkit.Unity
 		/// </summary>
 		private WorldAnchorManager anchorManager;
 
-        /// <summary>
-        /// Controls spatial mapping.  In this script we access spatialMappingManager
-        /// to control rendering and to access the physics layer mask.
-        /// </summary>
-        private SpatialMappingManager spatialMappingManager;
+		/// <summary>
+		/// Manages global input.
+		/// </summary>
+		private InputManager inputManager;
+
+		/// <summary>
+		/// Controls spatial mapping.  In this script we access spatialMappingManager
+		/// to control rendering and to access the physics layer mask.
+		/// </summary>
+		private SpatialMappingManager spatialMappingManager;
 
         /// <summary>
         /// Keeps track of if the user is moving the object or not.
@@ -56,7 +62,13 @@ namespace HoloToolkit.Unity
                 Debug.LogError("This script expects that you have a WorldAnchorManager component in your scene.");
             }
 
-            spatialMappingManager = SpatialMappingManager.Instance;
+			inputManager = InputManager.Instance;
+			if (inputManager == null)
+			{
+				Debug.LogError("This script expects that you have an InputManager component in your scene.");
+			}
+
+			spatialMappingManager = SpatialMappingManager.Instance;
             if (spatialMappingManager == null)
             {
                 Debug.LogError("This script expects that you have a SpatialMappingManager component in your scene.");
@@ -146,6 +158,10 @@ namespace HoloToolkit.Unity
 				Debug.Log(gameObject.name + " : Removing existing world anchor if any.");
 				anchorManager.RemoveAnchor(gameObject);
 			}
+
+			// Add ourselves as a global listener so the gaze doesn't 
+			// have to be directly on us to finish placement
+			inputManager.AddGlobalListener(this.gameObject);
 		}
 
 		/// <summary>
@@ -153,6 +169,10 @@ namespace HoloToolkit.Unity
 		/// </summary>
 		public void StopPlacing()
 		{
+			// Remove ourselves as a global listener so we don't get
+			// further events unless we are the focus of the gaze.
+			inputManager.RemoveGlobalListener(this.gameObject);
+
 			// Turn off visual meshes
 			if (ShowMeshWhilePlacing)
 			{
