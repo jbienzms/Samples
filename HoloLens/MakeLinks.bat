@@ -43,6 +43,7 @@ ECHO ===========================================================================
 ECHO =                         Copying HoloToolkit RSPs                            =
 ECHO ===============================================================================
 ECHO.
+XCOPY /Y /Q %HoloKitSource%\Assets\*.rsp EnviroLight\Unity\EnviroLight\Assets
 XCOPY /Y /Q %HoloKitSource%\Assets\*.rsp VoiceMemo\Unity\VoiceMemo\Assets
 ECHO.
 
@@ -51,6 +52,7 @@ ECHO ===========================================================================
 ECHO =                            Linking HoloToolkit                              =
 ECHO ===============================================================================
 ECHO.
+mklink /J EnviroLight\Unity\EnviroLight\Assets\HoloToolkit %HoloKitSource%\Assets\HoloToolkit
 mklink /J VoiceMemo\Unity\VoiceMemo\Assets\HoloToolkit %HoloKitSource%\Assets\HoloToolkit
 ECHO.
 
@@ -59,6 +61,7 @@ ECHO ===========================================================================
 ECHO =                        Linking HoloToolkit Samples                          =
 ECHO ===============================================================================
 ECHO.
+mklink /J EnviroLight\Unity\EnviroLight\Assets\HoloToolkit-Examples %HoloKitSource%\Assets\HoloToolkit-Examples
 mklink /J VoiceMemo\Unity\VoiceMemo\Assets\HoloToolkit-Examples %HoloKitSource%\Assets\HoloToolkit-Examples
 ECHO.
 
