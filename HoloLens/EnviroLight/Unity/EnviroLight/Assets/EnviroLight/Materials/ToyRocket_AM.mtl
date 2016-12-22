@@ -1,0 +1,36 @@
+# MTL written from C:\Users\xboxdrone\Desktop\Angel\02 School\SPRING 16\CA413 Ani_PortfolioProd\Nightmare_House\Project\ToyRocket\OBJ\LP_ToyRocket_MODO.obj
+newmtl BoosterRim_Chrome
+Kd 0.6 0.6 0.6
+Ns 64
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.65 0.65 0.65
+newmtl Needle_Shiny
+Kd 0.6 0.6 0.6
+Ns 128
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.6 0.6 0.6
+newmtl Red_Metal_CapNFins
+Kd 0.6 0.6 0.6
+Ns 128
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.15 0.15 0.15
+newmtl White_Metal
+Kd 0.6 0.6 0.6
+Ns 2048
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+newmtl Windows_Blue
+Kd 0.6 0.6 0.6
+Ns 3326.99
+d 1
+illum 2
+Ka 0 0 0
+Ks 0.005 0.005 0.005
