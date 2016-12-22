@@ -37,7 +37,7 @@ public class MainController : MonoBehaviour
 		// Confirm verbally
 		if (speak)
 		{
-			TextToSpeechManager.SpeakText((environment ? "Enviornment lights" : "Default lights"));
+			TextToSpeechManager.SpeakText((environment ? "Environment lights" : "Default lights"));
 		}
 		
 		// Make sure changing
@@ -46,11 +46,19 @@ public class MainController : MonoBehaviour
 		// Update state flag
 		isUsingEnvironment = environment;
 
-		// Enable / Disable containers
-		DefaultLightsContainer.SetActive(!environment);
-
-		// Enable environment ligts
-		EnvironmentLightsContainer.SetActive(environment);
+		// Enable / Disable lighting containers
+		// The order is important due to the way
+		// Unity decides how normals are baked at runtime
+		if (environment)
+		{
+			DefaultLightsContainer.SetActive(false);
+			EnvironmentLightsContainer.SetActive(true);
+		}
+		else
+		{
+			EnvironmentLightsContainer.SetActive(false);
+			DefaultLightsContainer.SetActive(true);
+		}
 	}
 	#endregion // Internal Methods
 
@@ -88,6 +96,7 @@ public class MainController : MonoBehaviour
 
 		// Configure light
 		light.type = LightType.Point;
+		// light.lightmappingMode = LightmappingMode.Realtime;
 		light.range = 10;
 		light.intensity = 1.85f;
 

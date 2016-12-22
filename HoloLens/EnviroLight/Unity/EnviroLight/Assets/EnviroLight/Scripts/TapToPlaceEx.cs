@@ -143,6 +143,9 @@ namespace HoloToolkit.Unity
 		/// </summary>
 		public void StartPlacing()
 		{
+			// If already placing, ignore
+			if (placing) { return; }
+
 			// Set placing flag
 			placing = true;
 
@@ -159,9 +162,9 @@ namespace HoloToolkit.Unity
 				anchorManager.RemoveAnchor(gameObject);
 			}
 
-			// Add ourselves as a global listener so the gaze doesn't 
+			// Push ourselves as a fallback listener so the gaze doesn't 
 			// have to be directly on us to finish placement
-			inputManager.AddGlobalListener(this.gameObject);
+			inputManager.PushFallbackInputHandler(this.gameObject);
 		}
 
 		/// <summary>
@@ -169,9 +172,12 @@ namespace HoloToolkit.Unity
 		/// </summary>
 		public void StopPlacing()
 		{
-			// Remove ourselves as a global listener so we don't get
+			// If not placing, ignore
+			if (!placing) { return; }
+
+			// Pop ourselves as a global listener so we don't get
 			// further events unless we are the focus of the gaze.
-			inputManager.RemoveGlobalListener(this.gameObject);
+			inputManager.PopFallbackInputHandler();
 
 			// Turn off visual meshes
 			if (ShowMeshWhilePlacing)

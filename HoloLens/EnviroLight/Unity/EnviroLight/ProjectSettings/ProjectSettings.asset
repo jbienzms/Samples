@@ -384,7 +384,7 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: EnviroLight
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: C:\Users\jbienz\Code\JBienzMS\Samples\HoloLens\EnviroLight\Unity\EnviroLight\Assets\WSATestCertificate.pfx
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
