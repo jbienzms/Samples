@@ -55,9 +55,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -100,9 +97,6 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.VR">
       <HintPath>Library\UnityAssemblies\UnityEditor.VR.dll</HintPath>
     </Reference>
@@ -142,6 +136,8 @@
     <Compile Include="Assets\HoloToolkit\Build\Editor\BuildSLNUtilities.cs" />
     <Compile Include="Assets\HoloToolkit\Build\Editor\HoloToolkitCommands.cs" />
     <Compile Include="Assets\HoloToolkit\Build\Editor\XdeGuestLocator.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Voice\Editor\KeywordAndKeyCodeDrawer.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Voice\Editor\SpeechInputSourceEditor.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Editor\SharingMenu.cs" />
     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\Editor\UAudioManagerBaseEditor.cs" />
     <Compile Include="Assets\HoloToolkit\SpatialSound\Scripts\UAudioManager\Editor\UAudioManagerEditor.cs" />

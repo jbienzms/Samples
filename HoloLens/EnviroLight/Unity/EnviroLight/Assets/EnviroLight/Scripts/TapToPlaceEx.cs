@@ -5,7 +5,7 @@ using HoloToolkit.Unity.InputModule;
 using UnityEngine;
 using UnityEngine.VR.WSA.Input;
 
-namespace HoloToolkit.Unity
+namespace HoloToolkit.Unity.SpatialMapping
 {
     /// <summary>
     /// The TapToPlace class is a basic way to enable users to move objects 
