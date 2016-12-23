@@ -6,14 +6,13 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PC_wKeys_lowMat
-  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHATEST_ON _DETAIL_MULX2 _EMISSION _METALLICGLOSSMAP _NORMALMAP
-    _PARALLAXMAP _SPECGLOSSMAP
+  m_Name: PC_Screen
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _METALLICGLOSSMAP _NORMALMAP _SPECGLOSSMAP
   m_LightmapFlags: 1
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 3000
   stringTagMap:
-    RenderType: TransparentCutout
+    RenderType: Transparent
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -26,13 +25,13 @@ Material:
     - first:
         name: _DetailAlbedoMap
       second:
-        m_Texture: {fileID: 2800000, guid: 5d09aec0e912961499fa4e6b41ca8556, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _DetailMask
       second:
-        m_Texture: {fileID: 2800000, guid: d94eb81fb6893fd4bb3920693994e801, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -50,31 +49,31 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: d94eb81fb6893fd4bb3920693994e801, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d09aec0e912961499fa4e6b41ca8556, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
       second:
-        m_Texture: {fileID: 2800000, guid: b11ec1c11bfd48f40a16cb59f9048496, type: 3}
+        m_Texture: {fileID: 2800000, guid: e7e0d2ecac46c28469d6bf8e97f2626d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _OcclusionMap
       second:
-        m_Texture: {fileID: 2800000, guid: ef2a8a0a5b8130943869d6c188b4ae95, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _ParallaxMap
       second:
-        m_Texture: {fileID: 2800000, guid: e7e0d2ecac46c28469d6bf8e97f2626d, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _SpecGlossMap
       second:
-        m_Texture: {fileID: 2800000, guid: b11ec1c11bfd48f40a16cb59f9048496, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8c5370b2db5296e419bc1749803d1be9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -89,10 +88,10 @@ Material:
       second: 1
     - first:
         name: _DstBlend
-      second: 0
+      second: 10
     - first:
         name: _GlossMapScale
-      second: 0.599
+      second: 0.679
     - first:
         name: _Glossiness
       second: 0.5
@@ -104,13 +103,13 @@ Material:
       second: 0
     - first:
         name: _Mode
-      second: 1
+      second: 3
     - first:
         name: _OcclusionStrength
       second: 1
     - first:
         name: _Parallax
-      second: 0.02
+      second: 0.005
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -125,11 +124,11 @@ Material:
       second: 0
     - first:
         name: _ZWrite
-      second: 1
+      second: 0
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 1, g: 1, b: 1, a: 0.321}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
