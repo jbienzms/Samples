@@ -117,7 +117,7 @@ Material:
       second: 0.59
     - first:
         name: _LinesSize
-      second: 1
+      second: 4
     - first:
         name: _Metallic
       second: 0

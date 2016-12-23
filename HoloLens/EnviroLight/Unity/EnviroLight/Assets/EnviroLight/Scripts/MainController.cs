@@ -163,10 +163,13 @@ public class MainController : MonoBehaviour
 		screens.Add(UILights);
 		screens.Add(UIPlace);
 
-		// Event handlers
+		// Subscribe event handlers
 		DefaultLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(DefaultLightsToggle); });
 		EnvironmentLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(EnvironmentLightsToggle); });
 		TapToPlace.PlacingCompleted += OnPlacingCompleted;
+
+		// Start placing
+		StartPlacing();
 	}
 	#endregion // Behavior Overrides
 
@@ -197,7 +200,7 @@ public class MainController : MonoBehaviour
 		// Configure light
 		light.type = LightType.Point;
 		// light.lightmappingMode = LightmappingMode.Realtime;
-		light.range = 10;
+		light.range = 20;
 		light.intensity = 1.85f;
 
 		// Notify

@@ -132,11 +132,12 @@ Shader "UI/Scanlines"
 				// fixed p = IN.sPos.y / IN.sPos.w;
 
 				// Attempt 3
-				fixed4 sPos = ComputeScreenPos(IN.vertex);
-				fixed p = sPos.y / sPos.w;
+				// fixed4 sPos = ComputeScreenPos(IN.vertex);
+				// fixed p = sPos.y / sPos.w;
 
 				// if ((int)(p*_ScreenParams.y / floor(_LinesSize)) % 2 == 0) discard;
-				if ((int)(p*_ScreenParams.y / floor(_LinesSize)) % 2 == 0)
+				// if ((int)(p*_ScreenParams.y / floor(_LinesSize)) % 2 == 0)
+				if ((int)(IN.worldPosition.y / floor(_LinesSize)) % 2 == 0)
 				{
 					return color * _Color;
 				}
