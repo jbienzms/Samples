@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 using HoloToolkit.Unity.InputModule;
+using System;
 using UnityEngine;
 using UnityEngine.VR.WSA.Input;
 
@@ -165,6 +166,12 @@ namespace HoloToolkit.Unity.SpatialMapping
 			// Push ourselves as a fallback listener so the gaze doesn't 
 			// have to be directly on us to finish placement
 			inputManager.PushFallbackInputHandler(this.gameObject);
+
+			// Notify
+			if (PlacingStarted != null)
+			{
+				PlacingStarted(this, EventArgs.Empty);
+			}
 		}
 
 		/// <summary>
@@ -193,6 +200,12 @@ namespace HoloToolkit.Unity.SpatialMapping
 
 			// Clear placing flag
 			placing = false;
+
+			// Notify
+			if (PlacingCompleted != null)
+			{
+				PlacingCompleted(this, EventArgs.Empty);
+			}
 		}
 
 		/// <summary>
@@ -205,5 +218,15 @@ namespace HoloToolkit.Unity.SpatialMapping
 				return placing;
 			}
 		}
+
+		/// <summary>
+		/// Occurs when placing has started.
+		/// </summary>
+		public event EventHandler PlacingStarted;
+
+		/// <summary>
+		/// Occurs when placing has completed.
+		/// </summary>
+		public event EventHandler PlacingCompleted;
 	}
 }
