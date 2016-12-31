@@ -362,7 +362,8 @@
     <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated3.shader" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated4.shader" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated5.shader" />
-    <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated6.shader" />
+    <None Include="Assets\uGUI_Skin_FoG\Shaders\UIScanlinesAnimatedFinal.shader" />
+    <None Include="Assets\uGUI_Skin_FoG\Shaders\UITint.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

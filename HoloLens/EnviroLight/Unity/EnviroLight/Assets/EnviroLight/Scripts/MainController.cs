@@ -168,12 +168,14 @@ public class MainController : MonoBehaviour
 		EnvironmentLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(EnvironmentLightsToggle); });
 		TapToPlace.PlacingCompleted += OnPlacingCompleted;
 
-		// Start placing
-		StartPlacing();
+        // If not in editor, start placing
+        #if !UNITY_EDITOR
+        StartPlacing();
+        #endif
 	}
-	#endregion // Behavior Overrides
+#endregion // Behavior Overrides
 
-	#region Public Methods
+#region Public Methods
 	/// <summary>
 	/// Adds a new environmental light to the scene.
 	/// </summary>
@@ -286,9 +288,9 @@ public class MainController : MonoBehaviour
 	{
 		OpenUrl(DEVELOPER_URL);
 	}
-	#endregion // Public Methods
+#endregion // Public Methods
 
-	#region Public Properties
+#region Public Properties
 	/// <summary>
 	/// Gets a value that indicates if environment lights are being used.
 	/// </summary>
@@ -302,5 +304,5 @@ public class MainController : MonoBehaviour
 			return isUsingEnvironment;
 		}
 	}
-	#endregion // Public Properties
+#endregion // Public Properties
 }
