@@ -126,7 +126,7 @@ namespace HoloToolkit.Unity.SpatialMapping
             }
         }
 
-        public void OnInputClicked(InputEventData eventData)
+        public void OnInputClicked(InputClickedEventData eventData)
         {
             // On each tap gesture, toggle whether the user is in placing mode.
             if (placing)

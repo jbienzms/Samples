@@ -15,7 +15,7 @@
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile>Assets\smcs.rsp</CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityBuildTarget>WSAPlayer:21</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
     <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
@@ -27,7 +27,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_METRO;UNITY_METRO_API;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;UNITY_WSA;ENABLE_DOTNET;ENABLE_PROFILER;UNITY_WSA_10_0;UNITY_WINRT_10_0;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -37,7 +37,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_VIDEO;ENABLE_VR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_METRO;UNITY_METRO_API;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;UNITY_WSA;ENABLE_DOTNET;ENABLE_PROFILER;UNITY_WSA_10_0;UNITY_WINRT_10_0;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -84,6 +84,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DistanceTool\DistanceTool.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\MainController.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\TapToPlaceEx.cs" />
     <Compile Include="Assets\HoloToolkit-Examples\ColorPicker\GazeableColorPicker.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Assets\HoloToolkit\Input\Scripts\InputEvents\INavigationHandler.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\InputEvents\ISourceStateHandler.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\InputEvents\ISpeechHandler.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\InputEvents\InputClickedEventData.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\InputEvents\InputEventData.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\InputEvents\ManipulationEventData.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\InputEvents\NavigationEventData.cs" />
@@ -148,9 +150,7 @@
     <Compile Include="Assets\HoloToolkit\Input\Scripts\InputSources\EditorHandsInput.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\InputSources\GesturesInput.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\InputSources\IInputSource.cs" />
-    <Compile Include="Assets\HoloToolkit\Input\Scripts\InputSources\InputSourceEventArgs.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\InputSources\RawInteractionSourcesInput.cs" />
-    <Compile Include="Assets\HoloToolkit\Input\Scripts\InputSources\SpeechKeywordRecognizedEventArgs.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\Interactions\HandDraggable.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\KeyboardManager.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\Microphone\MicStream.cs" />
@@ -169,6 +169,7 @@
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\DisplaySpeechKeywords.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\FocusedObjectColorChanger.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\FocusedObjectMessageSender.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\GazeResponder.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\InputHandleCallbackFX.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\InputTest.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\MicStreamDemo.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\SimpleGridGenerator.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\SphereGlobalKeywords.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\SphereKeywords.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\TapResponder.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\TestButton.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\TogglePopupMenu.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\AnchorDownloadRequest.cs" />
@@ -196,11 +198,9 @@
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\DoubleElement.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\Element.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ElementType.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\FloatArrayElement.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\FloatArrayListener.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\FloatElement.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ImageTagLocation.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ImageTagLocationListener.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ImageTagLocationType.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\ImageTagManager.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\IntArrayElement.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\IntArrayListener.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\IntElement.cs" />
@@ -245,6 +245,8 @@
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SharingClient.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SharingClientPINVOKE.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SharingManager.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\StringArrayElement.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\StringArrayListener.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\StringElement.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SyncListener.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\SystemRole.cs" />
@@ -256,17 +258,49 @@
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\VisualPairConnector.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\VisualPairReceiver.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\XString.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SharingSessionTracker.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\ServerSessionsTracker.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SessionUsersTracker.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SharingStage.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Spawning\PrefabSpawnManager.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Spawning\SpawnManager.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Spawning\SyncSpawnArray.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Spawning\SyncSpawnedObject.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncArray.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncBool.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncDataAttributes.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncDouble.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncFloat.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncInteger.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncLong.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncObject.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncPrimitive.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncQuaternion.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncString.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncTransform.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncModel\SyncVector3.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncRoot.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncSettings.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncStateListener.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Unity\DefaultSyncModelAccessor.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Unity\ISyncModelAccessor.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Unity\QuaternionInterpolated.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Unity\TransformSynchronizer.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Unity\Vector3Interpolated.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\AutoJoinSession.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\ConsoleLogWriter.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\DirectPairing.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\ExternalProcess.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\MathUtils.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\SessionExtensions.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\Utils.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\VoiceChat\MicrophoneReceiver.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\VoiceChat\MicrophoneTransmitter.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Tests\CustomMessages.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Tests\ImportExportAnchorManager.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Tests\RemoteHeadManager.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Tests\RoomTest\RoomTest.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Tests\SpawnTest\SpawnTestKeyboardSpawning.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Tests\SpawnTest\SyncSpawnTestSphere.cs" />
     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\ObjectSurfaceObserver.cs" />
     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\FileSurfaceObserver.cs" />
     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\MeshSaver.cs" />
@@ -306,6 +340,8 @@
     <Compile Include="Assets\HoloToolkit\SpatialUnderstanding\Scripts\SpatialUnderstandingDllTopology.cs" />
     <Compile Include="Assets\HoloToolkit\SpatialUnderstanding\Scripts\SpatialUnderstandingSourceMesh.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Billboard.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\BitManipulator.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\CircularBuffer.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\DirectionIndicator.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Extensions\ActionExtensions.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Extensions\ComponentExtensions.cs" />
@@ -315,11 +351,16 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\FixedAngularSize.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\FpsDisplay.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\HeadsUpDirectionIndicator.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\InterpolatedColor.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\InterpolatedFloat.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\InterpolatedQuaternion.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\InterpolatedValue.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\InterpolatedVector2.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\InterpolatedVector3.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolationUtilities.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Interpolator.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\NearPlaneFade.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\PriorityQueue.cs" />
-    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\RollingStatistics.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\SimpleTagalong.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Singleton.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\SphereBasedTagalong.cs" />
@@ -328,6 +369,7 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\TextToSpeechManager.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Timer.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\TimerScheduler.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\VectorRollingStatistics.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\WorldAnchorManager.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\GestureResponder.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\PlaneTargetGroup.cs" />
@@ -336,11 +378,14 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\TextToSpeechOnTap.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\DistanceTool\READ ME.txt" />
     <None Include="Assets\HoloToolkit\Input\Shaders\Cursor.shader" />
     <None Include="Assets\HoloToolkit\Input\Shaders\CursorShader.shader" />
     <None Include="Assets\HoloToolkit\Input\Shaders\EditorHands.shader" />
+    <None Include="Assets\HoloToolkit\Input\Shaders\SpecularHighlight.shader" />
     <None Include="Assets\HoloToolkit\Input\Tests\Shaders\button_unlit_shader.shader" />
     <None Include="Assets\HoloToolkit\SpatialMapping\Shaders\Occlusion.shader" />
+    <None Include="Assets\HoloToolkit\SpatialMapping\Shaders\SpatialMappingTap.shader" />
     <None Include="Assets\HoloToolkit\SpatialMapping\Shaders\Wireframe.shader" />
     <None Include="Assets\HoloToolkit\SpatialUnderstanding\Materials\SpatialMappingSurface.shader" />
     <None Include="Assets\HoloToolkit\SpatialUnderstanding\Materials\SpatialUnderstandingSurface.shader" />
@@ -348,6 +393,7 @@
     <None Include="Assets\HoloToolkit\Utilities\Shaders\BlinnPhongConfigurable.cginc" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\BlinnPhongConfigurable.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\BlinnPhongConfigurableTransparent.shader" />
+    <None Include="Assets\HoloToolkit\Utilities\Shaders\FastConfigurable.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\HoloToolkitCommon.cginc" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\LambertianConfigurable.cginc" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\LambertianConfigurable.shader" />
@@ -361,6 +407,8 @@
     <None Include="Assets\HoloToolkit\Utilities\Shaders\VertexLitConfigurable.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\VertexLitConfigurableTransparent.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\WindowOcclusion.shader" />
+    <None Include="Assets\HoloToolkit\Utilities\Shaders\macro.cginc" />
+    <None Include="Assets\sky5X\README.txt" />
     <None Include="Assets\uGUI_Skin_FoG\Fonts\LICENSE.txt" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\Scanlines.shader" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated.shader" />

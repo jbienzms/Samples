@@ -6,7 +6,7 @@
 # Write a line equal to 'keep-all' (without quotes) to keep files regardless their modification (preserved accross builds)
 # Default behavior is to never overwrite files
 EnviroLight.sln: modified
-EnviroLight\App.cs: 9A2C8FCC2A386F2509B2F867B2470DD5
+EnviroLight\App.cs: modified
 EnviroLight\EnviroLight.csproj: 2E8CB53839979CFC5C98B4100B9C3437
 EnviroLight\EnviroLight.csproj.user: modified
 EnviroLight\Package.appxmanifest: 1B7DC6488180EE5C68F62C5E6D6EA596
@@ -24,7 +24,7 @@ EnviroLight\bin\x86\Release\AppX\Assets\Square44x44Logo.targetsize-24_altform-un
 EnviroLight\bin\x86\Release\AppX\Assets\StoreLogo.png: 90BD194CA4A7CFFF3E8B8222229857FB
 EnviroLight\bin\x86\Release\AppX\Assets\Wide310x150Logo.scale-200.png: C96846A80DF667F87355569CD816192D
 EnviroLight\bin\x86\Release\AppX\Properties\Default.rd.xml: 72EB282657164E79A1C42F6240984826
-EnviroLight\Properties\AssemblyInfo.cs: 87BBAF416FEA75A78E8FD4A93FB2A9AF
+EnviroLight\Properties\AssemblyInfo.cs: modified
 EnviroLight\Properties\Default.rd.xml: 72EB282657164E79A1C42F6240984826
 GeneratedProjects\UWP\Assembly-CSharp\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
 GeneratedProjects\UWP\Assembly-CSharp-firstpass\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
