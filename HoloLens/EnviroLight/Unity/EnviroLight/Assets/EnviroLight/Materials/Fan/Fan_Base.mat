@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Bobble_Science
+  m_Name: Fan_Base
   m_Shader: {fileID: 4800000, guid: 30a212a88e1063a428c85e50b1e427f2, type: 3}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 1
@@ -18,7 +18,7 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 2800000, guid: 226cf4fe59adaef439d9874ddc103491, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7efd244b26c51c5428e8c042e9cc6a55, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -48,19 +48,19 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 10fdb4d97cb81f443bafe13c48fb41aa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 42bfcf589b3fbb04085ec11c812a2fc1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
       second:
-        m_Texture: {fileID: 2800000, guid: 42773bfb55c5b5746916eefc82a855ed, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7754ca3534bf5a04880153004b35e378, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _OcclusionMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 92a82504e1cb94f46a542d50e558e565, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -84,16 +84,16 @@ Material:
       second: 0
     - first:
         name: _GlossMapScale
-      second: 0.642
+      second: 1
     - first:
         name: _Glossiness
-      second: 0.5
+      second: 0.406
     - first:
         name: _GlossyReflections
       second: 1
     - first:
         name: _Metallic
-      second: 0
+      second: 0.735
     - first:
         name: _Mode
       second: 0
