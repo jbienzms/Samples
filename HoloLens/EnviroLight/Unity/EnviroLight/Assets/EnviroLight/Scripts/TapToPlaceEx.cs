@@ -21,18 +21,7 @@ namespace HoloToolkit.Unity.SpatialMapping
 
     public class TapToPlaceEx : MonoBehaviour, IInputClickHandler
     {
-		[Tooltip("Whether or not the behavior starts in placement mode.")]
-		public bool PlacingOnStart = false;
-
-		[Tooltip("Supply a friendly name for the anchor as the key name for the WorldAnchorStore.")]
-        public string SavedAnchorFriendlyName = "SavedAnchorFriendlyName";
-
-		[Tooltip("Whether or not to show the surface mesh while in placement mode.")]
-		public bool ShowMeshWhilePlacing = false;
-
-		[Tooltip("Whether or not to create and use a world anchor for the placement.")]
-		public bool UseWorldAnchor = true;
-
+		#region Member Variables
 		/// <summary>
 		/// Manages persisted anchors.
 		/// </summary>
@@ -49,15 +38,49 @@ namespace HoloToolkit.Unity.SpatialMapping
 		/// </summary>
 		private SpatialMappingManager spatialMappingManager;
 
-        /// <summary>
-        /// Keeps track of if the user is moving the object or not.
-        /// </summary>
-        private bool placing;
+		/// <summary>
+		/// Keeps track of if the user is moving the object or not.
+		/// </summary>
+		private bool placing;
+		#endregion // Member Variables
+
+		#region Inspector Variables
+		[Tooltip("Additional layers where holograms may be placed.")]
+		public LayerMask AdditionalPlacementLayers = 0;
+
+		[Tooltip("Whether or not the object should be rotated to face the user while placing.")]
+		public bool FaceWhilePlacing = true;
+
+		[Tooltip("Whether or not the behavior starts in placement mode.")]
+		public bool PlacingOnStart = false;
+
+		[Tooltip("Supply a friendly name for the anchor as the key name for the WorldAnchorStore.")]
+		public string SavedAnchorFriendlyName = string.Empty;
+
+		[Tooltip("Whether or not to show the surface mesh while in placement mode.")]
+		public bool ShowMeshWhilePlacing = false;
+
+		[Tooltip("Whether or not to create and use a world anchor for the placement.")]
+		public bool UseWorldAnchor = false;
+		#endregion // Inspector Variables
+
+
+		private void TryAttachAnchor()
+		{
+			if (string.IsNullOrEmpty(SavedAnchorFriendlyName))
+			{
+				Debug.LogError("UseWorldAnchor is true but SavedAnchorFriendlyName is not valid.");
+			}
+			else
+			{
+				anchorManager.AttachAnchor(this.gameObject, SavedAnchorFriendlyName);
+			}
+		}
 
 		private void Start()
         {
-            // Make sure we have all the components in the scene we need.
-            anchorManager = WorldAnchorManager.Instance;
+			// Make sure we have all the components in the scene we need.
+			anchorManager = WorldAnchorManager.Instance;
             if (anchorManager == null)
             {
                 Debug.LogError("This script expects that you have a WorldAnchorManager component in your scene.");
@@ -79,7 +102,7 @@ namespace HoloToolkit.Unity.SpatialMapping
             {
 				if (UseWorldAnchor)
 				{
-					anchorManager.AttachAnchor(this.gameObject, SavedAnchorFriendlyName);
+					TryAttachAnchor();
 				}
 
 				// Start placing?
@@ -107,7 +130,7 @@ namespace HoloToolkit.Unity.SpatialMapping
 
                 RaycastHit hitInfo;
                 if (Physics.Raycast(headPosition, gazeDirection, out hitInfo,
-                    30.0f, spatialMappingManager.LayerMask))
+                    30.0f, (spatialMappingManager.LayerMask | AdditionalPlacementLayers.value)))
                 {
                     // Move this object to where the raycast
                     // hit the Spatial Mapping mesh.
@@ -117,11 +140,18 @@ namespace HoloToolkit.Unity.SpatialMapping
                     // collider so it sits properly on surfaces.
                     this.transform.position = hitInfo.point;
 
-                    // Rotate this object to face the user.
-                    Quaternion toQuat = Camera.main.transform.localRotation;
-                    toQuat.x = 0;
-                    toQuat.z = 0;
-                    this.transform.rotation = toQuat;
+					// Rotate this object to face the user?
+					if (FaceWhilePlacing)
+					{
+						// Get camera location
+						Vector3 target = Camera.main.transform.position;
+
+						// Calculate target position but limit to y rotation
+						Vector3 targetPostition = new Vector3(target.x, this.transform.position.y, target.z);
+
+						// Rotate
+						this.transform.LookAt(targetPostition);
+					}
                 }
             }
         }
@@ -195,7 +225,7 @@ namespace HoloToolkit.Unity.SpatialMapping
 			// Add world anchor when object placement is done.
 			if (UseWorldAnchor)
 			{
-				anchorManager.AttachAnchor(gameObject, SavedAnchorFriendlyName);
+				TryAttachAnchor();
 			}
 
 			// Clear placing flag

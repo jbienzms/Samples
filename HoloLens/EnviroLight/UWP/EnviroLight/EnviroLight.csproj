@@ -200,6 +200,8 @@
     <Reference Include="UnityEngine.VR">
       <HintPath>.\Unprocessed\UnityEngine.VR.dll</HintPath>
     </Reference>
+    <Content Include="AudioPluginMsHRTF.dll" />
+    <Content Include="AudioPluginMsHRTF.pdb" Condition="Exists('AudioPluginMsHRTF.pdb')" />
     <Content Include="Data\**" />
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +281,10 @@
             <Delete Files="$(ProjectDir)PlaneFinding.pdb" Condition="Exists('$(ProjectDir)PlaneFinding.pdb')" />
             <Delete Files="$(ProjectDir)PlaneFinding.dll.mdb" Condition="Exists('$(ProjectDir)PlaneFinding.dll.mdb')" />
             <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\PlaneFinding.pdb" DestinationFiles="$(ProjectDir)PlaneFinding.pdb" Condition="Exists('$(ProjectDir)Plugins\$(PlatformShortName)\PlaneFinding.pdb')" />
+        <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\AudioPluginMsHRTF.dll" DestinationFiles="$(ProjectDir)AudioPluginMsHRTF.dll" />
+            <Delete Files="$(ProjectDir)AudioPluginMsHRTF.pdb" Condition="Exists('$(ProjectDir)AudioPluginMsHRTF.pdb')" />
+            <Delete Files="$(ProjectDir)AudioPluginMsHRTF.dll.mdb" Condition="Exists('$(ProjectDir)AudioPluginMsHRTF.dll.mdb')" />
+            <Copy SourceFiles="$(ProjectDir)Plugins\$(PlatformShortName)\AudioPluginMsHRTF.pdb" DestinationFiles="$(ProjectDir)AudioPluginMsHRTF.pdb" Condition="Exists('$(ProjectDir)Plugins\$(PlatformShortName)\AudioPluginMsHRTF.pdb')" />
    </Target>
   <Target Name="ModifyAppXPackage" Condition="'$(BuildingProject)' == 'true'" > 
         <Message Importance="high" Text="UnityInstallationDir &quot;$(UnityInstallationDir)&quot;." />

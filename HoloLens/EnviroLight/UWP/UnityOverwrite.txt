@@ -7,7 +7,7 @@
 # Default behavior is to never overwrite files
 EnviroLight.sln: modified
 EnviroLight\App.cs: modified
-EnviroLight\EnviroLight.csproj: 2E8CB53839979CFC5C98B4100B9C3437
+EnviroLight\EnviroLight.csproj: E5577EDA4269849163578058E01B9A36
 EnviroLight\EnviroLight.csproj.user: modified
 EnviroLight\Package.appxmanifest: 1B7DC6488180EE5C68F62C5E6D6EA596
 EnviroLight\project.json: 1D02BC64BAC0D041019673A1C4C51737

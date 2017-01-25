@@ -35,8 +35,11 @@ public class MainController : MonoBehaviour
 	[Tooltip("Toggle for enabling environment lights.")]
 	public Toggle EnvironmentLightsToggle;
 
-	[Tooltip("Used for speaking notifications.")]
-	public TapToPlaceEx TapToPlace;
+	[Tooltip("Used for placing the whole scene.")]
+	public TapToPlaceEx SceneTapToPlace;
+
+	[Tooltip("Used for placing the terminal using the terminal button.")]
+	public TapToPlaceEx TerminalTapToPlace;
 
 	[Tooltip("Used for speaking notifications.")]
 	public TextToSpeechManager TextToSpeechManager;
@@ -79,7 +82,8 @@ public class MainController : MonoBehaviour
 	/// </param>
 	private void OpenUrl(string url)
 	{
-		Application.OpenURL(url);
+		TextToSpeechManager.SpeakText("This feature is still under development.");
+		// Application.OpenURL(url);
 	}
 
 	/// <summary>
@@ -144,7 +148,8 @@ public class MainController : MonoBehaviour
 	private void OnPlacingCompleted(object sender, EventArgs e)
 	{
 		// Disable TapToPlace so user can interact with PC and other items.
-		TapToPlace.enabled = false;
+		SceneTapToPlace.enabled = false;
+		TerminalTapToPlace.enabled = false;
 
 		// Go to home screen
 		GoToScreen(UIHome);
@@ -166,12 +171,8 @@ public class MainController : MonoBehaviour
 		// Subscribe event handlers
 		DefaultLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(DefaultLightsToggle); });
 		EnvironmentLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(EnvironmentLightsToggle); });
-		TapToPlace.PlacingCompleted += OnPlacingCompleted;
-
-        // If not in editor, start placing
-        #if !UNITY_EDITOR
-        StartPlacing();
-        #endif
+		SceneTapToPlace.PlacingCompleted += OnPlacingCompleted;
+		TerminalTapToPlace.PlacingCompleted += OnPlacingCompleted;
 	}
 #endregion // Behavior Overrides
 
@@ -203,7 +204,7 @@ public class MainController : MonoBehaviour
 		light.type = LightType.Point;
 		// light.lightmappingMode = LightmappingMode.Realtime;
 		light.range = 20;
-		light.intensity = 1.85f;
+		light.intensity = 1f;
 
 		// Notify
 		TextToSpeechManager.SpeakText("Light added");
@@ -219,8 +220,8 @@ public class MainController : MonoBehaviour
 	public void StartPlacing()
 	{
 		GoToScreen(UIPlace);
-		TapToPlace.enabled = true;
-		TapToPlace.StartPlacing();
+		TerminalTapToPlace.enabled = true;
+		TerminalTapToPlace.StartPlacing();
 	}
 
 	/// <summary>
