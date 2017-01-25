@@ -6,19 +6,20 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Desk_Body
-  m_Shader: {fileID: 4800000, guid: 30a212a88e1063a428c85e50b1e427f2, type: 3}
-  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP
+  m_Name: NukaQuantum
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHATEST_ON _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 1
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 2800000, guid: 7c58bf76381a70b4797c6a4cd4ea6df3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5e4c8c3e44e8b1349a02346b554b8682, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -42,25 +43,25 @@ Material:
     - first:
         name: _EmissionMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 556abe07ca3e14647b169dd7588ecc80, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 50ac97d947f28a34f8ad6e6a0e68501b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d043da38a6a552448528c9b6a1cd017, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
       second:
-        m_Texture: {fileID: 2800000, guid: b33f0b1fdad69e445b61c7a1d2e00775, type: 3}
+        m_Texture: {fileID: 2800000, guid: 62850322bdd0e5143a28ad9ff2b3fa82, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
         name: _OcclusionMap
       second:
-        m_Texture: {fileID: 2800000, guid: 2c670cfee0fc12d4fab9205ff111db2c, type: 3}
+        m_Texture: {fileID: 2800000, guid: e68c9c1d824602d4eadf11d1efc38897, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -75,7 +76,7 @@ Material:
       second: 1
     - first:
         name: _Cutoff
-      second: 0.5
+      second: 0
     - first:
         name: _DetailNormalMapScale
       second: 1
@@ -84,10 +85,10 @@ Material:
       second: 0
     - first:
         name: _GlossMapScale
-      second: 0.586
+      second: 0.235
     - first:
         name: _Glossiness
-      second: 0.314
+      second: 0.5
     - first:
         name: _GlossyReflections
       second: 1
@@ -96,10 +97,10 @@ Material:
       second: 0
     - first:
         name: _Mode
-      second: 0
+      second: 1
     - first:
         name: _OcclusionStrength
-      second: 0.097
+      second: 1
     - first:
         name: _Parallax
       second: 0.02
@@ -124,4 +125,4 @@ Material:
       second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 1, g: 1, b: 1, a: 1}

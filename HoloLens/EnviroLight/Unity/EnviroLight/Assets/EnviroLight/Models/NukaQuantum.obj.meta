@@ -1,32 +1,17 @@
 fileFormatVersion: 2
-guid: 642f807501f5b964faeda9219dcd1dfb
-timeCreated: 1483767754
+guid: 408e66267a85be84dbf53448974ac35e
+timeCreated: 1485353679
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Desk_Body
-    100004: Desk_Cabinets
-    100006: Desk_Details
-    100008: Desk_Top
-    400000: //RootNode
-    400002: Desk_Body
-    400004: Desk_Cabinets
-    400006: Desk_Details
-    400008: Desk_Top
-    2300000: Desk_Body
-    2300002: Desk_Cabinets
-    2300004: Desk_Details
-    2300006: Desk_Top
-    3300000: Desk_Body
-    3300002: Desk_Cabinets
-    3300004: Desk_Details
-    3300006: Desk_Top
-    4300000: Desk_Body
-    4300002: Desk_Cabinets
-    4300004: Desk_Details
-    4300006: Desk_Top
+    100000: Nuka_low
+    100002: //RootNode
+    400000: Nuka_low
+    400002: //RootNode
+    2300000: Nuka_low
+    3300000: Nuka_low
+    4300000: Nuka_low
   materials:
     importMaterials: 1
     materialName: 0
