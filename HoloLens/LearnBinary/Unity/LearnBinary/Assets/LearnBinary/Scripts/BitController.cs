@@ -2,15 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BitController : MonoBehaviour {
-    private bool _isOn = false;
-    public float power;
-    private float value;
+    private bool isOn;
+    public int power;
+    private int value;
+    private bool valueOverride;
 
 
     public Light pointLight;
-    public Animator onOff;
+    public Animator bitAnimator;
+    public Text valueText;
 
     public Material on;
     public Material off;
@@ -20,45 +23,74 @@ public class BitController : MonoBehaviour {
     void Start () {
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void OnSelect()
+    {
+        if (bitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        {
+            bitAnimator.SetBool("toggleSwitch", !bitAnimator.GetBool("toggleSwitch"));
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         if(Input.GetKeyDown("space"))
         {
-            onOff.SetBool("toggleSwitch", !onOff.GetBool("toggleSwitch"));
-            Debug.Log(IsOn);
+            if (bitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+            {
+                bitAnimator.SetBool("toggleSwitch", !bitAnimator.GetBool("toggleSwitch"));
+            }
         }
     }
 
     public bool IsOn
     {
-        get { return _isOn; }
-        set
+        get { return isOn; }
+        private set
         {
-            if(_isOn != onOff.GetBool("toggleSwitch"))
+            isOn = value;
+            Debug.Log("Triggered");
+
+            if (isOn)
             {
-                Debug.Log("Triggered");
-                _isOn = onOff.GetBool("toggleSwitch");
-                if (_isOn)
-                {
-                    CalculateValue();
-                    filament.GetComponent<Renderer>().material = on;
-                }
-                else
-                {
-                    this.value = 0f;
-                    filament.GetComponent<Renderer>().material = off;
-                }
+                CalculateValue();
+                filament.GetComponent<Renderer>().material = on;
+            }
+            else
+            {
+                this.value = 0;
+                filament.GetComponent<Renderer>().material = off;
             }
         }
     }
 
     public void CalculateValue()
     {
-        Value = Mathf.Pow(2f, power);
+        int realValue = (int)Mathf.Pow(2f, power);
+        Value = (isOn ? realValue : 0);
+        if (valueText != null)
+        {
+            valueText.text = (isOn | valueOverride ? realValue.ToString() : "0");
+        }
     }
 
-    public float Value
+    public void ToggleSwitch()
+    {
+        CalculateValue();
+        if (isOn)
+        {
+            filament.GetComponent<Renderer>().material = on;
+            isOn = !isOn;
+        }
+        else
+        {
+            Value = 0;
+            filament.GetComponent<Renderer>().material = off;
+            isOn = !isOn;
+        }
+    }
+
+    public int Value
     {
         get
         {
@@ -72,7 +104,20 @@ public class BitController : MonoBehaviour {
                 ValueChanged(this, EventArgs.Empty);
             }
         }
+    }
 
+    public bool ValueOverride
+    {
+        get
+        {
+            return valueOverride;
+        }
+
+        set
+        {
+            valueOverride = value;
+            CalculateValue();
+        }
     }
 
     public event EventHandler ValueChanged;
