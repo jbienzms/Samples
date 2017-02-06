@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BitController : MonoBehaviour {
     private bool _isOn = false;
     public float power;
-    public float value;
+    private float value;
 
 
     public Light pointLight;
@@ -22,16 +23,21 @@ public class BitController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if(Input.GetKeyDown("space"))
+        {
+            onOff.SetBool("toggleSwitch", !onOff.GetBool("toggleSwitch"));
+            Debug.Log(IsOn);
+        }
     }
 
-    public bool isOnValue
+    public bool IsOn
     {
         get { return _isOn; }
         set
         {
             if(_isOn != onOff.GetBool("toggleSwitch"))
             {
+                Debug.Log("Triggered");
                 _isOn = onOff.GetBool("toggleSwitch");
                 if (_isOn)
                 {
@@ -49,6 +55,25 @@ public class BitController : MonoBehaviour {
 
     public void CalculateValue()
     {
-        value = Mathf.Pow(2f, power);
+        Value = Mathf.Pow(2f, power);
     }
+
+    public float Value
+    {
+        get
+        {
+            return value;
+        }
+        private set
+        {
+            this.value = value;
+            if (ValueChanged != null)
+            {
+                ValueChanged(this, EventArgs.Empty);
+            }
+        }
+
+    }
+
+    public event EventHandler ValueChanged;
 }
