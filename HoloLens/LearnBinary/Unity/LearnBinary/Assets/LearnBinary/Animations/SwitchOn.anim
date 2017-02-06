@@ -358,7 +358,7 @@ AnimationClip:
   m_IsEmpty: 0
   m_Events:
   - time: 0.65
-    functionName: 
+    functionName: ToggleSwitch
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

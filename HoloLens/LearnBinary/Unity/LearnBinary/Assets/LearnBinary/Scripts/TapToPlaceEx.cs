@@ -73,7 +73,10 @@ namespace HoloToolkit.Unity.SpatialMapping
 			}
 			else
 			{
-				anchorManager.AttachAnchor(this.gameObject, SavedAnchorFriendlyName);
+				if (anchorManager != null)
+				{
+					anchorManager.AttachAnchor(this.gameObject, SavedAnchorFriendlyName);
+				}
 			}
 		}
 
@@ -81,9 +84,9 @@ namespace HoloToolkit.Unity.SpatialMapping
         {
 			// Make sure we have all the components in the scene we need.
 			anchorManager = WorldAnchorManager.Instance;
-            if (anchorManager == null)
+            if ((UseWorldAnchor) && (anchorManager == null))
             {
-                Debug.LogError("This script expects that you have a WorldAnchorManager component in your scene.");
+                Debug.LogError("This script requires that you have a WorldAnchorManager component in your scene in order to use world anchors.");
             }
 
 			inputManager = InputManager.Instance;
@@ -98,9 +101,9 @@ namespace HoloToolkit.Unity.SpatialMapping
                 Debug.LogError("This script expects that you have a SpatialMappingManager component in your scene.");
             }
 
-            if (anchorManager != null && spatialMappingManager != null)
+            if (spatialMappingManager != null)
             {
-				if (UseWorldAnchor)
+				if ((UseWorldAnchor) && (anchorManager != null))
 				{
 					TryAttachAnchor();
 				}
@@ -190,7 +193,10 @@ namespace HoloToolkit.Unity.SpatialMapping
 			if (UseWorldAnchor)
 			{
 				Debug.Log(gameObject.name + " : Removing existing world anchor if any.");
-				anchorManager.RemoveAnchor(gameObject);
+				if (anchorManager != null)
+				{
+					anchorManager.RemoveAnchor(gameObject);
+				}
 			}
 
 			// Push ourselves as a fallback listener so the gaze doesn't 

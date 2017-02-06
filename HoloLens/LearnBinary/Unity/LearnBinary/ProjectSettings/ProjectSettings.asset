@@ -392,11 +392,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: LearnBinary
   metroPackageVersion: 
-  metroCertificatePath: 
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 00e4b112299fd301
   metroApplicationDescription: LearnBinary
   wsaImages: {}
   metroTileShortName: 
