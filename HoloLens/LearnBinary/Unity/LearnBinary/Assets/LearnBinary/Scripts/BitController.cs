@@ -11,9 +11,10 @@ public class BitController : MonoBehaviour {
     private bool valueOverride;
 
 
-    public Light pointLight;
+    private Light bitlight;
     public Animator bitAnimator;
     public Text valueText;
+    public Text valueSign;
 
     public Material on;
     public Material off;
@@ -72,6 +73,11 @@ public class BitController : MonoBehaviour {
         {
             valueText.text = (isOn | valueOverride ? realValue.ToString() : "0");
         }
+
+        if (valueSign != null)
+        {
+            valueSign.text = realValue.ToString();
+        }
     }
 
     public void ToggleSwitch()
@@ -117,6 +123,19 @@ public class BitController : MonoBehaviour {
         {
             valueOverride = value;
             CalculateValue();
+        }
+    }
+
+    public Light Bitlight
+    {
+        get
+        {
+            return bitlight;
+        }
+
+        set
+        {
+            bitlight = value;
         }
     }
 
