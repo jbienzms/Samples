@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutManager : MonoBehaviour {
     public Animator animator;
+    public Text tutorialText;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -27,5 +30,10 @@ public class TutManager : MonoBehaviour {
     public void PreviousStep()
     {
         animator.SetBool("prevStep", true);
+    }
+
+    public void setText(string text)
+    {
+        tutorialText.text = text;
     }
 }
