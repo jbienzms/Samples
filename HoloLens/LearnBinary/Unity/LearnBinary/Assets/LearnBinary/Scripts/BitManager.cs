@@ -46,13 +46,26 @@ public class BitManager : MonoBehaviour
 		// Notify
 		if (TotalValueChanged != null) { TotalValueChanged(this, EventArgs.Empty); }
 	}
-	#endregion // Behavior Overrides
+    #endregion // Behavior Overrides
 
-	#region Public Properties
-	/// <summary>
-	/// Gets the total value of all current bits.
-	/// </summary>
-	public int TotalValue
+    #region Public Methods
+    /// <summary>
+    /// Resets all bits managed by the BitManager to zero.
+    /// </summary>
+    public void ResetAllBits()
+    {
+        foreach (BitController bit in bits)
+        {
+            bit.AnimateSwitch(false);
+        }
+    }
+    #endregion // Public Methods
+
+    #region Public Properties
+    /// <summary>
+    /// Gets the total value of all current bits.
+    /// </summary>
+    public int TotalValue
 	{
 		get
 		{

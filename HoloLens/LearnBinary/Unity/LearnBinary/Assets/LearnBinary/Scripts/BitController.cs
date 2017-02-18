@@ -30,10 +30,7 @@ public class BitController : MonoBehaviour, IInputClickHandler
 
 	void IInputClickHandler.OnInputClicked(InputClickedEventData eventData)
 	{
-		if (bitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-		{
-			bitAnimator.SetBool("toggleSwitch", !bitAnimator.GetBool("toggleSwitch"));
-		}
+        ToggleSwitch();
 	}
 
 	// Update is called once per frame
@@ -67,6 +64,16 @@ public class BitController : MonoBehaviour, IInputClickHandler
         //        filament.GetComponent<Renderer>().material = off;
         //    }
         //}
+    }
+
+    public void AnimateSwitch(bool on)
+    {
+        isOn = on;
+        CalculateValue();
+        if (bitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        {
+            bitAnimator.SetBool("toggleSwitch", isOn);
+        }
     }
 
     public void CalculateValue()
@@ -103,8 +110,7 @@ public class BitController : MonoBehaviour, IInputClickHandler
 
     public void ToggleSwitch()
     {
-		isOn = !isOn;
-		CalculateValue();
+        AnimateSwitch(!isOn);
     }
 
     public int Value
