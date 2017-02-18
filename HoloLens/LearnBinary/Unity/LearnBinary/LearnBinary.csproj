@@ -377,6 +377,10 @@
     <Compile Include="Assets\LearnBinary\Scripts\BitManager.cs" />
     <Compile Include="Assets\LearnBinary\Scripts\LearningController.cs" />
     <Compile Include="Assets\LearnBinary\Scripts\TapToPlaceEx.cs" />
+    <Compile Include="Assets\LearnBinary\Tutorial\DoAction.cs" />
+    <Compile Include="Assets\LearnBinary\Tutorial\PlayAudio.cs" />
+    <Compile Include="Assets\LearnBinary\Tutorial\TutManager.cs" />
+    <Compile Include="Assets\ResetTransitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\HoloToolkit\Input\Shaders\Cursor.shader" />

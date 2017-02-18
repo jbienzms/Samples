@@ -10,6 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Scene_Base
+    4300002: Scene_Board
   materials:
     importMaterials: 1
     materialName: 0
