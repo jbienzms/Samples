@@ -95,13 +95,19 @@ public class BitController : MonoBehaviour, IInputClickHandler
 		}
 	}
 
-	public void ToggleSwitch()
+    public void SetSwitch(int on)
+    {
+        isOn = (on != 0);
+        CalculateValue();
+    }
+
+    public void ToggleSwitch()
     {
 		isOn = !isOn;
 		CalculateValue();
     }
 
-	public int Value
+    public int Value
     {
         get
         {
