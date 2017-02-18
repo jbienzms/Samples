@@ -16,7 +16,7 @@
     <CompilerResponseFile>Assets\smcs.rsp</CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WSAPlayer:21</UnityBuildTarget>
-    <UnityVersion>5.5.0f3</UnityVersion>
+    <UnityVersion>5.5.1f1</UnityVersion>
     <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
@@ -27,7 +27,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_METRO;UNITY_METRO_API;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;UNITY_WSA;ENABLE_DOTNET;ENABLE_PROFILER;UNITY_WSA_10_0;UNITY_WINRT_10_0;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_1;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_METRO;UNITY_METRO_API;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;UNITY_WSA;ENABLE_DOTNET;ENABLE_PROFILER;UNITY_WSA_10_0;UNITY_WINRT_10_0;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -37,7 +37,7 @@
     <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_METRO;UNITY_METRO_API;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;UNITY_WSA;ENABLE_DOTNET;ENABLE_PROFILER;UNITY_WSA_10_0;UNITY_WINRT_10_0;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_32;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_1;UNITY_5_5;UNITY_5;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_METRO;UNITY_METRO_API;UNITY_WINRT;ENABLE_WINRT_PINVOKE;ENABLE_LAZY_METHOD_CACHING;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;ENABLE_SUBSTANCE;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;UNITY_WSA;ENABLE_DOTNET;ENABLE_PROFILER;UNITY_WSA_10_0;UNITY_WINRT_10_0;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU;</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -51,9 +51,6 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -96,6 +90,8 @@
     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\ModeTip.cs" />
     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\PolygonManager.cs" />
     <Compile Include="Assets\HoloToolkit-Examples\GazeRuler\Scripts\Test\LineTest.cs" />
+    <Compile Include="Assets\HoloToolkit-Examples\SavingSpatialMeshes\DebugText.cs" />
+    <Compile Include="Assets\HoloToolkit-Examples\SavingSpatialMeshes\LevelManager.cs" />
     <Compile Include="Assets\HoloToolkit-Examples\SharingWithUNET\Scripts\BulletController.cs" />
     <Compile Include="Assets\HoloToolkit-Examples\SharingWithUNET\Scripts\GenericNetworkTransmitter.cs" />
     <Compile Include="Assets\HoloToolkit-Examples\SharingWithUNET\Scripts\NetworkDiscoveryWithAnchors.cs" />
@@ -161,6 +157,7 @@
     <Compile Include="Assets\HoloToolkit\Input\Scripts\Utilities\ManualGazeControl.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\Utilities\ManualHandControl.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\Voice\KeywordManager.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Scripts\Voice\SpeechInputHandler.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Scripts\Voice\SpeechInputSource.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\ButtonObjectScaler.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\ButtonTimedWaiter.cs" />
@@ -283,24 +280,19 @@
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SyncStateListener.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Unity\DefaultSyncModelAccessor.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Unity\ISyncModelAccessor.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Unity\QuaternionInterpolated.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Unity\TransformSynchronizer.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Unity\Vector3Interpolated.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\AutoJoinSession.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\ConsoleLogWriter.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\DirectPairing.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\ExternalProcess.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\MathUtils.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\SessionExtensions.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Scripts\Utilities\Utils.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\VoiceChat\MicrophoneReceiver.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\VoiceChat\MicrophoneTransmitter.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Tests\CustomMessages.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Tests\ImportExportAnchorManager.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Tests\RemoteHeadManager.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Tests\RoomTest\RoomTest.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Tests\SpawnTest\SpawnTestKeyboardSpawning.cs" />
-    <Compile Include="Assets\HoloToolkit\Sharing\Tests\SpawnTest\SyncSpawnTestSphere.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Tests\Scripts\CustomMessages.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Tests\Scripts\ImportExportAnchorManager.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Tests\Scripts\RemoteHeadManager.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Tests\Scripts\RoomTest.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Tests\Scripts\SpawnTestKeyboardSpawning.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Tests\Scripts\SyncSpawnTestSphere.cs" />
+    <Compile Include="Assets\HoloToolkit\Sharing\Tests\Scripts\UserNotifications.cs" />
     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\ObjectSurfaceObserver.cs" />
     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\FileSurfaceObserver.cs" />
     <Compile Include="Assets\HoloToolkit\SpatialMapping\Scripts\RemoteMapping\MeshSaver.cs" />
@@ -357,10 +349,14 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\InterpolatedValue.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\InterpolatedVector2.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\InterpolatedVector3.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\QuaternionInterpolated.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolatedValues\Vector3Interpolated.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\InterpolationUtilities.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Interpolator.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\MathUtils.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\NearPlaneFade.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\PriorityQueue.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\SessionExtensions.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\SimpleTagalong.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Singleton.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\SphereBasedTagalong.cs" />
@@ -369,6 +365,7 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\TextToSpeechManager.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Timer.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\TimerScheduler.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Utils.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\VectorRollingStatistics.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\WorldAnchorManager.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\GestureResponder.cs" />
