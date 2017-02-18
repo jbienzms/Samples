@@ -30,7 +30,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0
+    m_StopTime: 0.2
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -54,7 +54,23 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: setText
-    data: 
+    data: Binary numbers are made up of smaller components we call BITs.
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.083333336
+    functionName: setText
+    data: You can think of a Bit like light switch. By default, the switch is turned
+      OFF which we represent as zero.
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.2
+    functionName: setText
+    data: But let's see what happens when we turn the switch ON. Go ahead, tap on
+      the switch to turn it ON.
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

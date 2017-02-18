@@ -14,7 +14,7 @@ public class PlayAudio : MonoBehaviour {
 		
 	}
 
-    public PlayAudio(int whichAudioToPlay)
+    public void AudioToPlay(int whichAudioToPlay)
     {
         audioToPlay[whichAudioToPlay].Play();
     }
