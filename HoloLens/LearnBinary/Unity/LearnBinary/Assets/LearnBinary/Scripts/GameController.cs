@@ -1,76 +1,111 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+	#region Member Variables
+	private int numberToGuess;
+	#endregion // Member Variables
 
+	#region Inspector Variables
+	[Tooltip("The audio source used to play answer sounds.")]
+	public AudioSource answerAudioSource;
 
-    private int number;
-    [Tooltip("The text label that provides captions.")]
-    public Text captionsText;
+	[Tooltip("The object that is shown when the answer is correct.")]
+	public GameObject answerCorrectObject;
 
-    [Tooltip("The text label that represents total values.")]
-    public Text totalText;
+	[Tooltip("The sound that is played when the answer is correct.")]
+	public AudioClip answerCorrectSound;
 
-    [Tooltip("The bit manager the scene.")]
-    public BitManager bitManager;
+	[Tooltip("The object that is shown when the answer is incorrect.")]
+	public GameObject answerIncorrectObject;
 
-    AudioSource audioSource;
+	[Tooltip("The sound that is played when the answer is incorrect.")]
+	public AudioClip answerIncorrectSound;
 
-    public Image checkImage;
-    public AudioClip correctAudio;
-    public Sprite correctSprite;
-    public AudioClip incorrectAudio;
-    public Sprite incorrectSprite;
+	[Tooltip("The text label that provides captions.")]
+	public Text captionsText;
 
-    // Use this for initialization
-    void Start()
-    {
-        number = 0;
-        audioSource = GetComponent<AudioSource>(); 
-        
-        startGame();
-        captionsText.text = "Try to find this number:";
-    }
+	[Tooltip("The GameObject that can be used to check the answer.")]
+	public GameObject checkAnswerObject;
 
-    // Update is called once per frame
-    void Update()
-    {
+	[Tooltip("The text label that represents total values.")]
+	public Text totalText;
 
-    }
+	[Tooltip("The bit manager the scene.")]
+	public BitManager bitManager;
+	#endregion // Inspector Variables
 
-    public void OnDestroy()
-    {
-      
-    }
+	#region Behavior Overrides
+	// Use this for initialization
+	void Start()
+	{
+		
+	}
 
-    public void startGame()
-    {
-        bitManager.ResetAllBits();
-        checkImage.enabled=false;
-        number = Random.Range(1, 255);
-        totalText.text = "" + number;
-    }
+	void OnDisable()
+	{
+		// Hide things game specific
+		checkAnswerObject.SetActive(false);
+	}
 
-    public void checkValue()
-    {
-        if (number == bitManager.TotalValue)
-        {
-            audioSource.clip = correctAudio;
-            checkImage.sprite = correctSprite;
-        }
-        else
-        {
-            audioSource.clip = incorrectAudio;
-            checkImage.sprite = incorrectSprite;
-        }
-        audioSource.Play();
-        checkImage.enabled = true;
-        Invoke("startGame", 2);
+	void OnEnable()
+	{
+		// Show things that are game specific
+		checkAnswerObject.SetActive(true);
 
-    }
+		// Set game description
+		captionsText.text = "Try to make this number:";
 
+		// Start a new game
+		NewGame();
+	}
+	#endregion // Behavior Overrides
 
+	#region Public Methods
+	/// <summary>
+	/// Checks the answer to see if it's correct.
+	/// </summary>
+	public void CheckAnswer()
+	{
+		// Set audio source and show image
+		if (numberToGuess == bitManager.TotalValue)
+		{
+			answerAudioSource.clip = answerCorrectSound;
+			answerCorrectObject.SetActive(true);
+		}
+		else
+		{
+			answerAudioSource.clip = answerIncorrectSound;
+			answerIncorrectObject.SetActive(true);
+		}
+
+		// Play the sound
+		answerAudioSource.Play();
+
+		// Wait 2 seconds and start a new game
+		Invoke("NewGame", 2);
+	}
+
+	/// <summary>
+	/// Starts a new game
+	/// </summary>
+	public void NewGame()
+	{
+		// Reset all bits
+		bitManager.ResetAllBits();
+
+		// Reset answer state
+		answerCorrectObject.SetActive(false);
+		answerIncorrectObject.SetActive(false);
+
+		// Generate a number to guess
+		numberToGuess = Random.Range(1, 255);
+
+		// Show it in the total box
+		totalText.text = "" + numberToGuess;
+	}
+	#endregion // Public Methods
 }

@@ -375,10 +375,13 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Tests\Scripts\TextToSpeechOnTap.cs" />
     <Compile Include="Assets\LearnBinary\Scripts\BitController.cs" />
     <Compile Include="Assets\LearnBinary\Scripts\BitManager.cs" />
+    <Compile Include="Assets\LearnBinary\Scripts\GameController.cs" />
     <Compile Include="Assets\LearnBinary\Scripts\LearningController.cs" />
+    <Compile Include="Assets\LearnBinary\Scripts\SceneController.cs" />
     <Compile Include="Assets\LearnBinary\Scripts\TapToPlaceEx.cs" />
     <Compile Include="Assets\LearnBinary\Tutorial\DoAction.cs" />
     <Compile Include="Assets\LearnBinary\Tutorial\PlayAudio.cs" />
+    <Compile Include="Assets\LearnBinary\Tutorial\SetTutorialText.cs" />
     <Compile Include="Assets\LearnBinary\Tutorial\TutManager.cs" />
     <Compile Include="Assets\ResetTransitions.cs" />
   </ItemGroup>

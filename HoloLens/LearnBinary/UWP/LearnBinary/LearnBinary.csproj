@@ -213,12 +213,12 @@
 
   <ItemGroup>
     <ProjectReference Include="C:\Users\jbienz\Code\JBienzMS\Samples\HoloLens\LearnBinary\UWP\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj">
-      <Project>{8d95704d-c5d3-4160-be61-35ef2966ce85}</Project>
+      <Project>{2211ac20-a91d-4d5a-ac02-e12473d7eac4}</Project>
       <Name>Assembly-CSharp</Name>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="C:\Users\jbienz\Code\JBienzMS\Samples\HoloLens\LearnBinary\UWP\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj">
-      <Project>{e1acc71a-2cff-4fc6-872d-b621f04addf3}</Project>
+      <Project>{0f211dd6-694c-4e32-b647-93a335bd9623}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
       <Private>False</Private>
     </ProjectReference>

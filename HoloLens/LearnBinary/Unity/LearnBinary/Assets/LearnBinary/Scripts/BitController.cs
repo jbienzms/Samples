@@ -22,74 +22,62 @@ public class BitController : MonoBehaviour, IInputClickHandler
     public Material off;
     public GameObject filament;
 
-    // Use this for initialization
-    void Start ()
+
+	#region Behavior Overrides
+	// Use this for initialization
+	void Start()
 	{
 		CalculateValue();
 	}
+	#endregion // Behavior Overrides
 
+	#region Input Handlers
 	void IInputClickHandler.OnInputClicked(InputClickedEventData eventData)
 	{
-        ToggleSwitch();
+		AnimateToggle();
+	}
+	#endregion // Input Handlers
+
+	#region Public Methods
+	/// <summary>
+	/// Animates a switch between the on / off state
+	/// </summary>
+	public void AnimateToggle()
+	{
+		AnimateSwitch(!isOn);
 	}
 
-	// Update is called once per frame
-	//void Update()
-	//{
-	//	if (Input.GetKeyDown("space"))
-	//	{
-	//		if (bitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-	//		{
-	//			bitAnimator.SetBool("toggleSwitch", !bitAnimator.GetBool("toggleSwitch"));
-	//		}
-	//	}
-	//}
+	/// <summary>
+	/// Animates the switch to the specified state.
+	/// </summary>
+	/// <param name="on">
+	/// Whether the switch should be on or off.
+	/// </param>
+	public void AnimateSwitch(bool on)
+	{
+		if (bitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+		{
+			bitAnimator.SetBool("toggleSwitch", on);
+		}
+	}
 
-	public bool IsOn
-    {
-        get { return isOn; }
-        //private set
-        //{
-        //    isOn = value;
-        //    Debug.Log("Triggered");
-
-        //    if (isOn)
-        //    {
-        //        CalculateValue();
-        //        filament.GetComponent<Renderer>().material = on;
-        //    }
-        //    else
-        //    {
-        //        this.value = 0;
-        //        filament.GetComponent<Renderer>().material = off;
-        //    }
-        //}
-    }
-
-    public void AnimateSwitch(bool on)
-    {
-        isOn = on;
-        CalculateValue();
-        if (bitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-        {
-            bitAnimator.SetBool("toggleSwitch", isOn);
-        }
-    }
-
-    public void CalculateValue()
-    {
-        int realValue = (int)Mathf.Pow(2f, power);
+	/// <summary>
+	/// Calculates the current value and updates materials.
+	/// </summary>
+	public void CalculateValue()
+	{
+		int realValue = (int)Mathf.Pow(2f, power);
 		valueSign.text = realValue.ToString();
-        Value = (isOn ? realValue : 0);
-        if (valueText != null)
-        {
-            valueText.text = (isOn | valueOverride ? realValue.ToString() : "0");
-        }
+		Value = (isOn ? realValue : 0);
+		if (valueText != null)
+		{
+			valueText.text = (isOn | valueOverride ? realValue.ToString() : "0");
+		}
 
-        if (valueSign != null)
-        {
-            valueSign.text = realValue.ToString();
-        }
+		if (valueSign != null)
+		{
+			valueSign.text = realValue.ToString();
+		}
 
 		if (isOn)
 		{
@@ -102,59 +90,76 @@ public class BitController : MonoBehaviour, IInputClickHandler
 		}
 	}
 
-    public void SetSwitch(int on)
-    {
-        isOn = (on != 0);
-        CalculateValue();
-    }
+	/// <summary>
+	/// Jumps directly to the specified state without any animate.
+	/// </summary>
+	/// <param name="on">
+	/// Whether the switch should be on or off.
+	/// </param>
+	public void SetSwitch(int on)
+	{
+		isOn = (on != 0);
+		CalculateValue();
+	}
+	#endregion // Public Methods
 
-    public void ToggleSwitch()
-    {
-        AnimateSwitch(!isOn);
-    }
+	#region Public Properties
+	/// <summary>
+	/// Gets a value that indicates if the bit is on.
+	/// </summary>
+	public bool IsOn
+	{
+		get { return isOn; }
+	}
 
-    public int Value
-    {
-        get
-        {
-            return value;
-        }
-        private set
-        {
-            this.value = value;
-            if (ValueChanged != null)
-            {
-                ValueChanged(this, EventArgs.Empty);
-            }
-        }
-    }
+	/// <summary>
+	/// Gets the current value of the bit based on its state and power.
+	/// </summary>
+	public int Value
+	{
+		get
+		{
+			return value;
+		}
+		private set
+		{
+			this.value = value;
+			if (ValueChanged != null)
+			{
+				ValueChanged(this, EventArgs.Empty);
+			}
+		}
+	}
 
-    public bool ValueOverride
-    {
-        get
-        {
-            return valueOverride;
-        }
+	public bool ValueOverride
+	{
+		get
+		{
+			return valueOverride;
+		}
 
-        set
-        {
-            valueOverride = value;
-            CalculateValue();
-        }
-    }
+		set
+		{
+			valueOverride = value;
+			CalculateValue();
+		}
+	}
 
-    public Light Bitlight
-    {
-        get
-        {
-            return bitlight;
-        }
+	public Light Bitlight
+	{
+		get
+		{
+			return bitlight;
+		}
 
-        set
-        {
-            bitlight = value;
-        }
-    }
+		set
+		{
+			bitlight = value;
+		}
+	}
+	#endregion // Public Properties
 
-    public event EventHandler ValueChanged;
+	#region Public Events
+	public event EventHandler ValueChanged;
+	#endregion // Public Events
 }

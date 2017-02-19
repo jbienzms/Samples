@@ -9,7 +9,7 @@ LearnBinary.sln: modified
 GeneratedProjects\UWP\Assembly-CSharp\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
 GeneratedProjects\UWP\Assembly-CSharp-firstpass\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
 LearnBinary\App.cs: FCC08D3439888DF3593A1687A3E60F8C
-LearnBinary\LearnBinary.csproj: 2CE2C3886D8AF11ADBF56A3DE0013239
+LearnBinary\LearnBinary.csproj: A45687167C8611832C7C17DA534C4396
 LearnBinary\LearnBinary.csproj.user: modified
 LearnBinary\Package.appxmanifest: EBF281B3ACBBB7E3109430A0F1DFCE87
 LearnBinary\project.json: 1D02BC64BAC0D041019673A1C4C51737
