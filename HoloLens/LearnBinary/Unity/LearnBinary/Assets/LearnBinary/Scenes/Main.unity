@@ -347,6 +347,11 @@ Prefab:
       propertyPath: m_Name
       value: BitBlock_0
       objectReference: {fileID: 0}
+    - target: {fileID: 198942591178163380, guid: d36dee6a6824b4d4584aa7dacf608e6e,
+        type: 2}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d36dee6a6824b4d4584aa7dacf608e6e, type: 2}
   m_IsPrefabParent: 0
@@ -916,7 +921,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1614419955}
         m_MethodName: checkValue
         m_Mode: 1
         m_Arguments:
