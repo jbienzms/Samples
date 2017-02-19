@@ -35,6 +35,27 @@ public class LearningController : Singleton<LearningController>
 	#endregion // Inspector Fields
 
 	#region Behavior Overrides
+	void OnDisable()
+	{
+		// Unsubscribe from events
+		bitManager.TotalValueChanged -= BitManager_TotalValueChanged;
+		scenePlacement.PlacingCompleted -= ScenePlacement_PlacingCompleted;
+	}
+
+	void OnEnable()
+	{
+		// Reset all bits
+		bitManager.ResetAllBits();
+
+		// Set defaults
+		captionsText.text = "Learning Mode";
+		totalText.text = "0";
+
+		// Subscribe to events
+		bitManager.TotalValueChanged += BitManager_TotalValueChanged;
+		scenePlacement.PlacingCompleted += ScenePlacement_PlacingCompleted;
+	}
+
 	void Start()
 	{
 		// Validate components
@@ -63,29 +84,16 @@ public class LearningController : Singleton<LearningController>
 			Debug.LogErrorFormat("The {0} inspector field is not set and is required. {1} did not load completely.", "totalText", this.GetType().Name);
 			return;
 		}
-
-		// Set defaults
-		totalText.text = "0";
-
-		// Subscribe to events
-		bitManager.TotalValueChanged += BitManager_TotalValueChanged;
-		scenePlacement.PlacingCompleted += ScenePlacement_PlacingCompleted;
 	}
+	#endregion // Behavior Overrides
 
+	#region Overrides / Event Handlers
 	private void BitManager_TotalValueChanged(object sender, System.EventArgs e)
 	{
 		// Update the total block
 		totalText.text = bitManager.TotalValue.ToString();
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
-	#endregion // Behavior Overrides
-
-	#region Overrides / Event Handlers
 	private void ScenePlacement_PlacingCompleted(object sender, System.EventArgs e)
 	{
 		// If we're in placing, transition to interacting
