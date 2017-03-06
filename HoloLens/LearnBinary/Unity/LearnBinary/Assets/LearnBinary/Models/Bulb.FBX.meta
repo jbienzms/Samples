@@ -1,25 +1,15 @@
 fileFormatVersion: 2
-guid: 7986f63f2a75573428f479d49fcfdcf5
-timeCreated: 1486330503
+guid: 2902f10c2ba1c52489bf37e6a71b0d9d
+timeCreated: 1488775329
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Bulb_Filaments
-    100004: Bulb_Glass
     400000: //RootNode
-    400002: Bulb_Filaments
-    400004: Bulb_Glass
     2300000: //RootNode
-    2300002: Bulb_Filaments
-    2300004: Bulb_Glass
     3300000: //RootNode
-    3300002: Bulb_Filaments
-    3300004: Bulb_Glass
     4300000: Bulb
-    4300002: Bulb_Filaments
-    4300004: Bulb_Glass
   materials:
     importMaterials: 1
     materialName: 0

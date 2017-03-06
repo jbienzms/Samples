@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8762dbc211702f745beb6e4f9484df53
-timeCreated: 1486331318
+guid: e4c36e07a56568c45b8e3781d1bfa949
+timeCreated: 1488775329
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -8,20 +8,15 @@ ModelImporter:
     100000: //RootNode
     100002: Switch_Arms
     100004: Switch_Base
-    100006: Switch_arms
     400000: //RootNode
     400002: Switch_Arms
     400004: Switch_Base
-    400006: Switch_arms
     2300000: Switch_Arms
     2300002: Switch_Base
-    2300004: Switch_arms
     3300000: Switch_Arms
     3300002: Switch_Base
-    3300004: Switch_arms
     4300000: Switch_Arms
     4300002: Switch_Base
-    4300004: Switch_arms
   materials:
     importMaterials: 1
     materialName: 0
