@@ -180,6 +180,7 @@
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\SphereKeywords.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\TapResponder.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\TestButton.cs" />
+    <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\TestOverrideFocusedObject.cs" />
     <Compile Include="Assets\HoloToolkit\Input\Tests\Scripts\TogglePopupMenu.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\AnchorDownloadRequest.cs" />
     <Compile Include="Assets\HoloToolkit\Sharing\Scripts\SDK\AudioManager.cs" />
@@ -334,6 +335,7 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Billboard.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\BitManipulator.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\CircularBuffer.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\DataEventArgs.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\DirectionIndicator.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Extensions\ActionExtensions.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Extensions\ComponentExtensions.cs" />
@@ -356,6 +358,7 @@
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\MathUtils.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\NearPlaneFade.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\PriorityQueue.cs" />
+    <Compile Include="Assets\HoloToolkit\Utilities\Scripts\PropertyChangedEventArgsEx.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\SessionExtensions.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\SimpleTagalong.cs" />
     <Compile Include="Assets\HoloToolkit\Utilities\Scripts\Singleton.cs" />
@@ -386,6 +389,7 @@
     <None Include="Assets\HoloToolkit\SpatialMapping\Shaders\Wireframe.shader" />
     <None Include="Assets\HoloToolkit\SpatialUnderstanding\Materials\SpatialMappingSurface.shader" />
     <None Include="Assets\HoloToolkit\SpatialUnderstanding\Materials\SpatialUnderstandingSurface.shader" />
+    <None Include="Assets\HoloToolkit\UI\Fonts\LICENSE.txt" />
     <None Include="Assets\HoloToolkit\UI\Shaders\3DTextShader.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\BlinnPhongConfigurable.cginc" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\BlinnPhongConfigurable.shader" />

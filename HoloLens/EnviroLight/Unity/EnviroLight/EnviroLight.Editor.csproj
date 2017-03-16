@@ -172,6 +172,7 @@
     <None Include="Assets\HoloToolkit\SpatialMapping\Shaders\Wireframe.shader" />
     <None Include="Assets\HoloToolkit\SpatialUnderstanding\Materials\SpatialMappingSurface.shader" />
     <None Include="Assets\HoloToolkit\SpatialUnderstanding\Materials\SpatialUnderstandingSurface.shader" />
+    <None Include="Assets\HoloToolkit\UI\Fonts\LICENSE.txt" />
     <None Include="Assets\HoloToolkit\UI\Shaders\3DTextShader.shader" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\BlinnPhongConfigurable.cginc" />
     <None Include="Assets\HoloToolkit\Utilities\Shaders\BlinnPhongConfigurable.shader" />
