@@ -1062,7 +1062,7 @@ MonoBehaviour:
   valueSign: {fileID: 114114537424369980}
   on: {fileID: 2100000, guid: 460ccb79400675042ab182966ce0ffc8, type: 2}
   off: {fileID: 2100000, guid: 8d6ae3a0c186d544fa34550ba0d01efb, type: 2}
-  filament: {fileID: 0}
+  filament: {fileID: 1493138991237990}
 --- !u!114 &114078104213825342
 MonoBehaviour:
   m_ObjectHideFlags: 1
