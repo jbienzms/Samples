@@ -29,7 +29,7 @@ public class HoloLensSnapshotTest : MonoBehaviour
     {
         m_GestureRecognizer = new UnityEngine.XR.WSA.Input.GestureRecognizer();
         m_GestureRecognizer.SetRecognizableGestures(UnityEngine.XR.WSA.Input.GestureSettings.Tap);
-        m_GestureRecognizer.TappedEvent += OnTappedEvent;
+        m_GestureRecognizer.Tapped += OnTappedEvent;
         m_GestureRecognizer.StartCapturingGestures();
 
         m_CapturingPhoto = false;
@@ -66,7 +66,7 @@ public class HoloLensSnapshotTest : MonoBehaviour
         Debug.Log("Air Tap to take a picture.");
     }
 
-    void OnTappedEvent(UnityEngine.XR.WSA.Input.InteractionSourceKind source, int tapCount, Ray headRay)
+    void OnTappedEvent(UnityEngine.XR.WSA.Input.TappedEventArgs args)
     {
         if (m_CapturingPhoto)
         {

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisionTracker", "VisionTracker.csproj", "{E3116022-0D5D-D0CF-FCAB-1036DCF21BED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisionTracker.Editor", "VisionTracker.Editor.csproj", "{C2D03BD9-F7C9-9F20-6962-E5ECBCD16FDF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,10 +13,6 @@ Global
 		{E3116022-0D5D-D0CF-FCAB-1036DCF21BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3116022-0D5D-D0CF-FCAB-1036DCF21BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3116022-0D5D-D0CF-FCAB-1036DCF21BED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2D03BD9-F7C9-9F20-6962-E5ECBCD16FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2D03BD9-F7C9-9F20-6962-E5ECBCD16FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2D03BD9-F7C9-9F20-6962-E5ECBCD16FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2D03BD9-F7C9-9F20-6962-E5ECBCD16FDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
