@@ -36,6 +36,35 @@ namespace Microsoft.UnitySamples.Vision
         private bool initializeCameraOnStart = true;
         #endregion // Unity Inspector Variables
 
+        private Face[] CreateFakeFaces()
+        {
+            List<Face> faces = new List<Face>()
+            {
+                new Face()
+                {
+                    FaceRectangle = new FaceRectangle()
+                    {
+                        Left = 100,
+                        Top = 100,
+                        Width = 100,
+                        Height = 100
+                    }
+                },
+
+                new Face()
+                {
+                    FaceRectangle = new FaceRectangle()
+                    {
+                        Left = 300,
+                        Top = 400,
+                        Width = 100,
+                        Height = 100
+                    }
+                }
+            };
+
+            return faces.ToArray();
+        }
 
         #region Unity Behavior Overrides
         private void Start()
@@ -76,7 +105,7 @@ namespace Microsoft.UnitySamples.Vision
             Debug.Log("Photo captured.");
 
             // Create result object
-            VisionCaptureResult result = new VisionCaptureResult(photoResult, photoFrame, selectedResolution.width, selectedResolution.height);
+            VisionCaptureResult result = new VisionCaptureResult(photoResult, photoFrame, selectedResolution.width, selectedResolution.height, CreateFakeFaces());
 
             // Copy task source locally
             TaskCompletionSource<VisionCaptureResult> source = captureTaskSource;

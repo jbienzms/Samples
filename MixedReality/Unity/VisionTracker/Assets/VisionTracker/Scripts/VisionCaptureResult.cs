@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.XR.WSA.WebCam;
+using Microsoft.ProjectOxford.Face.Contract;
+
 
 namespace Microsoft.UnitySamples.Vision
 {
@@ -13,6 +15,7 @@ namespace Microsoft.UnitySamples.Vision
     public class VisionCaptureResult
     {
         #region Member Variables
+        private Face[] faces;
         private PhotoCaptureFrame photoFrame;
         private int photoHeight;
         private PhotoCapture.PhotoCaptureResult photoResult;
@@ -35,7 +38,10 @@ namespace Microsoft.UnitySamples.Vision
         /// <param name="photoHeight">
         /// The height of the captured photo.
         /// </param>
-        public VisionCaptureResult(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame, int photoWidth, int photoHeight)
+        /// <param name="faces">
+        /// The array of faces recognized in the photo.
+        /// </param>
+        public VisionCaptureResult(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame, int photoWidth, int photoHeight, Face[] faces)
         {
             // Validate
             if (photoFrame == null) throw new ArgumentNullException(nameof(photoFrame));
@@ -45,8 +51,21 @@ namespace Microsoft.UnitySamples.Vision
             this.photoFrame = photoFrame;
             this.photoWidth = photoWidth;
             this.photoHeight = photoHeight;
+            this.faces = faces;
         }
         #endregion // Constructors
+
+        #region Public Properties
+        /// <summary>
+        /// Gets the array of faces recognized in the photo.
+        /// </summary>
+        public Face[] Faces
+        {
+            get
+            {
+                return faces;
+            }
+        }
 
         /// <summary>
         /// Gets the photo frame captured during the operation.
@@ -69,10 +88,10 @@ namespace Microsoft.UnitySamples.Vision
                 return photoHeight;
             }
         }
-        
+
         /// <summary>
-         /// Gets the result of the photo capture operation.
-         /// </summary>
+        /// Gets the result of the photo capture operation.
+        /// </summary>
         public PhotoCapture.PhotoCaptureResult PhotoResult
         {
             get
@@ -91,5 +110,6 @@ namespace Microsoft.UnitySamples.Vision
                 return photoWidth;
             }
         }
+        #endregion // Public Properties
     }
 }
