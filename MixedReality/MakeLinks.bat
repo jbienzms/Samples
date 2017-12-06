@@ -44,6 +44,7 @@ ECHO =                            Copying MRTK RSPs                             
 ECHO ===============================================================================
 ECHO.
 XCOPY /Y /Q "%MRTKSource%\Assets\*.rsp" "Unity\MRTKLearn\Assets"
+XCOPY /Y /Q "%MRTKSource%\Assets\*.rsp" "Unity\VisionTracker\Assets"
 ECHO.
 
 ECHO.
@@ -52,6 +53,7 @@ ECHO =                               Linking MRTK                               
 ECHO ===============================================================================
 ECHO.
 mklink /J "Unity\MRTKLearn\Assets\HoloToolkit" "%MRTKSource%\Assets\HoloToolkit"
+mklink /J "Unity\VisionTracker\Assets\HoloToolkit" "%MRTKSource%\Assets\HoloToolkit"
 ECHO.
 
 ECHO.
@@ -60,6 +62,7 @@ ECHO =                          Linking MRTK Examples                           
 ECHO ===============================================================================
 ECHO.
 mklink /J "Unity\MRTKLearn\Assets\HoloToolkit-Examples" "%MRTKSource%\Assets\HoloToolkit-Examples"
+mklink /J "Unity\VisionTracker\Assets\HoloToolkit-Examples" "%MRTKSource%\Assets\HoloToolkit-Examples"
 ECHO.
 
 PAUSE
