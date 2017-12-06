@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisionTracker", "VisionTracker\VisionTracker.csproj", "{13A45C13-3265-47B8-BC48-A553B569DF55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "C:\Users\jbien\Code\JBienzMS\Samples\MixedReality\UWP\VisionTracker\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj", "{D6A85EBB-2218-41D5-9474-494054A0166B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "C:\Users\tedistef.REDMOND\source\Repos\Samples\MixedReality\UWP\VisionTracker\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj", "{66083A86-0914-4730-9B06-F990A70C9ED4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,29 +47,29 @@ Global
 		{13A45C13-3265-47B8-BC48-A553B569DF55}.Release|x86.ActiveCfg = Release|x86
 		{13A45C13-3265-47B8-BC48-A553B569DF55}.Release|x86.Build.0 = Release|x86
 		{13A45C13-3265-47B8-BC48-A553B569DF55}.Release|x86.Deploy.0 = Release|x86
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Debug|ARM.ActiveCfg = Debug|ARM
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Debug|ARM.Build.0 = Debug|ARM
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Debug|x64.ActiveCfg = Debug|x64
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Debug|x64.Build.0 = Debug|x64
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Debug|x86.ActiveCfg = Debug|x86
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Debug|x86.Build.0 = Debug|x86
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Master|ARM.ActiveCfg = Master|ARM
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Master|ARM.Build.0 = Master|ARM
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Master|x64.ActiveCfg = Master|x64
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Master|x64.Build.0 = Master|x64
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Master|x86.ActiveCfg = Master|x86
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Master|x86.Build.0 = Master|x86
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Release|ARM.ActiveCfg = Release|ARM
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Release|ARM.Build.0 = Release|ARM
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Release|x64.ActiveCfg = Release|x64
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Release|x64.Build.0 = Release|x64
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Release|x86.ActiveCfg = Release|x86
-		{D6A85EBB-2218-41D5-9474-494054A0166B}.Release|x86.Build.0 = Release|x86
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Debug|ARM.ActiveCfg = Debug|ARM
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Debug|ARM.Build.0 = Debug|ARM
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Debug|x64.ActiveCfg = Debug|x64
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Debug|x64.Build.0 = Debug|x64
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Debug|x86.ActiveCfg = Debug|x86
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Debug|x86.Build.0 = Debug|x86
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Master|ARM.ActiveCfg = Master|ARM
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Master|ARM.Build.0 = Master|ARM
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Master|x64.ActiveCfg = Master|x64
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Master|x64.Build.0 = Master|x64
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Master|x86.ActiveCfg = Master|x86
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Master|x86.Build.0 = Master|x86
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Release|ARM.ActiveCfg = Release|ARM
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Release|ARM.Build.0 = Release|ARM
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Release|x64.ActiveCfg = Release|x64
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Release|x64.Build.0 = Release|x64
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Release|x86.ActiveCfg = Release|x86
+		{66083A86-0914-4730-9B06-F990A70C9ED4}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C374C7CB-CC97-48CC-A0CB-41FC3B82ECEC}
+		SolutionGuid = {8282052B-1A19-4E5F-B002-B97EA680803B}
 	EndGlobalSection
 EndGlobal

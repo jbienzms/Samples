@@ -1,8 +1,8 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <UnityWSASolutionName>VisionTracker</UnityWSASolutionName>
-        <UnityWSASolutionDir>C:\Users\jbien\Code\JBienzMS\Samples\MixedReality\UWP\VisionTracker\</UnityWSASolutionDir>
-        <UnityProjectDir>C:\Users\jbien\Code\JBienzMS\Samples\MixedReality\Unity\VisionTracker\</UnityProjectDir>
+        <UnityWSASolutionDir>C:\Users\tedistef.REDMOND\source\Repos\Samples\MixedReality\UWP\VisionTracker\</UnityWSASolutionDir>
+        <UnityProjectDir>C:\Users\tedistef.REDMOND\source\Repos\Samples\MixedReality\Unity\VisionTracker\</UnityProjectDir>
         <UnityWSAPlayerDir>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\PlaybackEngines\MetroSupport\</UnityWSAPlayerDir>
         <UnityWSAToolsDir>$(UnityWSASolutionDir)Unity\Tools\</UnityWSAToolsDir>
     </PropertyGroup>
