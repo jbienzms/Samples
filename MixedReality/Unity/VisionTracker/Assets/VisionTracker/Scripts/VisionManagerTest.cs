@@ -9,11 +9,14 @@ public class VisionManagerTest : MonoBehaviour
 {
     #region Member Variables
     private GestureRecognizer gestureRecognizer;
+    private const double HEAD_SIZE = 0.25;          // meters
     #endregion // Member Variables
 
     #region Unity Inspector Fields
     [SerializeField]
-    private Shader shader;
+    private Shader photoShader;
+    [SerializeField]
+    private Shader cubeShader;
 
     [SerializeField]
     private VisionManager visionManager;
@@ -100,7 +103,7 @@ public class VisionManagerTest : MonoBehaviour
         Renderer renderer = canvas.GetComponent<Renderer>() as Renderer;
         //could use Shader.Find("AR/HolographicImageBlend") but using hard reference to m_shader
         //so the shader isn't stripped out as there's nothing directly in the scene using it
-        renderer.material = new Material(shader);
+        renderer.material = new Material(photoShader);
 
         // Get the Matrix
         Matrix4x4 cameraToWorldMatrix;
@@ -150,7 +153,7 @@ public class VisionManagerTest : MonoBehaviour
         containCube.name = "ContainObjectCube";
 
         Renderer renderer = containCube.GetComponent<Renderer>() as Renderer;
-        renderer.material = new Material(shader);
+        renderer.material = new Material(cubeShader);
 
         // Get the Matrix
         Matrix4x4 cameraToWorldMatrix;
@@ -160,27 +163,25 @@ public class VisionManagerTest : MonoBehaviour
         Matrix4x4 projectionMatrix;
         result.PhotoFrame.TryGetProjectionMatrix(out projectionMatrix);
 
-        // Create a texture to hold the image data
-        Texture2D texture = new Texture2D(result.PhotoWidth, result.PhotoHeight, TextureFormat.BGRA32, false);
+        int headSize = 50;//= LocatedBounds.HEAD_SIZE; // TODO convert to amount of pixels that cover the head
 
-        // Have the frame fill in the texture
-        result.PhotoFrame.UploadImageDataToTexture(texture);
+        // Create a texture to hold the image data
+        Texture3D texture = new Texture3D(headSize, headSize, headSize, TextureFormat.BGRA32, false);
+
+        // TODO see if this is actually needed
         texture.wrapMode = TextureWrapMode.Clamp;
 
         renderer.sharedMaterial.SetTexture("_MainTex", texture);
         renderer.sharedMaterial.SetMatrix("_WorldToCameraMatrix", worldToCameraMatrix);
         renderer.sharedMaterial.SetMatrix("_CameraProjectionMatrix", projectionMatrix);
-        renderer.sharedMaterial.SetFloat("_VignetteScale", 1.0f);
 
-        // Position the canvas object slightly in front
-        // of the real world web camera.
+        // TODO Position the cube where the face currently is + distance away
         Vector3 position = cameraToWorldMatrix.GetColumn(3) - cameraToWorldMatrix.GetColumn(2);
-
-        // Rotate the canvas object so that it faces the user.
-        Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
-
         containCube.transform.position = position;
-        containCube.transform.rotation = rotation;
+
+        // Rotate the canvas object so that it properly contains the object it's containing
+        //Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
+        //containCube.transform.rotation = rotation;
 
         Debug.Log("Took picture!");
     }
