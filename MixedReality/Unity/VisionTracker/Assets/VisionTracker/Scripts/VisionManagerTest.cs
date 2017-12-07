@@ -142,8 +142,6 @@ public class VisionManagerTest : MonoBehaviour
 
         canvas.transform.position = position;
         canvas.transform.rotation = rotation;
-
-        Debug.Log("Took picture!");
     }
 
     private void VisualizeResult3D(VisionCaptureResult result)
@@ -152,8 +150,8 @@ public class VisionManagerTest : MonoBehaviour
         GameObject containCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         containCube.name = "ContainObjectCube";
 
-        Renderer renderer = containCube.GetComponent<Renderer>() as Renderer;
-        renderer.material = new Material(cubeShader);
+        //Renderer renderer = containCube.GetComponent<Renderer>() as Renderer;
+        //renderer.material = new Material(cubeShader);
 
         // Get the Matrix
         Matrix4x4 cameraToWorldMatrix;
@@ -164,26 +162,15 @@ public class VisionManagerTest : MonoBehaviour
         result.PhotoFrame.TryGetProjectionMatrix(out projectionMatrix);
 
         int headSize = 50;//= LocatedBounds.HEAD_SIZE; // TODO convert to amount of pixels that cover the head
-
-        // Create a texture to hold the image data
-        Texture3D texture = new Texture3D(headSize, headSize, headSize, TextureFormat.BGRA32, false);
-
-        // TODO see if this is actually needed
-        texture.wrapMode = TextureWrapMode.Clamp;
-
-        renderer.sharedMaterial.SetTexture("_MainTex", texture);
-        renderer.sharedMaterial.SetMatrix("_WorldToCameraMatrix", worldToCameraMatrix);
-        renderer.sharedMaterial.SetMatrix("_CameraProjectionMatrix", projectionMatrix);
-
+        
         // TODO Position the cube where the face currently is + distance away
         Vector3 position = cameraToWorldMatrix.GetColumn(3) - cameraToWorldMatrix.GetColumn(2);
         containCube.transform.position = position;
+        containCube.transform.localScale = new Vector3(LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE);
 
         // Rotate the canvas object so that it properly contains the object it's containing
         //Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
         //containCube.transform.rotation = rotation;
-
-        Debug.Log("Took picture!");
     }
 
     private async void GestureRecognizer_Tapped(TappedEventArgs args)
@@ -192,6 +179,7 @@ public class VisionManagerTest : MonoBehaviour
         VisionCaptureResult result = await visionManager.CaptureAndRecognizeAsync();
 
         // Visualize the result
+        VisualizeResult2D(result);
         VisualizeResult3D(result);
     }
 

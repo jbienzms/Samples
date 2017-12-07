@@ -7,7 +7,7 @@ public static class LocatedBounds
 {
     private const float RAD_TO_DEG = 180 / 3.14f;
     private const double IMG_WIDTH = 1;             // meters; TODO find real value for this
-    public const double HEAD_SIZE = 0.25;           // meters; TODO find a way to get a more reliable reading
+    public const float HEAD_SIZE = 0.25f;           // meters; TODO find a way to get a more reliable reading
 
     /// <summary>
     /// Precondition: bounding box from face api on 2Dd image
