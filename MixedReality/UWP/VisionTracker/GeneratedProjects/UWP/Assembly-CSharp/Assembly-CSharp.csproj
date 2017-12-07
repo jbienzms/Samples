@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{f5addccd-5eb9-4bcb-8392-8f8a3f468c2b}</ProjectGuid>
+    <ProjectGuid>{763C517B-3A85-428B-AF33-8F20C3FDE5CB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AssemblyCSharpWSA</RootNamespace>
@@ -130,7 +130,6 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-
     <Reference Include="UnityEngine.UIElementsModule">
       <HintPath>$(UnityWSASolutionDir)$(UnityWSASolutionName)\Unprocessed\UnityEngine.UIElementsModule.dll</HintPath>
       <Private>False</Private>
@@ -305,7 +304,7 @@
     </Reference>
     <Reference Include="Microsoft.ProjectOxford.Face">
       <HintPath>$(UnityWSASolutionDir)$(UnityWSASolutionName)\Unprocessed\Microsoft.ProjectOxford.Face.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="UnityEngine.Timeline">
       <HintPath>$(UnityWSASolutionDir)$(UnityWSASolutionName)\Unprocessed\UnityEngine.Timeline.dll</HintPath>
@@ -321,7 +320,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>$(UnityWSASolutionDir)$(UnityWSASolutionName)\Unprocessed\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>$(UnityWSASolutionDir)$(UnityWSASolutionName)\Unprocessed\UnityEngine.HoloLens.dll</HintPath>
@@ -333,12 +332,12 @@
     </Reference>
     <Reference Include="Microsoft.ProjectOxford.Common">
       <HintPath>$(UnityWSASolutionDir)$(UnityWSASolutionName)\Unprocessed\Microsoft.ProjectOxford.Common.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
-    <SDKReference Include="WindowsDesktop, Version=10.0.16299.0"/>
-    <SDKReference Include="WindowsIoT, Version=10.0.16299.0"/>
-    <SDKReference Include="WindowsMobile, Version=10.0.16299.0"/>
-    <SDKReference Include="WindowsTeam, Version=10.0.16299.0"/>
+    <SDKReference Include="WindowsDesktop, Version=10.0.16299.0" />
+    <SDKReference Include="WindowsIoT, Version=10.0.16299.0" />
+    <SDKReference Include="WindowsMobile, Version=10.0.16299.0" />
+    <SDKReference Include="WindowsTeam, Version=10.0.16299.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\HoloLensSnapshotTest.cs">
@@ -358,13 +357,13 @@
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-    <PropertyGroup>
+  <PropertyGroup>
     <TargetsTriggeredByCompilation>$(TargetsTriggeredByCompilation);RunSerializationWeaver</TargetsTriggeredByCompilation>
   </PropertyGroup>
   <Target Name="RunSerializationWeaver" Condition="'$(BuildingProject)' == 'true'">
     <Message Importance="high" Text="Running SerializationWeaver..." />
     <Move SourceFiles="@(IntermediateAssembly)" DestinationFolder="$(TargetDir)Unprocessed" OverwriteReadOnlyFiles="true" />
-    <Move SourceFiles="@(IntermediateAssembly-&gt;'%(RelativeDir)%(Filename).pdb')" DestinationFolder="$(TargetDir)Unprocessed" Condition="Exists('@(IntermediateAssembly-&gt;'%(RelativeDir)%(Filename).pdb')')" OverwriteReadOnlyFiles="true" />
+    <Move SourceFiles="@(IntermediateAssembly->'%(RelativeDir)%(Filename).pdb')" DestinationFolder="$(TargetDir)Unprocessed" Condition="Exists('@(IntermediateAssembly->'%(RelativeDir)%(Filename).pdb')')" OverwriteReadOnlyFiles="true" />
     <Exec Command="&quot;$(UnityWSAToolsDir)SerializationWeaver\SerializationWeaver.exe&quot; &quot;$(TargetDir)Unprocessed\$(TargetFileName)&quot; &quot;-pdb&quot; &quot;-verbose&quot; &quot;-unity-engine=$(UnityWSASolutionDir)$(UnityWSASolutionName)\Unprocessed\UnityEngine.CoreModule.dll&quot; &quot;$([System.IO.Path]::GetFullPath('$(IntermediateOutputPath)').TrimEnd('\'))&quot; &quot;-lock=$([System.IO.Path]::Combine('$(ProjectDir)', 'project.lock.json'))&quot; &quot;@C:\Users\jbien\Code\JBienzMS\Samples\MixedReality\UWP\VisionTracker\GeneratedProjects\UWP\Assembly-CSharp\SerializationWeaverArgs.txt&quot; &quot;-additionalAssemblyPath=$(UnityWSASolutionDir)$(UnityWSASolutionName)\Unprocessed&quot; &quot;-unity-networking=$(UnityWSASolutionDir)$(UnityWSASolutionName)\Unprocessed\UnityEngine.Networking.dll&quot;" />
     <Message Importance="high" Text="SerializationWeaver done." />
   </Target>

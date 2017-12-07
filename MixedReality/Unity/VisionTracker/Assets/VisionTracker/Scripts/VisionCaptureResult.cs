@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.XR.WSA.WebCam;
 using Microsoft.ProjectOxford.Face.Contract;
-
+using UnityEngine;
 
 namespace Microsoft.UnitySamples.Vision
 {
@@ -17,9 +17,8 @@ namespace Microsoft.UnitySamples.Vision
         #region Member Variables
         private Face[] faces;
         private PhotoCaptureFrame photoFrame;
-        private int photoHeight;
         private PhotoCapture.PhotoCaptureResult photoResult;
-        private int photoWidth;
+        private Texture2D photoTexture;
         #endregion // Member Variables
 
         #region Constructors
@@ -32,16 +31,13 @@ namespace Microsoft.UnitySamples.Vision
         /// <param name="photoFrame">
         /// The photo frame captured during the operation.
         /// </param>
-        /// <param name="photoWidth">
-        /// The width of the captured photo.
-        /// </param>
-        /// <param name="photoHeight">
-        /// The height of the captured photo.
+        /// <param name="photoTexture">
+        /// The <see cref="Texture2D"/> that contains the photo.
         /// </param>
         /// <param name="faces">
         /// The array of faces recognized in the photo.
         /// </param>
-        public VisionCaptureResult(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame, int photoWidth, int photoHeight, Face[] faces)
+        public VisionCaptureResult(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame, Texture2D photoTexture, Face[] faces)
         {
             // Validate
             if (photoFrame == null) throw new ArgumentNullException(nameof(photoFrame));
@@ -49,8 +45,7 @@ namespace Microsoft.UnitySamples.Vision
             // Store
             this.photoResult = photoResult;
             this.photoFrame = photoFrame;
-            this.photoWidth = photoWidth;
-            this.photoHeight = photoHeight;
+            this.photoTexture = photoTexture;
             this.faces = faces;
         }
         #endregion // Constructors
@@ -79,17 +74,6 @@ namespace Microsoft.UnitySamples.Vision
         }
 
         /// <summary>
-        /// Gets the height of the captured photo.
-        /// </summary>
-        public int PhotoHeight
-        {
-            get
-            {
-                return photoHeight;
-            }
-        }
-
-        /// <summary>
         /// Gets the result of the photo capture operation.
         /// </summary>
         public PhotoCapture.PhotoCaptureResult PhotoResult
@@ -101,13 +85,13 @@ namespace Microsoft.UnitySamples.Vision
         }
 
         /// <summary>
-        /// Gets the width of the captured photo.
+        /// The <see cref="Texture2D"/> that contains the photo.
         /// </summary>
-        public int PhotoWidth
+        public Texture2D PhotoTexture
         {
             get
             {
-                return photoWidth;
+                return photoTexture;
             }
         }
         #endregion // Public Properties

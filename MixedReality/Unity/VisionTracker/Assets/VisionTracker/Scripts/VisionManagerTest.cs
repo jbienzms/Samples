@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.XR.WSA.Input;
 using Microsoft.UnitySamples.Vision;
+using Microsoft.ProjectOxford.Face.Contract;
 
 public class VisionManagerTest : MonoBehaviour
 {
@@ -17,6 +18,67 @@ public class VisionManagerTest : MonoBehaviour
     [SerializeField]
     private VisionManager visionManager;
     #endregion // Unity Inspector Fields
+
+    private void DrawLine(Texture2D tex, int x0, int y0, int x1, int y1, Color col)
+    {
+        int dy = (int)(y1 - y0);
+        int dx = (int)(x1 - x0);
+        int stepx, stepy;
+
+        if (dy < 0) { dy = -dy; stepy = -1; }
+        else { stepy = 1; }
+        if (dx < 0) { dx = -dx; stepx = -1; }
+        else { stepx = 1; }
+        dy <<= 1;
+        dx <<= 1;
+
+        float fraction = 0;
+
+        tex.SetPixel(x0, y0, col);
+        if (dx > dy)
+        {
+            fraction = dy - (dx >> 1);
+            while (Mathf.Abs(x0 - x1) > 1)
+            {
+                if (fraction >= 0)
+                {
+                    y0 += stepy;
+                    fraction -= dx;
+                }
+                x0 += stepx;
+                fraction += dy;
+                tex.SetPixel(x0, y0, col);
+            }
+        }
+        else
+        {
+            fraction = dx - (dy >> 1);
+            while (Mathf.Abs(y0 - y1) > 1)
+            {
+                if (fraction >= 0)
+                {
+                    x0 += stepx;
+                    fraction -= dy;
+                }
+                y0 += stepy;
+                fraction += dx;
+                tex.SetPixel(x0, y0, col);
+            }
+        }
+    }
+
+    private void DrawRect(Texture2D tex, FaceRectangle rect, Color col)
+    {
+        int left = rect.Left;
+        int top = rect.Top;
+        int right = rect.Left + rect.Width;
+        int bottom = rect.Top + rect.Height;
+
+        DrawLine(tex, left, top, right, top, col); // Top
+        DrawLine(tex, right, top, right, bottom, col); // Right
+        DrawLine(tex, right, bottom, left, bottom, col); // Bottom
+        DrawLine(tex, left, bottom, left, top, col); // Left
+    }
 
     private void Initialize()
     {
@@ -48,17 +110,25 @@ public class VisionManagerTest : MonoBehaviour
         Matrix4x4 projectionMatrix;
         result.PhotoFrame.TryGetProjectionMatrix(out projectionMatrix);
 
-        // Create a texture to hold the image data
-        Texture2D texture = new Texture2D(result.PhotoWidth, result.PhotoHeight, TextureFormat.BGRA32, false);
+        // Draw face rectangles into the texture
+        bool drewOne = false;
+        foreach (Face face in result.Faces)
+        {
+            DrawRect(result.PhotoTexture, face.FaceRectangle, Color.red);
+            drewOne = true;
+        }
+        
+        // If at least one was drawn, update the texture
+        if (drewOne)
+        {
+            result.PhotoTexture.Apply();
+        }
 
-        // Have the frame fill in the texture
-        result.PhotoFrame.UploadImageDataToTexture(texture);
-        texture.wrapMode = TextureWrapMode.Clamp;
-
-        renderer.sharedMaterial.SetTexture("_MainTex", texture);
+        // Assign the texture to the material
+        renderer.sharedMaterial.SetTexture("_MainTex", result.PhotoTexture);
         renderer.sharedMaterial.SetMatrix("_WorldToCameraMatrix", worldToCameraMatrix);
         renderer.sharedMaterial.SetMatrix("_CameraProjectionMatrix", projectionMatrix);
-        renderer.sharedMaterial.SetFloat("_VignetteScale", 1.0f);
+        // renderer.sharedMaterial.SetFloat("_VignetteScale", 1.0f);
 
         // Position the canvas object slightly in front
         // of the real world web camera.
