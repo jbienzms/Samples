@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Microsoft.ProjectOxford.Face.Contract;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine.XR.WSA.WebCam;
-using Microsoft.ProjectOxford.Face.Contract;
 using UnityEngine;
+using UnityEngine.XR.WSA.WebCam;
 
 namespace Microsoft.UnitySamples.Vision
 {
@@ -15,10 +12,10 @@ namespace Microsoft.UnitySamples.Vision
     public class VisionCaptureResult
     {
         #region Member Variables
-        private Face[] faces;
         private PhotoCaptureFrame photoFrame;
         private PhotoCapture.PhotoCaptureResult photoResult;
         private Texture2D photoTexture;
+        private List<RecognitionResult> recognitions = new List<RecognitionResult>();
         #endregion // Member Variables
 
         #region Constructors
@@ -37,7 +34,7 @@ namespace Microsoft.UnitySamples.Vision
         /// <param name="faces">
         /// The array of faces recognized in the photo.
         /// </param>
-        public VisionCaptureResult(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame, Texture2D photoTexture, Face[] faces)
+        public VisionCaptureResult(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame, Texture2D photoTexture)
         {
             // Validate
             if (photoFrame == null) throw new ArgumentNullException(nameof(photoFrame));
@@ -46,21 +43,14 @@ namespace Microsoft.UnitySamples.Vision
             this.photoResult = photoResult;
             this.photoFrame = photoFrame;
             this.photoTexture = photoTexture;
-            this.faces = faces;
         }
         #endregion // Constructors
 
         #region Public Properties
         /// <summary>
-        /// Gets the array of faces recognized in the photo.
+        /// Gets the list of items recognized in the photo.
         /// </summary>
-        public Face[] Faces
-        {
-            get
-            {
-                return faces;
-            }
-        }
+        public List<RecognitionResult> Recognitions => recognitions;
 
         /// <summary>
         /// Gets the photo frame captured during the operation.

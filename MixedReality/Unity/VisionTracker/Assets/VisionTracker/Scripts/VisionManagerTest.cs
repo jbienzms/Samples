@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine.XR.WSA.Input;
 using Microsoft.UnitySamples.Vision;
 using Microsoft.ProjectOxford.Face.Contract;
+using ProtoTurtle.BitmapDrawing;
 
 public class VisionManagerTest : MonoBehaviour
 {
     #region Member Variables
     private GestureRecognizer gestureRecognizer;
+    private VisionRecognitionOptions recoOptions;
     #endregion // Member Variables
 
     #region Unity Inspector Fields
@@ -19,67 +21,6 @@ public class VisionManagerTest : MonoBehaviour
     private VisionManager visionManager;
     #endregion // Unity Inspector Fields
 
-    private void DrawLine(Texture2D tex, int x0, int y0, int x1, int y1, Color col)
-    {
-        int dy = (int)(y1 - y0);
-        int dx = (int)(x1 - x0);
-        int stepx, stepy;
-
-        if (dy < 0) { dy = -dy; stepy = -1; }
-        else { stepy = 1; }
-        if (dx < 0) { dx = -dx; stepx = -1; }
-        else { stepx = 1; }
-        dy <<= 1;
-        dx <<= 1;
-
-        float fraction = 0;
-
-        tex.SetPixel(x0, y0, col);
-        if (dx > dy)
-        {
-            fraction = dy - (dx >> 1);
-            while (Mathf.Abs(x0 - x1) > 1)
-            {
-                if (fraction >= 0)
-                {
-                    y0 += stepy;
-                    fraction -= dx;
-                }
-                x0 += stepx;
-                fraction += dy;
-                tex.SetPixel(x0, y0, col);
-            }
-        }
-        else
-        {
-            fraction = dx - (dy >> 1);
-            while (Mathf.Abs(y0 - y1) > 1)
-            {
-                if (fraction >= 0)
-                {
-                    x0 += stepx;
-                    fraction -= dy;
-                }
-                y0 += stepy;
-                fraction += dx;
-                tex.SetPixel(x0, y0, col);
-            }
-        }
-    }
-
-    private void DrawRect(Texture2D tex, FaceRectangle rect, Color col)
-    {
-        int left = rect.Left;
-        int top = rect.Top;
-        int right = rect.Left + rect.Width;
-        int bottom = rect.Top + rect.Height;
-
-        DrawLine(tex, left, top, right, top, col); // Top
-        DrawLine(tex, right, top, right, bottom, col); // Right
-        DrawLine(tex, right, bottom, left, bottom, col); // Bottom
-        DrawLine(tex, left, bottom, left, top, col); // Left
-    }
-
     private void Initialize()
     {
         Debug.Log("Initializing...");
@@ -89,6 +30,10 @@ public class VisionManagerTest : MonoBehaviour
         gestureRecognizer.SetRecognizableGestures(GestureSettings.Tap);
         gestureRecognizer.Tapped += GestureRecognizer_Tapped;
         gestureRecognizer.StartCapturingGestures();
+
+        // What are we going to recognize?
+        recoOptions = new VisionRecognitionOptions();
+        recoOptions.DetectFaces = true;
     }
 
     private void VisualizeResult2D(VisionCaptureResult result)
@@ -112,10 +57,18 @@ public class VisionManagerTest : MonoBehaviour
 
         // Draw face rectangles into the texture
         bool drewOne = false;
-        foreach (Face face in result.Faces)
+        foreach (RecognitionResult reco in result.Recognitions)
         {
-            DrawRect(result.PhotoTexture, face.FaceRectangle, Color.red);
+            // Draw the location into the photo
+            result.PhotoTexture.DrawRectangle(reco.Location, Color.red);
             drewOne = true;
+
+            // See if we have a face
+            FaceRecognitionResult faceReco = reco as FaceRecognitionResult;
+            if (faceReco != null)
+            {
+                // TODO: Draw something about the face
+            }
         }
         
         // If at least one was drawn, update the texture
@@ -147,7 +100,7 @@ public class VisionManagerTest : MonoBehaviour
     private async void GestureRecognizer_Tapped(TappedEventArgs args)
     {
         // Take a photo
-        VisionCaptureResult result = await visionManager.CaptureAndRecognizeAsync();
+        VisionCaptureResult result = await visionManager.CaptureAndRecognizeAsync(recoOptions);
 
         // Visualize the result
         VisualizeResult2D(result);

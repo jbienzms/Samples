@@ -16,6 +16,10 @@ using UnityEngine.XR.WSA.WebCam;
 using System.Security.Cryptography.X509Certificates;
 #endif
 
+#if WINDOWS_UWP
+using Windows.Storage;
+#endif
+
 
 namespace Microsoft.UnitySamples.Vision
 {
@@ -27,8 +31,6 @@ namespace Microsoft.UnitySamples.Vision
         #region Private Member Variables
         private TaskCompletionSource<bool> cameraInitTaskSource = new TaskCompletionSource<bool>(); // Task source that represents the initialization of the camera.
         private CameraParameters cameraParameters;
-        private TaskCompletionSource<VisionCaptureResult> captureTaskSource;
-        private FaceAttributeType[] faceAttributes = new FaceAttributeType[] { FaceAttributeType.Gender, FaceAttributeType.Age, FaceAttributeType.Smile, FaceAttributeType.Emotion, FaceAttributeType.Glasses, FaceAttributeType.Hair };
         private IFaceServiceClient faceServiceClient;
         private bool isCameraInitializing;
         private bool isCapturingPhoto;
@@ -48,6 +50,10 @@ namespace Microsoft.UnitySamples.Vision
         [SerializeField]
         [Tooltip("Whether the camera should be initialized when the manager is started.")]
         private bool initializeCameraOnStart = true;
+
+        [SerializeField]
+        [Tooltip("Whether the last captured photo should be saved to disk. On UWP the photo is saved to the Pictures library, which requires the PicturesLibrary capability.")]
+        private bool saveLastPhoto = false;
         #endregion // Unity Inspector Variables
 
         #region Internal Methods
@@ -78,36 +84,34 @@ namespace Microsoft.UnitySamples.Vision
             return valid;
         }
         #endif
-
-        private Face[] CreateFakeFaces()
+        #if WINDOWS_UWP
+        private async Task WriteImageToDiskAsync(Stream imageStream)
         {
-            List<Face> faces = new List<Face>()
+            Debug.Log("Getting camera roll");
+            // Get Camera Roll folder
+            StorageFolder folder = KnownFolders.CameraRoll;
+
+            Debug.Log("Creating file");
+            // Create file and overrwite
+            StorageFile captureFile = await folder.CreateFileAsync("VisionCapture.jpg", CreationCollisionOption.ReplaceExisting);
+            using (Stream storageStream = await captureFile.OpenStreamForWriteAsync())
             {
-                new Face()
-                {
-                    FaceRectangle = new FaceRectangle()
-                    {
-                        Left = 100,
-                        Top = 100,
-                        Width = 100,
-                        Height = 100
-                    }
-                },
+                Debug.Log("Rewinding stream");
 
-                new Face()
-                {
-                    FaceRectangle = new FaceRectangle()
-                    {
-                        Left = 300,
-                        Top = 400,
-                        Width = 100,
-                        Height = 100
-                    }
-                }
-            };
+                // Rewind image stream
+                imageStream.Seek(0, SeekOrigin.Begin);
 
-            return faces.ToArray();
+                Debug.Log("Writing file");
+                // Copy
+                await imageStream.CopyToAsync(storageStream);
+
+                Debug.Log("Rewinding stream");
+
+                // Rewind image stream
+                imageStream.Seek(0, SeekOrigin.Begin);
+            }
         }
+        #endif
         #endregion // Internal Methods
 
         #region Unity Behavior Overrides
@@ -160,9 +164,11 @@ namespace Microsoft.UnitySamples.Vision
         #endregion // Camera Initialization Callbacks
 
         #region Photo Capture Callbacks
-        private async void OnPhotoCaptured(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame)
+        private async void OnPhotoCaptured(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame, VisionRecognitionOptions recognitionOptions, TaskCompletionSource<VisionCaptureResult> captureTaskSource)
         {
             Debug.Log("Photo captured.");
+            // No longer capturing
+            isCapturingPhoto = false;
 
             // Create a texture to hold the photo data
             Texture2D photoTexture = new Texture2D(selectedResolution.width, selectedResolution.height, TextureFormat.BGRA32, false);
@@ -171,31 +177,55 @@ namespace Microsoft.UnitySamples.Vision
             photoFrame.UploadImageDataToTexture(photoTexture);
             photoTexture.wrapMode = TextureWrapMode.Clamp;
 
-            // Convert the texture to a JPG byte array
-            byte[] jpgBytes = ImageConversion.EncodeToJPG(photoTexture);
+            // Create result object
+            VisionCaptureResult result = new VisionCaptureResult(photoResult, photoFrame, photoTexture);
 
             // Placeholder
             Face[] faces = null;
 
-            // Temporary wrap memory stream
-            using (MemoryStream imageStream = new MemoryStream(jpgBytes))
+            // Only do the following work if we're saving the photo to disk or actually going to recognize something
+            if (saveLastPhoto || recognitionOptions.DetectFaces) // || recognitionOptions.DetectObjects) 
             {
-                // Call the Face API
-                faces = await faceServiceClient.DetectAsync(imageStream, returnFaceId: true, returnFaceLandmarks: false, returnFaceAttributes: faceAttributes);
+                // Convert the texture to a JPG byte array
+                byte[] jpgBytes = ImageConversion.EncodeToJPG(photoTexture);
+
+                // Temporary wrap memory stream
+                using (MemoryStream imageStream = new MemoryStream(jpgBytes))
+                {
+                    // Save to disk?
+                    if (saveLastPhoto)
+                    {
+                        #if WINDOWS_UWP
+                        await WriteImageToDiskAsync(imageStream);
+                        #endif
+                    }
+
+                    // Detect faces?
+                    if (recognitionOptions.DetectFaces)
+                    {
+                        // Call API
+                        faces = await faceServiceClient.DetectAsync(imageStream, returnFaceId: true, returnFaceLandmarks: false, returnFaceAttributes: recognitionOptions.FaceAttributes);
+
+                        // Copy Faces to result collection
+                        foreach (Face face in faces)
+                        {
+                            result.Recognitions.Add(new FaceRecognitionResult(face));
+                        }
+                    }
+
+                    /*
+                    // Detect custom objects?
+                    if (recognitionOptions.DetectObjects)
+                    {
+                        // Call API
+                        // Add to Results
+                    }
+                    */
+                }
             }
 
-            // Create result object
-            VisionCaptureResult result = new VisionCaptureResult(photoResult, photoFrame, photoTexture, faces);
-
-            // Copy task source locally
-            TaskCompletionSource<VisionCaptureResult> source = captureTaskSource;
-            captureTaskSource = null;
-            
-            // No longer capturing
-            isCapturingPhoto = false;
-
             // Complete task
-            source.SetResult(result);
+            captureTaskSource.SetResult(result);
         }
         #endregion // Photo Capture Callbacks
 
@@ -210,7 +240,7 @@ namespace Microsoft.UnitySamples.Vision
         /// <remarks>
         /// If the camera has not yet been initialzied, it will be initialized as part of this call.
         /// </remarks>
-        public async Task<VisionCaptureResult> CaptureAndRecognizeAsync()
+        public async Task<VisionCaptureResult> CaptureAndRecognizeAsync(VisionRecognitionOptions recognitionOptions)
         {
             // Can only capture and analyze one photo at a time.
             if (isCapturingPhoto)
@@ -229,10 +259,10 @@ namespace Microsoft.UnitySamples.Vision
             Debug.Log("Capturing photo...");
 
             // Create task source for completion
-            captureTaskSource = new TaskCompletionSource<VisionCaptureResult>();
+            TaskCompletionSource<VisionCaptureResult> captureTaskSource = new TaskCompletionSource<VisionCaptureResult>();
 
             // Start callback process
-            photoCapture.TakePhotoAsync(OnPhotoCaptured);
+            photoCapture.TakePhotoAsync((photoResult, photoFrame) => OnPhotoCaptured(photoResult, photoFrame, recognitionOptions, captureTaskSource));
 
             // Return task, which will be completed in callback
             return await captureTaskSource.Task;
@@ -275,7 +305,7 @@ namespace Microsoft.UnitySamples.Vision
         /// <summary>
         /// Gets or sets the subscription key for Cognitive Services Face API.
         /// </summary>
-        public string FaceApiKey => faceApiKey;
+        public string FaceApiKey { get { return faceApiKey; } set { faceApiKey = value; } }
 
         /// <summary>
         /// The URI endpoint for accessing the Face API.
@@ -283,21 +313,24 @@ namespace Microsoft.UnitySamples.Vision
         /// <remarks>
         /// IMPORTANT: The endpoint region must match your API key.
         /// </remarks>
-        public string FaceApiUri => faceApiUri;
-
-        /// <summary>
-        /// Gets or sets the list of face attributes to detect in the image.
-        /// </summary>
-        public FaceAttributeType[] FaceAttributes => faceAttributes;
+        public string FaceApiUri { get { return faceApiUri; } set { faceApiUri = value; } }
 
         /// <summary>
         /// Gets or sets a value that indicates if the camera should be initialized when the manager is started.
         /// </summary>
-        public bool InitializeCameraOnStart => initializeCameraOnStart;
+        public bool InitializeCameraOnStart { get { return initializeCameraOnStart; } set { initializeCameraOnStart = value; } }
         /// <summary>
         /// Gets a value that indicates if the camera has been initialized.
         /// </summary>
         public bool IsCameraInitialized { get { return cameraInitTaskSource.Task.IsCompleted; } }
+
+        /// <summary>
+        /// Gets or sets a value that indicates if the last captured photo should be saved to disk.
+        /// </summary>
+        /// <remarks>
+        /// This can be helpful for debugging purposes.
+        /// </remarks>
+        public bool SaveLastPhoto { get { return saveLastPhoto; } set { saveLastPhoto = value; } }
         #endregion // Public Properties
 
         #region Public Events

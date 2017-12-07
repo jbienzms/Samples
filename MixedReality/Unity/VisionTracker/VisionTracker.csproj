@@ -12,15 +12,12 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>WSAPlayer:21</UnityBuildTarget>
     <UnityVersion>2017.2.0p2-MRTP5</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -252,10 +249,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\BitmapDrawing.cs" />
     <Compile Include="Assets\VisionTracker\Scripts\HoloLensSnapshotTest.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\RecognitionResult.cs" />
     <Compile Include="Assets\VisionTracker\Scripts\VisionCaptureResult.cs" />
     <Compile Include="Assets\VisionTracker\Scripts\VisionManager.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionRecognitionOptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\VisionTracker\Shaders\HolographicImageBlendShader.shader" />

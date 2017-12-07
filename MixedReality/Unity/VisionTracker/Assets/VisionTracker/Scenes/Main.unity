@@ -247,6 +247,7 @@ MonoBehaviour:
   faceApiKey: 7bca6e9c6fe94eaaa6235027a1825223
   faceApiUri: https://westus.api.cognitive.microsoft.com/face/v1.0
   initializeCameraOnStart: 1
+  saveLastPhoto: 1
 --- !u!1 &1194015160
 GameObject:
   m_ObjectHideFlags: 0
