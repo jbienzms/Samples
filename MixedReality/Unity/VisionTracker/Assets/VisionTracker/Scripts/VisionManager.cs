@@ -28,6 +28,7 @@ namespace Microsoft.UnitySamples.Vision
         private TaskCompletionSource<bool> cameraInitTaskSource = new TaskCompletionSource<bool>(); // Task source that represents the initialization of the camera.
         private CameraParameters cameraParameters;
         private TaskCompletionSource<VisionCaptureResult> captureTaskSource;
+        private FaceAttributeType[] faceAttributes = new FaceAttributeType[] { FaceAttributeType.Gender, FaceAttributeType.Age, FaceAttributeType.Smile, FaceAttributeType.Emotion, FaceAttributeType.Glasses, FaceAttributeType.Hair };
         private IFaceServiceClient faceServiceClient;
         private bool isCameraInitializing;
         private bool isCapturingPhoto;
@@ -159,12 +160,32 @@ namespace Microsoft.UnitySamples.Vision
         #endregion // Camera Initialization Callbacks
 
         #region Photo Capture Callbacks
-        private void OnPhotoCaptured(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame)
+        private async void OnPhotoCaptured(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame)
         {
             Debug.Log("Photo captured.");
 
+            // Create a texture to hold the photo data
+            Texture2D photoTexture = new Texture2D(selectedResolution.width, selectedResolution.height, TextureFormat.BGRA32, false);
+
+            // Have the frame fill in the texture
+            photoFrame.UploadImageDataToTexture(photoTexture);
+            photoTexture.wrapMode = TextureWrapMode.Clamp;
+
+            // Convert the texture to a JPG byte array
+            byte[] jpgBytes = ImageConversion.EncodeToJPG(photoTexture);
+
+            // Placeholder
+            Face[] faces = null;
+
+            // Temporary wrap memory stream
+            using (MemoryStream imageStream = new MemoryStream(jpgBytes))
+            {
+                // Call the Face API
+                faces = await faceServiceClient.DetectAsync(imageStream, returnFaceId: true, returnFaceLandmarks: false, returnFaceAttributes: faceAttributes);
+            }
+
             // Create result object
-            VisionCaptureResult result = new VisionCaptureResult(photoResult, photoFrame, selectedResolution.width, selectedResolution.height, CreateFakeFaces());
+            VisionCaptureResult result = new VisionCaptureResult(photoResult, photoFrame, photoTexture, faces);
 
             // Copy task source locally
             TaskCompletionSource<VisionCaptureResult> source = captureTaskSource;
@@ -263,6 +284,11 @@ namespace Microsoft.UnitySamples.Vision
         /// IMPORTANT: The endpoint region must match your API key.
         /// </remarks>
         public string FaceApiUri => faceApiUri;
+
+        /// <summary>
+        /// Gets or sets the list of face attributes to detect in the image.
+        /// </summary>
+        public FaceAttributeType[] FaceAttributes => faceAttributes;
 
         /// <summary>
         /// Gets or sets a value that indicates if the camera should be initialized when the manager is started.
