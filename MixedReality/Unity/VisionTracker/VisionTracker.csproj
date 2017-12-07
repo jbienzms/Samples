@@ -47,25 +47,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib">
-      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\Mono\lib\mono\4.6-api\mscorlib.dll</HintPath>
+      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\mscorlib.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\Mono\lib\mono\4.6-api\System.dll</HintPath>
+      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.dll</HintPath>
     </Reference>
     <Reference Include="System.XML">
-      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\Mono\lib\mono\4.6-api\System.XML.dll</HintPath>
+      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.XML.dll</HintPath>
     </Reference>
     <Reference Include="System.Core">
-      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\Mono\lib\mono\4.6-api\System.Core.dll</HintPath>
+      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
-      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\Mono\lib\mono\4.6-api\Microsoft.CSharp.dll</HintPath>
+      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\Microsoft.CSharp.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization">
-      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\Mono\lib\mono\4.6-api\System.Runtime.Serialization.dll</HintPath>
+      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.Runtime.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq">
-      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\Mono\lib\mono\4.6-api\System.Xml.Linq.dll</HintPath>
+      <HintPath>C:\Program Files\Unity 2017.2.0p2-MRTP5\Editor\Data\MonoBleedingEdge\lib\mono\4.6-api\System.Xml.Linq.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity 2017.2.0p2-MRTP5/Editor/Data/Managed/UnityEditor.dll</HintPath>
@@ -222,6 +222,24 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity 2017.2.0p2-MRTP5/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ProjectOxford.Common">
+      <HintPath>Assets/Plugins/CognitiveServices-Face/Microsoft.ProjectOxford.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ProjectOxford.Face">
+      <HintPath>Assets/Plugins/CognitiveServices-Face/Microsoft.ProjectOxford.Face.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets/Plugins/CognitiveServices-Face/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO">
+      <HintPath>Assets/Plugins/CognitiveServices-Face/Dependencies/System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>Assets/Plugins/CognitiveServices-Face/Dependencies/System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>Assets/Plugins/CognitiveServices-Face/Dependencies/System.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/tedistef.REDMOND/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
