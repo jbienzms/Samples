@@ -145,13 +145,11 @@ public class VisionManagerTest : MonoBehaviour
 
     private void VisualizeResult3D(VisionCaptureResult result)
     {
-        // Create a canvas to show the result
-        GameObject canvas = GameObject.CreatePrimitive(PrimitiveType.Quad);
-        canvas.name = "PhotoCaptureCanvas";
+        // Create a cube to mark the object
+        GameObject containCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        containCube.name = "ContainObjectCube";
 
-        Renderer renderer = canvas.GetComponent<Renderer>() as Renderer;
-        //could use Shader.Find("AR/HolographicImageBlend") but using hard reference to m_shader
-        //so the shader isn't stripped out as there's nothing directly in the scene using it
+        Renderer renderer = containCube.GetComponent<Renderer>() as Renderer;
         renderer.material = new Material(shader);
 
         // Get the Matrix
@@ -181,8 +179,8 @@ public class VisionManagerTest : MonoBehaviour
         // Rotate the canvas object so that it faces the user.
         Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
 
-        canvas.transform.position = position;
-        canvas.transform.rotation = rotation;
+        containCube.transform.position = position;
+        containCube.transform.rotation = rotation;
 
         Debug.Log("Took picture!");
     }
