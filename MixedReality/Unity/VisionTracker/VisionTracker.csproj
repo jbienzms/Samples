@@ -256,9 +256,22 @@
     <Compile Include="Assets\VisionTracker\Scripts\VisionCaptureResult.cs" />
     <Compile Include="Assets\VisionTracker\Scripts\VisionManager.cs" />
     <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_BACKUP_20196.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_BACKUP_21536.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_BACKUP_21592.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_BASE_20196.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_BASE_21536.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_BASE_21592.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_LOCAL_20196.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_LOCAL_21536.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_LOCAL_21592.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_REMOTE_20196.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_REMOTE_21536.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\VisionManagerTest_REMOTE_21592.cs" />
     <Compile Include="Assets\VisionTracker\Scripts\VisionRecognitionOptions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\VisionTracker\Shaders\EdgeWireframe.shader" />
     <None Include="Assets\VisionTracker\Shaders\HolographicImageBlendShader.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
