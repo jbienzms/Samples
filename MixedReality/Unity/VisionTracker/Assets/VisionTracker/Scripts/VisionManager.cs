@@ -142,12 +142,6 @@ namespace Microsoft.UnitySamples.Vision
 
 
         #region Camera Initialization Callbacks
-        private void OnCreatedPhotoCapture(PhotoCapture captureObject)
-        {
-            photoCapture = captureObject;
-            photoCapture.StartPhotoModeAsync(cameraParameters, OnStartPhotoMode);
-        }
-
         private void OnStartPhotoMode(PhotoCapture.PhotoCaptureResult result)
         {
             Debug.Log("Camera Initialized.");
@@ -280,24 +274,69 @@ namespace Microsoft.UnitySamples.Vision
             isCameraInitializing = true;
             Debug.Log("Initializing Camera...");
 
-            // Get all resolutions
-            List<Resolution> resolutions = new List<Resolution>(PhotoCapture.SupportedResolutions);
+            // Only create PhotoCapture once
+            if (photoCapture == null)
+            {
+                // Get all resolutions
+                List<Resolution> resolutions = new List<Resolution>(PhotoCapture.SupportedResolutions);
 
-            // Use first available
-            selectedResolution = resolutions[0];
+                // Use first available
+                selectedResolution = resolutions[0];
 
-            // Create camera parameters
-            cameraParameters = new CameraParameters(WebCamMode.PhotoMode);
-            cameraParameters.cameraResolutionWidth = selectedResolution.width;
-            cameraParameters.cameraResolutionHeight = selectedResolution.height;
-            cameraParameters.hologramOpacity = 0.0f;
-            cameraParameters.pixelFormat = CapturePixelFormat.BGRA32;
+                // Create camera parameters
+                cameraParameters = new CameraParameters(WebCamMode.PhotoMode);
+                cameraParameters.cameraResolutionWidth = selectedResolution.width;
+                cameraParameters.cameraResolutionHeight = selectedResolution.height;
+                cameraParameters.hologramOpacity = 0.0f;
+                cameraParameters.pixelFormat = CapturePixelFormat.BGRA32;
 
-            // Create the PhotoCapture instance using callback
-            PhotoCapture.CreateAsync(false, OnCreatedPhotoCapture);
+                // Create the PhotoCapture instance using callback
+                PhotoCapture.CreateAsync(false, (captureObject) =>
+                {
+                    photoCapture = captureObject;
+                    photoCapture.StartPhotoModeAsync(cameraParameters, OnStartPhotoMode);
+                });
+            }
+            else
+            {
+                // PhotoCapture already created. Just start photo mode.
+                photoCapture.StartPhotoModeAsync(cameraParameters, OnStartPhotoMode);
+            }
 
             // Return our task source task which will be marked completed by the callback
             return cameraInitTaskSource.Task;
+        }
+
+        /// <summary>
+        /// Shuts down the camera.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="Task"/> that represents the operation.
+        /// </returns>
+        public Task<bool> ShutdownCameraAsync()
+        {
+            if (IsCameraInitialized)
+            {
+                Debug.Log("Shutting down camera");
+                TaskCompletionSource<bool> shutdownSource = new TaskCompletionSource<bool>();
+                photoCapture.StopPhotoModeAsync((result) =>
+                {
+                    Debug.LogFormat("Camera shut down: {0}", result.success);
+
+                    // Rest the initialize task
+                    cameraInitTaskSource = new TaskCompletionSource<bool>();
+
+                    // Complete the shutdown task
+                    shutdownSource.SetResult(result.success);
+                });
+                return shutdownSource.Task;
+            }
+            else
+            {
+                Debug.Log("Camera already shutdown");
+                // Already shutdown. Just complete the task.
+                return Task.FromResult<bool>(true);
+            }
         }
         #endregion // Public Methods
 
