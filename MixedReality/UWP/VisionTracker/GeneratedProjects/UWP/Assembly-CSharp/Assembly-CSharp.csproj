@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1FBCE2BB-0714-40E9-9CBB-DBFC1A6D8A9C}</ProjectGuid>
+    <ProjectGuid>{763C517B-3A85-428B-AF33-8F20C3FDE5CB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AssemblyCSharpWSA</RootNamespace>
@@ -340,14 +340,8 @@
     <SDKReference Include="WindowsTeam, Version=10.0.16299.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\BitmapDrawing.cs">
-      <Link>VisionTracker\Scripts\BitmapDrawing.cs</Link>
-    </Compile>
     <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\HoloLensSnapshotTest.cs">
       <Link>VisionTracker\Scripts\HoloLensSnapshotTest.cs</Link>
-    </Compile>
-    <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\RecognitionResult.cs">
-      <Link>VisionTracker\Scripts\RecognitionResult.cs</Link>
     </Compile>
     <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\VisionCaptureResult.cs">
       <Link>VisionTracker\Scripts\VisionCaptureResult.cs</Link>
@@ -357,9 +351,6 @@
     </Compile>
     <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\VisionManagerTest.cs">
       <Link>VisionTracker\Scripts\VisionManagerTest.cs</Link>
-    </Compile>
-    <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\VisionRecognitionOptions.cs">
-      <Link>VisionTracker\Scripts\VisionRecognitionOptions.cs</Link>
     </Compile>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

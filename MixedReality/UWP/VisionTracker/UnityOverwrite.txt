@@ -8,7 +8,7 @@
 VisionTracker.sln: modified
 GeneratedProjects\UWP\Assembly-CSharp\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
 VisionTracker\App.cs: 5691692154C0525747201BA59B6424A8
-VisionTracker\Package.appxmanifest: B79DF7421F8F85086EABE93CC91EDD81
+VisionTracker\Package.appxmanifest: 94C67D2B604335D19987635249760306
 VisionTracker\project.json: 1D02BC64BAC0D041019673A1C4C51737
 VisionTracker\VisionTracker.csproj: modified
 VisionTracker\VisionTracker.csproj.user: modified

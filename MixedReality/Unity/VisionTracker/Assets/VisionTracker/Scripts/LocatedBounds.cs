@@ -5,10 +5,9 @@ using UnityEngine;
 
 public static class LocatedBounds
 {
-
     private const float RAD_TO_DEG = 180 / 3.14f;
-    private const double HEAD_SIZE = 0.25;          // meters
-    private const double IMG_WIDTH = 1;             // meters
+    private const double IMG_WIDTH = 1;             // meters; TODO find real value for this
+    public const float HEAD_SIZE = 0.25f;           // meters; TODO find a way to get a more reliable reading
 
     /// <summary>
     /// Precondition: bounding box from face api on 2Dd image
@@ -26,7 +25,7 @@ public static class LocatedBounds
         var squareSide = squareSidePixel * pixelsToMeters;
 
         // Calculate distance between object and photo taken
-        var fov = Mathf.Atan(1.0f / t) * 2.0f * RAD_TO_DEG;
+        var fov = Mathf.Atan(1.0f / t) * 2.0f * RAD_TO_DEG; //  TODO see if these units are what we need
         var focalLength = 0.5 * diagonal / Mathf.Tan(fov);
         var objToPhotoDistance = HEAD_SIZE * focalLength / squareSide;
 
