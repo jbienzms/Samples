@@ -11,6 +11,13 @@ using UnityEngine.Windows.Speech;
 
 public class VisionManagerTest : MonoBehaviour
 {
+    private enum DisplayMode
+    {
+        Display2D,
+        Display3D,
+        DisplayBoth
+    }
+
     #region Member Variables
     private GestureRecognizer gestureRecognizer;
     private KeywordRecognizer keywordRecognizer;
@@ -19,10 +26,12 @@ public class VisionManagerTest : MonoBehaviour
     #endregion // Member Variables
 
     #region Unity Inspector Fields
+    [Tooltip("The 3D prefab to create when an object is recognized.")]
+    [SerializeField]
+    private GameObject recoPrefab3D;
+
     [SerializeField]
     private Shader photoShader;
-    [SerializeField]
-    private Shader cubeShader;
 
     [SerializeField]
     private VisionManager visionManager;
@@ -39,8 +48,14 @@ public class VisionManagerTest : MonoBehaviour
             case "Stop Camera":
                 StopCamera();
                 break;
-            case "Take Photo":
-                TakePhoto();
+            case "Analyze 2D":
+                TakePhoto(DisplayMode.Display2D);
+                break;
+            case "Analyze 3D":
+                TakePhoto(DisplayMode.Display3D);
+                break;
+            case "Analyze Both":
+                TakePhoto(DisplayMode.DisplayBoth);
                 break;
         }
         Debug.LogFormat("Completed: {0}", args.text);
@@ -57,7 +72,7 @@ public class VisionManagerTest : MonoBehaviour
 
     private void InitSpeech()
     {
-        string[] commands = new[] { "Start Camera", "Stop Camera", "Take Photo" };
+        string[] commands = new[] { "Start Camera", "Stop Camera", "Analyze 2D", "Analyze 3D", "Analyze Both" };
         keywordRecognizer = new KeywordRecognizer(commands);
         keywordRecognizer.OnPhraseRecognized += HandleSpeech;
         keywordRecognizer.Start();
@@ -134,56 +149,61 @@ public class VisionManagerTest : MonoBehaviour
 
     private void VisualizeResult3D(VisionCaptureResult result)
     {
-        // Create a cube to mark the object
-        GameObject containCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        containCube.name = "ContainObjectCube";
-
-        // Create floating text to label the object
-        //GameObject metadataLabel = GameObject.CreatePrimitive(PrimitiveType);
-        //metadataLabel.name = "MetadataLabel";
-
-        Renderer renderer = containCube.GetComponent<Renderer>() as Renderer;
-        renderer.material = new Material(cubeShader);
-
-        // Get the Matrix
-        Matrix4x4 cameraToWorldMatrix;
-        result.PhotoFrame.TryGetCameraToWorldMatrix(out cameraToWorldMatrix);
-        Matrix4x4 worldToCameraMatrix = cameraToWorldMatrix.inverse;
-
-        Matrix4x4 projectionMatrix;
-        result.PhotoFrame.TryGetProjectionMatrix(out projectionMatrix);
-        
-        // TODO Position the cube where the face currently is + distance away
-        Vector3 position = cameraToWorldMatrix.GetColumn(3) - cameraToWorldMatrix.GetColumn(2);
-        containCube.transform.position = position;
-        containCube.transform.localScale = new Vector3(LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE);
-
-        // Rotate the canvas object so that it properly contains the object it's containing
-        Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
-        containCube.transform.rotation = rotation;
-
-        RecognitionResult rec = result.Recognitions.FirstOrDefault();
-        if (rec != null)
+        // Render all recognitions
+        foreach (RecognitionResult reco in result.Recognitions)
         {
+            // Create a cube to mark the object
+            GameObject containCube = GameObject.Instantiate(recoPrefab3D);
+            containCube.name = "ContainObjectCube";
+
+            // Get the Text Mesh to draw some info about the object
+            TextMesh textMesh = containCube.GetComponentInChildren<TextMesh>();
+
+            // Get the Matrix
+            Matrix4x4 cameraToWorldMatrix;
+            result.PhotoFrame.TryGetCameraToWorldMatrix(out cameraToWorldMatrix);
+            Matrix4x4 worldToCameraMatrix = cameraToWorldMatrix.inverse;
+
+            Matrix4x4 projectionMatrix;
+            result.PhotoFrame.TryGetProjectionMatrix(out projectionMatrix);
+        
+            // TODO Position the cube where the face currently is + distance away
+            Vector3 position = cameraToWorldMatrix.GetColumn(3) - cameraToWorldMatrix.GetColumn(2);
+            containCube.transform.position = position;
+            containCube.transform.localScale = new Vector3(LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE);
+
+            // Rotate the canvas object so that it properly contains the object it's containing
+            Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
+            containCube.transform.rotation = rotation;
+
             // Determine where to place the cube
-            float distanceOut = LocatedBounds.CalculateDistance(rec.Location.width, result.PhotoTexture.width, result.PhotoTexture.height, worldToCameraMatrix.m11);
+            float distanceOut = LocatedBounds.CalculateDistance(reco.Location.width, result.PhotoTexture.width, result.PhotoTexture.height, worldToCameraMatrix.m11);
             //containCube.transform.forward = new Vector3(containCube.transform.forward.x, containCube.transform.forward.y, containCube.transform.forward.z + distanceOut);
             containCube.transform.Translate(new Vector3(0, 0, distanceOut));
 
-            //FaceRecognitionResult faceRec = rec as FaceRecognitionResult;
-            //if (faceRec != null)
-            //{
-            //    // Gather metadata about the face and place that as well
-            //    faceRec.Face.FaceAttributes.Age;
-            //}
+            FaceRecognitionResult faceRec = reco as FaceRecognitionResult;
+            if ((faceRec != null) && (textMesh != null))
+            {
+                int age = (int)faceRec.Face.FaceAttributes.Age;
+                string gender = faceRec.Face.FaceAttributes.Gender;
+                bool isSmiling = faceRec.Face.FaceAttributes.Smile > 0.4;
+
+                // Build face string
+                string faceString = string.Format("Age: {0}\r\nGender: {1}\r\nSmile: {2}", age, gender, isSmiling);
+
+                // Update the text
+                textMesh.text = faceString;
+            }
+
+            // HACK: Only do one each time for now
+            break;
         }
-        else Debug.Log("No Recognition Results Found");
     }
 
 
     private void GestureRecognizer_Tapped(TappedEventArgs args)
     {
-        TakePhoto();
+        TakePhoto(DisplayMode.DisplayBoth);
     }
 
     public async void StartCamera()
@@ -196,7 +216,7 @@ public class VisionManagerTest : MonoBehaviour
         await visionManager.ShutdownCameraAsync();
     }
 
-    public async void TakePhoto()
+    private async void TakePhoto(DisplayMode mode)
     {
         // Take a photo
         VisionCaptureResult result = await visionManager.CaptureAndRecognizeAsync(recoOptions);
@@ -209,8 +229,19 @@ public class VisionManagerTest : MonoBehaviour
         }
 
         // Visualize the result
-        VisualizeResult2D(result);
-        VisualizeResult3D(result);
+        switch (mode)
+        {
+            case DisplayMode.Display2D:
+                VisualizeResult2D(result);
+                break;
+            case DisplayMode.Display3D:
+                VisualizeResult3D(result);
+                break;
+            case DisplayMode.DisplayBoth:
+                VisualizeResult2D(result);
+                VisualizeResult3D(result);
+                break;
+        }
     }
 
     #region Unity Behavior Overrides
