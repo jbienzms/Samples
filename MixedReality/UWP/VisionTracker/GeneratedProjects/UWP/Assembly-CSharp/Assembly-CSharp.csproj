@@ -5,11 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-<<<<<<< HEAD
-    <ProjectGuid>{DA8820A5-7B7D-43C0-81DB-786DF9B97E3F}</ProjectGuid>
-=======
     <ProjectGuid>{763C517B-3A85-428B-AF33-8F20C3FDE5CB}</ProjectGuid>
->>>>>>> 978e026ac7a18f457bdfb48aac297e0c86d34432
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AssemblyCSharpWSA</RootNamespace>
@@ -347,15 +343,6 @@
     <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\HoloLensSnapshotTest.cs">
       <Link>VisionTracker\Scripts\HoloLensSnapshotTest.cs</Link>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\LocatedBounds.cs">
-      <Link>VisionTracker\Scripts\LocatedBounds.cs</Link>
-    </Compile>
-    <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\RecognitionResult.cs">
-      <Link>VisionTracker\Scripts\RecognitionResult.cs</Link>
-    </Compile>
-=======
->>>>>>> 978e026ac7a18f457bdfb48aac297e0c86d34432
     <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\VisionCaptureResult.cs">
       <Link>VisionTracker\Scripts\VisionCaptureResult.cs</Link>
     </Compile>
