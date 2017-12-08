@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8327da72b57884a8a3f26648580d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photoShader: {fileID: 4800000, guid: 7610cbc3618ee3342a7082893debb980, type: 3}
+  photoShader: {fileID: 0}
   cubeShader: {fileID: 0}
   visionManager: {fileID: 885436330}
 --- !u!114 &885436330

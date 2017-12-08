@@ -9,6 +9,13 @@ using UnityEngine.Windows.Speech;
 
 public class VisionManagerTest : MonoBehaviour
 {
+    private enum DisplayMode
+    {
+        Display2D,
+        Display3D,
+        DisplayBoth
+    }
+
     #region Member Variables
     private GestureRecognizer gestureRecognizer;
     private KeywordRecognizer keywordRecognizer;
@@ -37,8 +44,14 @@ public class VisionManagerTest : MonoBehaviour
             case "Stop Camera":
                 StopCamera();
                 break;
-            case "Take Photo":
-                TakePhoto();
+            case "Analyze 2D":
+                TakePhoto(DisplayMode.Display2D);
+                break;
+            case "Analyze 3D":
+                TakePhoto(DisplayMode.Display3D);
+                break;
+            case "Analyze Both":
+                TakePhoto(DisplayMode.DisplayBoth);
                 break;
         }
         Debug.LogFormat("Completed: {0}", args.text);
@@ -55,7 +68,7 @@ public class VisionManagerTest : MonoBehaviour
 
     private void InitSpeech()
     {
-        string[] commands = new[] { "Start Camera", "Stop Camera", "Take Photo" };
+        string[] commands = new[] { "Start Camera", "Stop Camera", "Analyze 2D", "Analyze 3D", "Analyze Both" };
         keywordRecognizer = new KeywordRecognizer(commands);
         keywordRecognizer.OnPhraseRecognized += HandleSpeech;
         keywordRecognizer.Start();
@@ -160,7 +173,7 @@ public class VisionManagerTest : MonoBehaviour
 
     private void GestureRecognizer_Tapped(TappedEventArgs args)
     {
-        TakePhoto();
+        TakePhoto(DisplayMode.DisplayBoth);
     }
 
     public async void StartCamera()
@@ -173,7 +186,7 @@ public class VisionManagerTest : MonoBehaviour
         await visionManager.ShutdownCameraAsync();
     }
 
-    public async void TakePhoto()
+    private async void TakePhoto(DisplayMode mode)
     {
         // Take a photo
         VisionCaptureResult result = await visionManager.CaptureAndRecognizeAsync(recoOptions);
@@ -186,8 +199,19 @@ public class VisionManagerTest : MonoBehaviour
         }
 
         // Visualize the result
-        VisualizeResult2D(result);
-        VisualizeResult3D(result);
+        switch (mode)
+        {
+            case DisplayMode.Display2D:
+                VisualizeResult2D(result);
+                break;
+            case DisplayMode.Display3D:
+                VisualizeResult3D(result);
+                break;
+            case DisplayMode.DisplayBoth:
+                VisualizeResult2D(result);
+                VisualizeResult3D(result);
+                break;
+        }
     }
 
     #region Unity Behavior Overrides
