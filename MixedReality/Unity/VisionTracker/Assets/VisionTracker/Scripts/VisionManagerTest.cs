@@ -5,11 +5,13 @@ using UnityEngine.XR.WSA.Input;
 using Microsoft.UnitySamples.Vision;
 using Microsoft.ProjectOxford.Face.Contract;
 using ProtoTurtle.BitmapDrawing;
+using UnityEngine.Windows.Speech;
 
 public class VisionManagerTest : MonoBehaviour
 {
     #region Member Variables
     private GestureRecognizer gestureRecognizer;
+    private KeywordRecognizer keywordRecognizer;
     private const double HEAD_SIZE = 0.25;          // meters
     private VisionRecognitionOptions recoOptions;
     #endregion // Member Variables
@@ -24,15 +26,46 @@ public class VisionManagerTest : MonoBehaviour
     private VisionManager visionManager;
     #endregion // Unity Inspector Fields
 
-    private void Initialize()
+    private void HandleSpeech(PhraseRecognizedEventArgs args)
     {
-        Debug.Log("Initializing...");
+        Debug.LogFormat("Heard: {0}", args.text);
+        switch (args.text)
+        {
+            case "Start Camera":
+                StartCamera();
+                break;
+            case "Stop Camera":
+                StopCamera();
+                break;
+            case "Take Photo":
+                TakePhoto();
+                break;
+        }
+        Debug.LogFormat("Completed: {0}", args.text);
+    }
 
+    private void InitGestures()
+    {
         // Setup Gestures
         gestureRecognizer = new GestureRecognizer();
         gestureRecognizer.SetRecognizableGestures(GestureSettings.Tap);
         gestureRecognizer.Tapped += GestureRecognizer_Tapped;
         gestureRecognizer.StartCapturingGestures();
+    }
+
+    private void InitSpeech()
+    {
+        string[] commands = new[] { "Start Camera", "Stop Camera", "Take Photo" };
+        keywordRecognizer = new KeywordRecognizer(commands);
+        keywordRecognizer.OnPhraseRecognized += HandleSpeech;
+        keywordRecognizer.Start();
+    }
+
+    private void Initialize()
+    {
+        Debug.Log("Initializing...");
+        InitGestures();
+        InitSpeech();
 
         // What are we going to recognize?
         recoOptions = new VisionRecognitionOptions();
@@ -124,17 +157,38 @@ public class VisionManagerTest : MonoBehaviour
         //containCube.transform.rotation = rotation;
     }
 
-    private async void GestureRecognizer_Tapped(TappedEventArgs args)
+
+    private void GestureRecognizer_Tapped(TappedEventArgs args)
+    {
+        TakePhoto();
+    }
+
+    public async void StartCamera()
+    {
+        await visionManager.InitializeCameraAsync();
+    }
+
+    public async void StopCamera()
+    {
+        await visionManager.ShutdownCameraAsync();
+    }
+
+    public async void TakePhoto()
     {
         // Take a photo
         VisionCaptureResult result = await visionManager.CaptureAndRecognizeAsync(recoOptions);
+
+        // Start speech again
+        if (!keywordRecognizer.IsRunning)
+        {
+            Debug.Log("Starting speech again");
+            keywordRecognizer.Start();
+        }
 
         // Visualize the result
         VisualizeResult2D(result);
         VisualizeResult3D(result);
     }
-
-
 
     #region Unity Behavior Overrides
     private void Start()
