@@ -5,6 +5,7 @@ using UnityEngine.XR.WSA.Input;
 using Microsoft.UnitySamples.Vision;
 using Microsoft.ProjectOxford.Face.Contract;
 using ProtoTurtle.BitmapDrawing;
+using System.Linq;
 
 public class VisionManagerTest : MonoBehaviour
 {
@@ -103,6 +104,10 @@ public class VisionManagerTest : MonoBehaviour
         GameObject containCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         containCube.name = "ContainObjectCube";
 
+        // Create floating text to label the object
+        //GameObject metadataLabel = GameObject.CreatePrimitive(PrimitiveType);
+        //metadataLabel.name = "MetadataLabel";
+
         Renderer renderer = containCube.GetComponent<Renderer>() as Renderer;
         renderer.material = new Material(cubeShader);
 
@@ -120,8 +125,25 @@ public class VisionManagerTest : MonoBehaviour
         containCube.transform.localScale = new Vector3(LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE);
 
         // Rotate the canvas object so that it properly contains the object it's containing
-        //Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
-        //containCube.transform.rotation = rotation;
+        Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
+        containCube.transform.rotation = rotation;
+
+        RecognitionResult rec = result.Recognitions.FirstOrDefault();
+        if (rec != null)
+        {
+            // Determine where to place the cube
+            float distanceOut = LocatedBounds.CalculateDistance(rec.Location.width, result.PhotoTexture.width, result.PhotoTexture.height, worldToCameraMatrix.m11);
+            //containCube.transform.forward = new Vector3(containCube.transform.forward.x, containCube.transform.forward.y, containCube.transform.forward.z + distanceOut);
+            containCube.transform.Translate(new Vector3(0, 0, distanceOut));
+
+            //FaceRecognitionResult faceRec = rec as FaceRecognitionResult;
+            //if (faceRec != null)
+            //{
+            //    // Gather metadata about the face and place that as well
+            //    faceRec.Face.FaceAttributes.Age;
+            //}
+        }
+        else Debug.Log("No Recognition Results Found");
     }
 
     private async void GestureRecognizer_Tapped(TappedEventArgs args)
