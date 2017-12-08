@@ -103,8 +103,8 @@ public class VisionManagerTest : MonoBehaviour
         GameObject containCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         containCube.name = "ContainObjectCube";
 
-        //Renderer renderer = containCube.GetComponent<Renderer>() as Renderer;
-        //renderer.material = new Material(cubeShader);
+        Renderer renderer = containCube.GetComponent<Renderer>() as Renderer;
+        renderer.material = new Material(cubeShader);
 
         // Get the Matrix
         Matrix4x4 cameraToWorldMatrix;
@@ -113,8 +113,6 @@ public class VisionManagerTest : MonoBehaviour
 
         Matrix4x4 projectionMatrix;
         result.PhotoFrame.TryGetProjectionMatrix(out projectionMatrix);
-
-        int headSize = 50;//= LocatedBounds.HEAD_SIZE; // TODO convert to amount of pixels that cover the head
         
         // TODO Position the cube where the face currently is + distance away
         Vector3 position = cameraToWorldMatrix.GetColumn(3) - cameraToWorldMatrix.GetColumn(2);
