@@ -5,6 +5,7 @@ using UnityEngine.XR.WSA.Input;
 using Microsoft.UnitySamples.Vision;
 using Microsoft.ProjectOxford.Face.Contract;
 using ProtoTurtle.BitmapDrawing;
+using UnityEngine.Windows.Speech;
 
 public class VisionManagerTest : MonoBehaviour
 {
@@ -21,15 +22,42 @@ public class VisionManagerTest : MonoBehaviour
     private VisionManager visionManager;
     #endregion // Unity Inspector Fields
 
-    private void Initialize()
+    private void InitGestures()
     {
-        Debug.Log("Initializing...");
-
         // Setup Gestures
         gestureRecognizer = new GestureRecognizer();
         gestureRecognizer.SetRecognizableGestures(GestureSettings.Tap);
         gestureRecognizer.Tapped += GestureRecognizer_Tapped;
         gestureRecognizer.StartCapturingGestures();
+    }
+
+    private void InitVoice()
+    {
+        string[] commands = new[] { "Start Camera", "Stop Camera", "Take Photo" };
+        KeywordRecognizer recognizer = new KeywordRecognizer(commands);
+        recognizer.OnPhraseRecognized += (args) =>
+        {
+            switch (args.text)
+            {
+                case "Start Camera":
+                    StartCamera();
+                    break;
+                case "Stop Camera":
+                    StopCamera();
+                    break;
+                case "Take Photo":
+                    TakePhoto();
+                    break;
+            }
+        };
+        recognizer.Start();
+    }
+
+    private void Initialize()
+    {
+        Debug.Log("Initializing...");
+        InitGestures();
+        InitVoice();
 
         // What are we going to recognize?
         recoOptions = new VisionRecognitionOptions();
@@ -97,7 +125,22 @@ public class VisionManagerTest : MonoBehaviour
     }
 
 
-    private async void GestureRecognizer_Tapped(TappedEventArgs args)
+    private void GestureRecognizer_Tapped(TappedEventArgs args)
+    {
+        TakePhoto();
+    }
+
+    public async void StartCamera()
+    {
+        await visionManager.InitializeCameraAsync();
+    }
+
+    public async void StopCamera()
+    {
+        await visionManager.ShutdownCameraAsync();
+    }
+
+    public async void TakePhoto()
     {
         // Take a photo
         VisionCaptureResult result = await visionManager.CaptureAndRecognizeAsync(recoOptions);
@@ -105,8 +148,6 @@ public class VisionManagerTest : MonoBehaviour
         // Visualize the result
         VisualizeResult2D(result);
     }
-
-
 
     #region Unity Behavior Overrides
     private void Start()

@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1FBCE2BB-0714-40E9-9CBB-DBFC1A6D8A9C}</ProjectGuid>
+    <ProjectGuid>{805684F6-7BF0-4CA2-A042-165D036DED46}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AssemblyCSharpWSA</RootNamespace>
@@ -345,6 +345,9 @@
     </Compile>
     <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\HoloLensSnapshotTest.cs">
       <Link>VisionTracker\Scripts\HoloLensSnapshotTest.cs</Link>
+    </Compile>
+    <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\LocatedBounds.cs">
+      <Link>VisionTracker\Scripts\LocatedBounds.cs</Link>
     </Compile>
     <Compile Include="$(UnityProjectDir)Assets\VisionTracker\Scripts\RecognitionResult.cs">
       <Link>VisionTracker\Scripts\RecognitionResult.cs</Link>

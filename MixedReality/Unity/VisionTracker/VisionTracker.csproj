@@ -251,6 +251,7 @@
   <ItemGroup>
     <Compile Include="Assets\VisionTracker\Scripts\BitmapDrawing.cs" />
     <Compile Include="Assets\VisionTracker\Scripts\HoloLensSnapshotTest.cs" />
+    <Compile Include="Assets\VisionTracker\Scripts\LocatedBounds.cs" />
     <Compile Include="Assets\VisionTracker\Scripts\RecognitionResult.cs" />
     <Compile Include="Assets\VisionTracker\Scripts\VisionCaptureResult.cs" />
     <Compile Include="Assets\VisionTracker\Scripts\VisionManager.cs" />
