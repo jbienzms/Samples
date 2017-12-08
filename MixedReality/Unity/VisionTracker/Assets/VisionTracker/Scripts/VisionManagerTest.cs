@@ -11,6 +11,7 @@ public class VisionManagerTest : MonoBehaviour
 {
     #region Member Variables
     private GestureRecognizer gestureRecognizer;
+    private KeywordRecognizer keywordRecognizer;
     private VisionRecognitionOptions recoOptions;
     #endregion // Member Variables
 
@@ -22,6 +23,24 @@ public class VisionManagerTest : MonoBehaviour
     private VisionManager visionManager;
     #endregion // Unity Inspector Fields
 
+    private void HandleSpeech(PhraseRecognizedEventArgs args)
+    {
+        Debug.LogFormat("Heard: {0}", args.text);
+        switch (args.text)
+        {
+            case "Start Camera":
+                StartCamera();
+                break;
+            case "Stop Camera":
+                StopCamera();
+                break;
+            case "Take Photo":
+                TakePhoto();
+                break;
+        }
+        Debug.LogFormat("Completed: {0}", args.text);
+    }
+
     private void InitGestures()
     {
         // Setup Gestures
@@ -31,33 +50,19 @@ public class VisionManagerTest : MonoBehaviour
         gestureRecognizer.StartCapturingGestures();
     }
 
-    private void InitVoice()
+    private void InitSpeech()
     {
         string[] commands = new[] { "Start Camera", "Stop Camera", "Take Photo" };
-        KeywordRecognizer recognizer = new KeywordRecognizer(commands);
-        recognizer.OnPhraseRecognized += (args) =>
-        {
-            switch (args.text)
-            {
-                case "Start Camera":
-                    StartCamera();
-                    break;
-                case "Stop Camera":
-                    StopCamera();
-                    break;
-                case "Take Photo":
-                    TakePhoto();
-                    break;
-            }
-        };
-        recognizer.Start();
+        keywordRecognizer = new KeywordRecognizer(commands);
+        keywordRecognizer.OnPhraseRecognized += HandleSpeech;
+        keywordRecognizer.Start();
     }
 
     private void Initialize()
     {
         Debug.Log("Initializing...");
         InitGestures();
-        InitVoice();
+        InitSpeech();
 
         // What are we going to recognize?
         recoOptions = new VisionRecognitionOptions();
@@ -144,6 +149,13 @@ public class VisionManagerTest : MonoBehaviour
     {
         // Take a photo
         VisionCaptureResult result = await visionManager.CaptureAndRecognizeAsync(recoOptions);
+
+        // Start speech again
+        if (!keywordRecognizer.IsRunning)
+        {
+            Debug.Log("Starting speech again");
+            keywordRecognizer.Start();
+        }
 
         // Visualize the result
         VisualizeResult2D(result);
