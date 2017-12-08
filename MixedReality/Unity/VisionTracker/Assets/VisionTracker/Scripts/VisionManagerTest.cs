@@ -26,10 +26,12 @@ public class VisionManagerTest : MonoBehaviour
     #endregion // Member Variables
 
     #region Unity Inspector Fields
+    [Tooltip("The 3D prefab to create when an object is recognized.")]
+    [SerializeField]
+    private GameObject recoPrefab3D;
+
     [SerializeField]
     private Shader photoShader;
-    [SerializeField]
-    private Shader cubeShader;
 
     [SerializeField]
     private VisionManager visionManager;
@@ -147,50 +149,55 @@ public class VisionManagerTest : MonoBehaviour
 
     private void VisualizeResult3D(VisionCaptureResult result)
     {
-        // Create a cube to mark the object
-        GameObject containCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        containCube.name = "ContainObjectCube";
-
-        // Create floating text to label the object
-        //GameObject metadataLabel = GameObject.CreatePrimitive(PrimitiveType);
-        //metadataLabel.name = "MetadataLabel";
-
-        Renderer renderer = containCube.GetComponent<Renderer>() as Renderer;
-        renderer.material = new Material(cubeShader);
-
-        // Get the Matrix
-        Matrix4x4 cameraToWorldMatrix;
-        result.PhotoFrame.TryGetCameraToWorldMatrix(out cameraToWorldMatrix);
-        Matrix4x4 worldToCameraMatrix = cameraToWorldMatrix.inverse;
-
-        Matrix4x4 projectionMatrix;
-        result.PhotoFrame.TryGetProjectionMatrix(out projectionMatrix);
-        
-        // TODO Position the cube where the face currently is + distance away
-        Vector3 position = cameraToWorldMatrix.GetColumn(3) - cameraToWorldMatrix.GetColumn(2);
-        containCube.transform.position = position;
-        containCube.transform.localScale = new Vector3(LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE);
-
-        // Rotate the canvas object so that it properly contains the object it's containing
-        Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
-        containCube.transform.rotation = rotation;
-
-        RecognitionResult rec = result.Recognitions.FirstOrDefault();
-        if (rec != null)
+        // Render all recognitions
+        foreach (RecognitionResult reco in result.Recognitions)
         {
+            // Create a cube to mark the object
+            GameObject containCube = GameObject.Instantiate(recoPrefab3D);
+            containCube.name = "ContainObjectCube";
+
+            // Get the Text Mesh to draw some info about the object
+            TextMesh textMesh = containCube.GetComponentInChildren<TextMesh>();
+
+            // Get the Matrix
+            Matrix4x4 cameraToWorldMatrix;
+            result.PhotoFrame.TryGetCameraToWorldMatrix(out cameraToWorldMatrix);
+            Matrix4x4 worldToCameraMatrix = cameraToWorldMatrix.inverse;
+
+            Matrix4x4 projectionMatrix;
+            result.PhotoFrame.TryGetProjectionMatrix(out projectionMatrix);
+        
+            // TODO Position the cube where the face currently is + distance away
+            Vector3 position = cameraToWorldMatrix.GetColumn(3) - cameraToWorldMatrix.GetColumn(2);
+            containCube.transform.position = position;
+            containCube.transform.localScale = new Vector3(LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE, LocatedBounds.HEAD_SIZE);
+
+            // Rotate the canvas object so that it properly contains the object it's containing
+            Quaternion rotation = Quaternion.LookRotation(-cameraToWorldMatrix.GetColumn(2), cameraToWorldMatrix.GetColumn(1));
+            containCube.transform.rotation = rotation;
+
             // Determine where to place the cube
-            float distanceOut = LocatedBounds.CalculateDistance(rec.Location.width, result.PhotoTexture.width, result.PhotoTexture.height, worldToCameraMatrix.m11);
+            float distanceOut = LocatedBounds.CalculateDistance(reco.Location.width, result.PhotoTexture.width, result.PhotoTexture.height, worldToCameraMatrix.m11);
             //containCube.transform.forward = new Vector3(containCube.transform.forward.x, containCube.transform.forward.y, containCube.transform.forward.z + distanceOut);
             containCube.transform.Translate(new Vector3(0, 0, distanceOut));
 
-            //FaceRecognitionResult faceRec = rec as FaceRecognitionResult;
-            //if (faceRec != null)
-            //{
-            //    // Gather metadata about the face and place that as well
-            //    faceRec.Face.FaceAttributes.Age;
-            //}
+            FaceRecognitionResult faceRec = reco as FaceRecognitionResult;
+            if ((faceRec != null) && (textMesh != null))
+            {
+                int age = (int)faceRec.Face.FaceAttributes.Age;
+                string gender = faceRec.Face.FaceAttributes.Gender;
+                bool isSmiling = faceRec.Face.FaceAttributes.Smile > 0.4;
+
+                // Build face string
+                string faceString = string.Format("Age: {0}\r\nGender: {1}\r\nSmile: {2}", age, gender, isSmiling);
+
+                // Update the text
+                textMesh.text = faceString;
+            }
+
+            // HACK: Only do one each time for now
+            break;
         }
-        else Debug.Log("No Recognition Results Found");
     }
 
 
