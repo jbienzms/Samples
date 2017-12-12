@@ -11,7 +11,7 @@ public class VisionManagerTest : MonoBehaviour
     #region Member Variables
     private GestureRecognizer gestureRecognizer;
     private VisionRecognitionOptions recoOptions;
-   
+
     #endregion // Member Variables
 
     #region Unity Inspector Fields
@@ -51,7 +51,7 @@ public class VisionManagerTest : MonoBehaviour
         //could use Shader.Find("AR/HolographicImageBlend") but using hard reference to m_shader
         //so the shader isn't stripped out as there's nothing directly in the scene using it
         renderer.material = new Material(shader);
-        
+
         // Get the Matrix
         Matrix4x4 cameraToWorldMatrix;
         result.PhotoFrame.TryGetCameraToWorldMatrix(out cameraToWorldMatrix);
@@ -60,7 +60,7 @@ public class VisionManagerTest : MonoBehaviour
         Matrix4x4 projectionMatrix;
         //result.PhotoFrame.TryGetProjectionMatrix(out projectionMatrix);
         //took out Camera.main.nearClipPlane, Camera.main.farClipPlane,
-        result.PhotoFrame.TryGetProjectionMatrix( out projectionMatrix);
+        result.PhotoFrame.TryGetProjectionMatrix(out projectionMatrix);
         Matrix4x4 pixelToCameraMatrix = projectionMatrix.inverse;
 
 
@@ -80,9 +80,9 @@ public class VisionManagerTest : MonoBehaviour
             {
                 // TODO: Draw something about the face
                 //get middle pixel of face result
-          
+
                 Debug.Log($"reco.Location:{reco.Location}");
-                Vector2 middlePixel = new Vector2(reco.Location.left +  ( reco.Location.width / 2), reco.Location.top + ( reco.Location.height / 2));
+                Vector2 middlePixel = new Vector2(reco.Location.left + (reco.Location.width / 2), reco.Location.top + (reco.Location.height / 2));
                 Debug.Log($"middlePixel:{middlePixel}");
 
                 Vector2 ImagePosZeroToOne = new Vector2(middlePixel.x / result.PhotoTexture.width, 1.0f - (middlePixel.y / result.PhotoTexture.height));
@@ -133,19 +133,12 @@ public class VisionManagerTest : MonoBehaviour
                 lineRenderer.SetPosition(1, faceBounds.transform.position);
 
                 Vector3 origin = cameraToWorldMatrix.MultiplyPoint3x4(pixelToCameraMatrix.MultiplyPoint3x4(new Vector3(left + width + .1f, top, 0)));
-                //Text or canvas position
-                //txtObject.transform.position = origin;
-                //txtObject.transform.rotation = cameraRotation;
-                //txtObject.tag = "faceText";
-                //if (j.list.Count > 1)
-                //{
-                //    txtObject.transform.localScale /= 2;
-                //}
+                //finish
 
 
             }
         }
-        
+
         // If at least one was drawn, update the texture
         if (drewOne)
         {
