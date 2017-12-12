@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.XR.WSA.WebCam;
+using System.Linq;
 
 #if !WINDOWS_UWP
 using System.Security.Cryptography.X509Certificates;
@@ -36,6 +37,7 @@ namespace Microsoft.UnitySamples.Vision
         private bool isCapturingPhoto;
         private PhotoCapture photoCapture;
         private Resolution selectedResolution;
+        private Resolution cameraResolution;
         #endregion // Private Member Variables
 
         #region Unity Inspector Variables
@@ -166,6 +168,8 @@ namespace Microsoft.UnitySamples.Vision
         #region Photo Capture Callbacks
         private async void OnPhotoCaptured(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame, VisionRecognitionOptions recognitionOptions, TaskCompletionSource<VisionCaptureResult> captureTaskSource)
         {
+            cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
+
             Debug.Log("Photo captured.");
             // No longer capturing
             isCapturingPhoto = false;
@@ -178,7 +182,7 @@ namespace Microsoft.UnitySamples.Vision
             photoTexture.wrapMode = TextureWrapMode.Clamp;
 
             // Create result object
-            VisionCaptureResult result = new VisionCaptureResult(photoResult, photoFrame, photoTexture);
+            VisionCaptureResult result = new VisionCaptureResult(photoResult, photoFrame, photoTexture,  cameraResolution);
 
             // Placeholder
             Face[] faces = null;

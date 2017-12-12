@@ -15,6 +15,7 @@ namespace Microsoft.UnitySamples.Vision
         private PhotoCaptureFrame photoFrame;
         private PhotoCapture.PhotoCaptureResult photoResult;
         private Texture2D photoTexture;
+        private Resolution cameraResolution;
         private List<RecognitionResult> recognitions = new List<RecognitionResult>();
         #endregion // Member Variables
 
@@ -34,7 +35,7 @@ namespace Microsoft.UnitySamples.Vision
         /// <param name="faces">
         /// The array of faces recognized in the photo.
         /// </param>
-        public VisionCaptureResult(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame, Texture2D photoTexture)
+        public VisionCaptureResult(PhotoCapture.PhotoCaptureResult photoResult, PhotoCaptureFrame photoFrame, Texture2D photoTexture,  Resolution cameraResolution)
         {
             // Validate
             if (photoFrame == null) throw new ArgumentNullException(nameof(photoFrame));
@@ -43,10 +44,16 @@ namespace Microsoft.UnitySamples.Vision
             this.photoResult = photoResult;
             this.photoFrame = photoFrame;
             this.photoTexture = photoTexture;
-        }
+            this.cameraResolution = cameraResolution;
+    }
         #endregion // Constructors
 
         #region Public Properties
+        /// <summary>
+        /// Camera resolution for the Holographic Camera
+        /// </summary>
+        public Resolution CameraResolution => cameraResolution;
+
         /// <summary>
         /// Gets the list of items recognized in the photo.
         /// </summary>
