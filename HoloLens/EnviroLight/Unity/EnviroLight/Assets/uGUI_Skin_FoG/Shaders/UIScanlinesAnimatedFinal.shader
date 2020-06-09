@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 // Shader created with Shader Forge v1.30 
@@ -68,7 +70,7 @@ Shader "UI/Scanlines Animated Final" {
                 o.uv0 = v.texcoord0;
                 o.vertexColor = v.vertexColor;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
-                o.pos = mul(UNITY_MATRIX_MVP, v.vertex );
+                o.pos = UnityObjectToClipPos(v.vertex );
                 #ifdef PIXELSNAP_ON
                     o.pos = UnityPixelSnap(o.pos);
                 #endif
