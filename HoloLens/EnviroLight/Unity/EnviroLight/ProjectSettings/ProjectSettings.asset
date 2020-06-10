@@ -548,16 +548,16 @@ PlayerSettings:
   gcIncremental: 0
   gcWBarrierValidation: 0
   apiCompatibilityLevelPerPlatform:
-    Windows Store Apps: 6
+    Windows Store Apps: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: EnviroLight
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: Assets\WSATestCertificate.pfx
+  metroCertificatePath: Assets/WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: DefaultCompany
-  metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 00900bc6a771d301
+  metroCertificateSubject: JBienzMS
+  metroCertificateIssuer: JBienzMS
+  metroCertificateNotAfter: 80008bfbdf5dd701
   metroApplicationDescription: EnviroLight
   wsaImages: {}
   metroTileShortName: 
