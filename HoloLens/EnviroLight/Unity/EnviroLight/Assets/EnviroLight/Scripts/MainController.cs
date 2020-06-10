@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using HoloToolkit.Unity.SpatialMapping;
 using Microsoft.MixedReality.Toolkit;
+using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
 
 public class MainController : MonoBehaviour
 {
@@ -35,10 +35,10 @@ public class MainController : MonoBehaviour
     public Toggle EnvironmentLightsToggle;
 
     [Tooltip("Used for placing the whole scene.")]
-    public TapToPlaceEx SceneTapToPlace;
+    public TapToPlace SceneTapToPlace;
 
     [Tooltip("Used for placing the terminal using the terminal button.")]
-    public TapToPlaceEx TerminalTapToPlace;
+    public TapToPlace TerminalTapToPlace;
 
     [Tooltip("Used for speaking notifications.")]
     public TextToSpeech TextToSpeech;
@@ -144,7 +144,7 @@ public class MainController : MonoBehaviour
         }
     }
 
-    private void OnPlacingCompleted(object sender, EventArgs e)
+    private void OnPlacingStopped()
     {
         // Disable TapToPlace so user can interact with PC and other items.
         SceneTapToPlace.enabled = false;
@@ -167,8 +167,8 @@ public class MainController : MonoBehaviour
         // Subscribe event handlers
         DefaultLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(DefaultLightsToggle); });
         EnvironmentLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(EnvironmentLightsToggle); });
-        SceneTapToPlace.PlacingCompleted += OnPlacingCompleted;
-        TerminalTapToPlace.PlacingCompleted += OnPlacingCompleted;
+        SceneTapToPlace.OnPlacingStopped.AddListener(OnPlacingStopped);
+        TerminalTapToPlace.OnPlacingStopped.AddListener(OnPlacingStopped);
     }
     #endregion // Behavior Overrides
 
@@ -217,7 +217,7 @@ public class MainController : MonoBehaviour
     {
         GoToScreen(UIPlace);
         TerminalTapToPlace.enabled = true;
-        TerminalTapToPlace.StartPlacing();
+        TerminalTapToPlace.StartPlacement();
     }
 
     /// <summary>

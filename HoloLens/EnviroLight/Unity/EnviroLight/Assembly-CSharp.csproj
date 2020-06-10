@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_2019_2_21;UNITY_2019_2;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_METRO;UNITY_METRO;UNITY_METRO_API;UNITY_WSA;UNITY_WSA_10_0;UNITY_WINRT_10_0;PLATFORM_WINRT;UNITY_WINRT;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;ENABLE_AR;PLATFORM_OVERRIDES_APPLICATION_PACKAGE_NAME;ENABLE_ONSCREEN_KEYBOARD;PLATFORM_IMPLEMENTS_ATTACH_DIALOG;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;DOTNETWINRT_PRESENT;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_2019_2_21;UNITY_2019_2;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_METRO;UNITY_METRO;UNITY_METRO_API;UNITY_WSA;UNITY_WSA_10_0;UNITY_WINRT_10_0;PLATFORM_WINRT;UNITY_WINRT;ENABLE_MOVIES;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_NETWORK;ENABLE_EVENT_QUEUE;UNITY_PLATFORM_THREAD_TO_CORE_MAPPING;PLATFORM_SUPPORTS_ADS_ID;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;CURL_STATICLIB;ENABLE_VR;ENABLE_AR;PLATFORM_OVERRIDES_APPLICATION_PACKAGE_NAME;ENABLE_ONSCREEN_KEYBOARD;PLATFORM_IMPLEMENTS_ATTACH_DIALOG;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;UNITY_PRO_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -65,68 +65,24 @@
   <ItemGroup>
     <Compile Include="Assets\DistanceTool\DistanceTool.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\MainController.cs" />
-    <Compile Include="Assets\EnviroLight\Scripts\TapToPlaceEx.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\TextToSpeech.cs" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Shaders\InvisibleShader.shader" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\Scanlines.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\WSA.Player.Template.props.template" />
-    <None Include="Assets\Packages\System.Drawing.Primitives.4.3.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\ExtensionServiceCreator\Templates\ExtensionScriptTemplate.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\License.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\Editor.InEditor.Template.props.template" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\WSA.InEditor.Template.props.template" />
-    <None Include="Assets\Packages\System.Drawing.Primitives.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\System.Runtime.Extensions.4.3.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Shaders\MixedRealityStandard.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Shaders\FingerTipCursor.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Textures\Oculus lineart attribution.txt" />
+    <None Include="Assets\MRTK\Providers\Version.txt" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\UITint.shader" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated4.shader" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated2.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Shaders\MixedRealityTextMeshPro.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\SDKProjectTemplate.csproj.template" />
-    <None Include="Assets\Packages\Microsoft.NETCore.Targets.1.1.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Shaders\DepthBufferPostProcess.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\SolutionTemplate.sln.template" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\Plugin.WSA.meta.template" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Extensions.2.3.0\MRTK\LostTrackingService\Assets\SR_Triangles_Object_Space.shader" />
-    <None Include="Assets\Packages\System.Runtime.Extensions.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\Microsoft.NETCore.Platforms.1.1.0\dotnet_library_license.txt" />
+    <None Include="Assets\MRTK\Services\Version.txt" />
     <None Include="Assets\uGUI_Skin_FoG\Fonts\LICENSE.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\Experimental\HandCoach\Materials\Teaching_Hand2.shader" />
-    <None Include="Assets\Packages\Microsoft.NETCore.Targets.1.1.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\System.Runtime.4.3.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\link.xml" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\Plugin.Standalone.meta.template" />
+    <None Include="Assets\MRTK\Services\License.txt" />
+    <None Include="Assets\MRTK\Providers\License.txt" />
     <None Include="Assets\sky5X\README.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\Plugin.iOS.meta.template" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\UIScanlinesAnimatedFinal.shader" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Shaders\Text3DShader.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\ExtensionServiceCreator\Templates\ExtensionInterfaceTemplate.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\Version.txt" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated3.shader" />
     <None Include="Assets\DistanceTool\READ ME.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Fonts\LICENSE.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Shaders\InstancedColored.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Shaders\HandTriangles.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\ExtensionServiceCreator\Templates\ExtensionInspectorTemplate.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Shaders\ChannelPacker.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\ExtensionServiceCreator\Templates\ExtensionProfileTemplate.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\StandardAssets\Shaders\MRTK_Wireframe.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\Platform.Configuration.Template.props.template" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated5.shader" />
-    <None Include="Assets\Packages\System.Runtime.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Extensions.2.3.0\MRTK\Version.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\Plugin.Android.meta.template" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\License.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Extensions.2.3.0\MRTK\LostTrackingService\Assets\SR_Triangles.shader" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\MSBuild\MSBuildMRTKTemplates\Plugin.Editor.meta.template" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Foundation.2.3.0\MRTK\WhereToStart.txt" />
-    <None Include="Assets\Packages\Microsoft.NETCore.Platforms.1.1.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Tools.2.3.0\MRTK\Version.txt" />
-    <None Include="Assets\Packages\Microsoft.MixedReality.Toolkit.Extensions.2.3.0\MRTK\License.txt" />
-    <None Include="Assets\Packages\Microsoft.Windows.MixedReality.DotNetWinRT.0.5.1045\LICENSE.txt" />
+    <None Include="Assets\MRTK\Extensions\Version.txt" />
+    <None Include="Assets\MRTK\Extensions\License.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -148,14 +104,14 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="MSBuildForUnity">
+      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/MSBuildForUnity.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="MSBuildForUnity">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/MSBuildForUnity.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.21f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -327,126 +283,6 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.21f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Extensions.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Extensions.SceneTransitionService">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Extensions.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Extensions.SceneTransitionService.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Extensions.Tracking">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Extensions.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Extensions.Tracking.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Extensions.Tracking.Editor">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Extensions.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Extensions.Tracking.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Async">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Async.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Editor.BuildAndDeploy">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Editor.BuildAndDeploy.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Editor.ClassExtensions">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Editor.ClassExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Editor.Inspectors">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Editor.Inspectors.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Editor.ServiceInspectors">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Editor.ServiceInspectors.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Editor.Utilities">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Editor.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Gltf">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Gltf.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Gltf.Importers">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Gltf.Importers.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Providers.ObjectMeshObserver">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Providers.ObjectMeshObserver.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Providers.OpenVR">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Providers.OpenVR.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.ConfigCheck">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.ConfigCheck.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Editor">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Shared">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Providers.WindowsVoiceInput">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Providers.WindowsVoiceInput.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Providers.XRSDK.ConfigCheck">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Providers.XRSDK.ConfigCheck.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Providers.XRSDK.WindowsMixedReality.Editor">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Providers.XRSDK.WindowsMixedReality.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.SDK">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.SDK.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.SDK.Experimental.Inspectors">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.SDK.Experimental.Inspectors.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.SDK.Inspectors">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.SDK.Inspectors.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.BoundarySystem">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.BoundarySystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.CameraSystem">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.CameraSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.DiagnosticsSystem">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.DiagnosticsSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.InputAnimation">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.InputAnimation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.InputSimulation">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.InputSimulation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.InputSimulation.Editor">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.InputSimulation.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.InputSystem">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.InputSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.InputSystem.Editor">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.InputSystem.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.SceneSystem">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.SceneSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.SpatialAwarenessSystem">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.SpatialAwarenessSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.TeleportSystem">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Foundation.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Services.TeleportSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Tools">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Tools.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Tools.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Tools.Runtime">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.MixedReality.Toolkit.Tools.2.3.0/Plugins/EditorPlayer/Microsoft.MixedReality.Toolkit.Tools.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Windows.MixedReality.DotNetWinRT">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/Microsoft.Windows.MixedReality.DotNetWinRT.0.5.1045/lib/unity/netstandard2.0/Microsoft.Windows.MixedReality.DotNetWinRT.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Drawing.Primitives">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Assets/Packages/System.Drawing.Primitives.4.3.0/lib/netstandard1.1/System.Drawing.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.21f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -810,9 +646,181 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Microsoft.Windows.MixedReality.DotNetWinRT.Editor.csproj">
-      <Project>{E6557878-A466-DBAE-1543-2925B6304267}</Project>
-      <Name>Microsoft.Windows.MixedReality.DotNetWinRT.Editor</Name>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Editor.ServiceInspectors.csproj">
+      <Project>{AD94B183-0F62-E899-A1E7-6B6CBC56EEEE}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Editor.ServiceInspectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.SceneSystem.csproj">
+      <Project>{11EB3D0B-0137-AEAC-4850-924096D3A2BF}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.SceneSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.csproj">
+      <Project>{EEB64D40-22EF-C2F9-9AA0-68704D76D00D}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Editor.BuildAndDeploy.csproj">
+      <Project>{8BD6388A-8F50-86D9-65EC-CEADE0B4C9F8}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Editor.BuildAndDeploy</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Extensions.SceneTransitionService.csproj">
+      <Project>{23234ACF-8296-FBB8-A8C1-5C79AC00FE0B}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Extensions.SceneTransitionService</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.ConfigCheck.csproj">
+      <Project>{194C63A1-F0E3-7DD7-5E92-FF3C8D995889}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.ConfigCheck</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Tools.csproj">
+      <Project>{106921D2-E472-AA42-D576-42EB28C8DA1E}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Async.csproj">
+      <Project>{C883A0A1-EA29-EDEA-91CC-40C6A679CC57}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Async</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.WindowsVoiceInput.csproj">
+      <Project>{A01F553C-65CC-4CD6-D873-9530A767ADF2}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.WindowsVoiceInput</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Gltf.csproj">
+      <Project>{2C44248A-3E90-86E7-451A-9DCFAA07E97F}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Gltf</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.UnityAR.Editor.csproj">
+      <Project>{53850D17-8331-E7B1-C9D9-2AE663C661EF}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.UnityAR.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Tools.Runtime.csproj">
+      <Project>{D57BC936-676B-D8F3-88F3-B1ADDC0BF562}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Tools.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.XRSDK.ConfigCheck.csproj">
+      <Project>{F9C450E9-7DED-4952-2654-687363F12D19}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.XRSDK.ConfigCheck</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Extensions.Tracking.csproj">
+      <Project>{64433006-BF78-ED6C-33CD-73167A47E5AF}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Extensions.Tracking</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Shared.csproj">
+      <Project>{EFFA0E20-8F92-2A47-EDA4-C9BBFDD983DE}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Editor.ClassExtensions.csproj">
+      <Project>{8BE24A09-AE4C-036A-90AC-311776A0C1EF}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Editor.ClassExtensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.csproj">
+      <Project>{71C73EFF-0878-1610-DF4A-B08B808957BD}</Project>
+      <Name>Microsoft.MixedReality.Toolkit</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.SDK.Inspectors.csproj">
+      <Project>{1CC1DFE0-2CB3-E174-36EA-7C1E23515435}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.SDK.Inspectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.LeapMotion.ConfigurationChecker.csproj">
+      <Project>{DB8B4DC3-8C9A-C5A6-83CD-9741480D2A61}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.LeapMotion.ConfigurationChecker</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.SpatialAwarenessSystem.csproj">
+      <Project>{5CC3AC94-30CF-EB7B-16A7-7E28C7667E82}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.SpatialAwarenessSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.InputSimulation.Editor.csproj">
+      <Project>{9DFB055B-421B-D9CD-9764-47F0355CCFFC}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.InputSimulation.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.CameraSystem.csproj">
+      <Project>{F9976541-095E-1148-1EF1-4BA2E15CC91B}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.CameraSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.SDK.csproj">
+      <Project>{C8B2FF29-AEF6-9337-A6C1-E3124D6F42F6}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.SDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.OpenVR.csproj">
+      <Project>{ED928A0C-2DD7-6E40-1B12-20798B89FC7F}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.OpenVR</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.TeleportSystem.csproj">
+      <Project>{CA31B934-89CE-B610-97DF-E559606BC5F4}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.TeleportSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.SDK.Experimental.Inspectors.csproj">
+      <Project>{1E4306BB-1025-B576-E5DE-0CFBF013F3FD}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.SDK.Experimental.Inspectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.DiagnosticsSystem.csproj">
+      <Project>{06632BC9-AE20-6567-6D27-9E8BE491AF4D}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.DiagnosticsSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.InputSystem.Editor.csproj">
+      <Project>{A9531AC2-B125-355F-12A5-ECFB160E66C7}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.InputSystem.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.InputSystem.csproj">
+      <Project>{86AF7FAE-C599-D7A9-6E7C-19B829B49821}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.InputSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.LeapMotion.csproj">
+      <Project>{EE872866-F4D3-6EE0-D154-23B4A872F913}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.LeapMotion</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Gltf.Importers.csproj">
+      <Project>{9AE793B8-8F5E-C2BB-CE30-09D15806EC9B}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Gltf.Importers</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Editor.csproj">
+      <Project>{C5900BAB-3F86-0BE6-1C23-012528FF130B}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.LeapMotion.Editor.csproj">
+      <Project>{D1571A64-D574-B0CD-1650-72CB46EE7E94}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.LeapMotion.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.XRSDK.WindowsMixedReality.Editor.csproj">
+      <Project>{E3F9360C-AE99-4AEE-75D8-759D33873F82}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.XRSDK.WindowsMixedReality.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.InputAnimation.csproj">
+      <Project>{2570724C-AEE9-8DD2-EF14-36987CAB76BF}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.InputAnimation</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Editor.Inspectors.csproj">
+      <Project>{63DA7FB4-63C7-C2C6-6C52-CC7485C2ACCC}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Editor.Inspectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.UnityAR.csproj">
+      <Project>{A0DF9220-8885-A2A1-E10D-AFD4D027C160}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.UnityAR</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.ObjectMeshObserver.csproj">
+      <Project>{558DD462-FA22-15A3-BED0-7FE10CFAA3D9}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.ObjectMeshObserver</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Editor.Utilities.csproj">
+      <Project>{D426D732-C2A2-E156-20D3-E68427C78D44}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Editor.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.BoundarySystem.csproj">
+      <Project>{85D90516-F5B1-8B07-F9A8-F3C6527DC4D6}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.BoundarySystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Providers.UnityAR.ConfigCheck.csproj">
+      <Project>{FAD62612-12F8-251C-B0A3-37453136989F}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Providers.UnityAR.ConfigCheck</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.csproj">
+      <Project>{060397F9-4C04-E54C-DCA9-16DB0808F89F}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Extensions.HandPhysics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Extensions.Tracking.Editor.csproj">
+      <Project>{5825E293-3C16-2D38-EDC8-C033E24B2CF7}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Extensions.Tracking.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Microsoft.MixedReality.Toolkit.Services.InputSimulation.csproj">
+      <Project>{4C16AFC8-FD13-02F5-7EC8-A08FF1453918}</Project>
+      <Name>Microsoft.MixedReality.Toolkit.Services.InputSimulation</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

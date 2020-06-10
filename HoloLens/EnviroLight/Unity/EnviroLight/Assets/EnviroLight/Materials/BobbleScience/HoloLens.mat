@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: HoloLens
   m_Shader: {fileID: 4800000, guid: 5bdea20278144b11916d77503ba1467a, type: 3}
-  m_ShaderKeywords: _DIRECTIONAL_LIGHT _HOVER_LIGHT _METALLIC_TEXTURE_ALBEDO_CHANNEL_A
-    _NORMALMAP _NORMAL_MAP _PROXIMITY_LIGHT _SPECULAR_HIGHLIGHTS
+  m_ShaderKeywords: _DIRECTIONAL_LIGHT _HOVER_LIGHT _NORMALMAP _NORMAL_MAP _PROXIMITY_LIGHT
+    _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A _SPECULAR_HIGHLIGHTS
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlbedoAlphaMode: 1
+    - _AlbedoAlphaMode: 2
     - _AlbedoAssignedAtRuntime: 0
     - _BlendOp: 0
     - _BlendedClippingWidth: 1
@@ -119,7 +119,7 @@ Material:
     - _IridescenceAngle: -0.78
     - _IridescenceIntensity: 0.5
     - _IridescenceThreshold: 0.05
-    - _Metallic: 0.563
+    - _Metallic: 0.89
     - _Mode: 0
     - _NearLightFade: 0
     - _NearPlaneFade: 0
@@ -138,7 +138,7 @@ Material:
     - _RoundCornerMargin: 0.01
     - _RoundCornerRadius: 0.25
     - _RoundCorners: 0
-    - _Smoothness: 0.447
+    - _Smoothness: 0.494
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SphericalHarmonics: 0
