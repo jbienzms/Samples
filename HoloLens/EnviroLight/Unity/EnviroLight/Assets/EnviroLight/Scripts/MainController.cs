@@ -37,9 +37,6 @@ public class MainController : MonoBehaviour
     [Tooltip("Used for placing the whole scene.")]
     public TapToPlace SceneTapToPlace;
 
-    [Tooltip("Used for placing the terminal using the terminal button.")]
-    public TapToPlace TerminalTapToPlace;
-
     [Tooltip("Used for speaking notifications.")]
     public TextToSpeech TextToSpeech;
 
@@ -148,7 +145,6 @@ public class MainController : MonoBehaviour
     {
         // Disable TapToPlace so user can interact with PC and other items.
         SceneTapToPlace.enabled = false;
-        TerminalTapToPlace.enabled = false;
 
         // Go to home screen
         GoToScreen(UIHome);
@@ -168,7 +164,6 @@ public class MainController : MonoBehaviour
         DefaultLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(DefaultLightsToggle); });
         EnvironmentLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(EnvironmentLightsToggle); });
         SceneTapToPlace.OnPlacingStopped.AddListener(OnPlacingStopped);
-        TerminalTapToPlace.OnPlacingStopped.AddListener(OnPlacingStopped);
     }
     #endregion // Behavior Overrides
 
@@ -215,9 +210,11 @@ public class MainController : MonoBehaviour
     /// </summary>
     public void StartPlacing()
     {
+        /*
         GoToScreen(UIPlace);
         TerminalTapToPlace.enabled = true;
         TerminalTapToPlace.StartPlacement();
+        */
     }
 
     /// <summary>
