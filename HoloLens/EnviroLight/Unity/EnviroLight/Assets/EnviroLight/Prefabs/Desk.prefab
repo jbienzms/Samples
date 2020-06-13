@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8757406057633016473}
   - component: {fileID: 8757406058294821887}
   m_Layer: 8
-  m_Name: Desk_Top
+  m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 8757406057633016475}
   - component: {fileID: 8757406057889999868}
   m_Layer: 0
-  m_Name: Desk_Details
+  m_Name: Details
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 8757406057633016477}
   - component: {fileID: 8757406057284187368}
   m_Layer: 0
-  m_Name: Desk_Cabinets
+  m_Name: Cabinets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

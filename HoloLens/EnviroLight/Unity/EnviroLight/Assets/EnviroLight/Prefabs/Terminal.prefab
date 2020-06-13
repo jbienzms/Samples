@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8206829600411976385}
   - component: {fileID: 8206829600996890219}
   m_Layer: 0
-  m_Name: Terminal_Body
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 8206829600411976387}
   - component: {fileID: 8206829601519955667}
   m_Layer: 0
-  m_Name: Terminal_Screen
+  m_Name: Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 8206829600614529426}
   - component: {fileID: 8206829600614529427}
   m_Layer: 0
-  m_Name: RedLight
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
