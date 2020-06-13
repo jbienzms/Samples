@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'UNITY_INSTANCE_ID' with 'UNITY_VERTEX_INPUT_INSTANCE_ID'
+
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
@@ -58,15 +60,23 @@ Shader "UI/Scanlines Animated Final" {
                 float4 vertex : POSITION;
                 float2 texcoord0 : TEXCOORD0;
                 float4 vertexColor : COLOR;
+				UNITY_VERTEX_INPUT_INSTANCE_ID
             };
             struct VertexOutput {
                 float4 pos : SV_POSITION;
                 float2 uv0 : TEXCOORD0;
                 float4 posWorld : TEXCOORD1;
                 float4 vertexColor : COLOR;
+				UNITY_VERTEX_INPUT_INSTANCE_ID
+				UNITY_VERTEX_OUTPUT_STEREO
             };
             VertexOutput vert (VertexInput v) {
                 VertexOutput o = (VertexOutput)0;
+
+				UNITY_SETUP_INSTANCE_ID(v);
+				UNITY_TRANSFER_INSTANCE_ID(v, o);
+				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+
                 o.uv0 = v.texcoord0;
                 o.vertexColor = v.vertexColor;
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
@@ -77,7 +87,10 @@ Shader "UI/Scanlines Animated Final" {
                 return o;
             }
             float4 frag(VertexOutput i, float facing : VFACE) : COLOR {
-                float isFrontFace = ( facing >= 0 ? 1 : 0 );
+				
+				UNITY_SETUP_INSTANCE_ID(i);
+                
+				float isFrontFace = ( facing >= 0 ? 1 : 0 );
                 float faceSign = ( facing >= 0 ? 1 : -1 );
 ////// Lighting:
 ////// Emissive:
