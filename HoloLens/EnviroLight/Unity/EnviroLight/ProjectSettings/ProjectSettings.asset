@@ -288,7 +288,7 @@ PlayerSettings:
   - m_BuildTarget: Windows Store Apps
     m_Enabled: 1
     m_Devices:
-    - HoloLens
+    - WindowsMR
   openGLRequireES31: 0
   openGLRequireES31AEP: 0
   openGLRequireES32: 0

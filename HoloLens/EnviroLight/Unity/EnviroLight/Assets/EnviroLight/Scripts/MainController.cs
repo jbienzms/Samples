@@ -10,9 +10,9 @@ using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
 public class MainController : MonoBehaviour
 {
     #region Constants
-    private const string ARTICLE_URL = "http://www.roadtoholo.com";
+    private const string ARTICLE_URL = "http://roadtomr.com/";
     private const string ARTIST_URL = "https://www.digitalangel3d.com";
-    private const string DEVELOPER_URL = "http://www.roadtoholo.com";
+    private const string DEVELOPER_URL = "http://roadtomr.com/";
     #endregion // Constants
 
     #region Member Variables
@@ -78,8 +78,20 @@ public class MainController : MonoBehaviour
     /// </param>
     private void OpenUrl(string url)
     {
-        TextToSpeech.StartSpeaking("This feature is still under development.");
-        // Application.OpenURL(url);
+        Debug.Log($"OpenUrl: Opening {url}");
+
+        #if WINDOWS_UWP
+        UnityEngine.WSA.Application.InvokeOnUIThread(async () =>
+        {
+            bool result = await global::Windows.System.Launcher.LaunchUriAsync(new System.Uri(url));
+            if (!result)
+            {
+                Debug.LogError("Launching URI failed to launch.");
+            }
+        }, false);
+        #else
+        Application.OpenURL(url);
+        #endif
     }
 
     /// <summary>
