@@ -79,6 +79,7 @@ public class MainController : MonoBehaviour
     private void OpenUrl(string url)
     {
         Debug.Log($"OpenUrl: Opening {url}");
+        TextToSpeech.StartSpeaking("Opening browser...");
 
         #if WINDOWS_UWP
         UnityEngine.WSA.Application.InvokeOnUIThread(async () =>

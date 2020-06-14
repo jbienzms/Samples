@@ -142,8 +142,8 @@ MonoBehaviour:
   allowFarManipulation: 1
   oneHandRotationModeNear: 1
   oneHandRotationModeFar: 1
-  releaseBehavior: 3
-  smoothingActive: 1
+  releaseBehavior: 0
+  smoothingActive: 0
   moveLerpTime: 0.001
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001

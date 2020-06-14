@@ -86,7 +86,7 @@ Material:
     - _ClippingBorderWidth: 0.025
     - _ColorWriteMask: 15
     - _CullMode: 2
-    - _CustomMode: 2
+    - _CustomMode: 1
     - _Cutoff: 0.563
     - _DetailNormalMapScale: 1
     - _DirectionalLight: 1
