@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\DistanceTool\DistanceTool.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\MainController.cs" />
+    <Compile Include="Assets\EnviroLight\Scripts\PlacementController.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\TextToSpeech.cs" />
     <None Include="Assets\uGUI_Skin_FoG\Shaders\Scanlines.shader" />
     <None Include="Assets\MRTK\Providers\Version.txt" />

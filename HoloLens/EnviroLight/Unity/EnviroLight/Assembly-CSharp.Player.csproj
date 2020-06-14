@@ -1275,6 +1275,7 @@
   <ItemGroup>
     <Compile Include="Assets\DistanceTool\DistanceTool.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\MainController.cs" />
+    <Compile Include="Assets\EnviroLight\Scripts\PlacementController.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\TextToSpeech.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
