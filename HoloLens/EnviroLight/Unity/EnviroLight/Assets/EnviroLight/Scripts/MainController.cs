@@ -176,6 +176,12 @@ public class MainController : MonoBehaviour
         DefaultLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(DefaultLightsToggle); });
         EnvironmentLightsToggle.onValueChanged.AddListener((b) => { if (b) OnLightsToggle(EnvironmentLightsToggle); });
         ScenePlacementController.TapToPlace.OnPlacingStopped.AddListener(OnPlacingStopped);
+
+        // Hide the scene on start
+        ScenePlacementController.ObjectToPlace.SetActive(false);
+
+        // Start placing
+        ScenePlacementController.StartPlacement();
     }
     #endregion // Behavior Overrides
 
