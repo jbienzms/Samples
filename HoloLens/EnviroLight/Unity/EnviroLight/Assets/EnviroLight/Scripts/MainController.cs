@@ -16,6 +16,8 @@ public class MainController : MonoBehaviour
     #endregion // Constants
 
     #region Member Variables
+    private GameObject environmentGO;
+    private Light environmentLight;
     private bool isSwitchingLightModes;
     private bool isUsingEnvironment;
     private List<GameObject> screens = new List<GameObject>();
@@ -179,9 +181,9 @@ public class MainController : MonoBehaviour
 
     #region Public Methods
     /// <summary>
-    /// Adds a new environmental light to the scene.
+    /// Sets the environmental light in the scene.
     /// </summary>
-    public void AddLight()
+    public void SetEnvironmentLight()
     {
         // Try to get the point where the user is gazing
         var hit = CoreServices.InputSystem.GazeProvider.HitInfo;
@@ -189,29 +191,34 @@ public class MainController : MonoBehaviour
         // Can only continue if the user is gazing at something
         if (hit.raycastValid) { return; }
 
-        // Create placeholder GO
-        var lightGO = new GameObject("EnvironmentLight");
+        // Make sure placeholder GameObject has been created
+        if (environmentGO == null)
+        {
+            // Create placeholder
+            environmentGO = new GameObject("EnvironmentLight");
 
-        // Parent the light GO to the container
-        lightGO.transform.SetParent(EnvironmentLightsContainer.transform, worldPositionStays: false);
+            // Parent the placeholder to the container
+            environmentGO.transform.SetParent(EnvironmentLightsContainer.transform, worldPositionStays: false);
 
-        // Move it to the right location
-        lightGO.transform.position = hit.point;
+            // Add the light
+            environmentLight = environmentGO.AddComponent<Light>();
 
-        // Add point light
-        var light = lightGO.AddComponent<Light>();
+            // Configure the light
+            environmentLight.type = LightType.Point;
+            environmentLight.range = 20;
+            environmentLight.intensity = 1f;
+        }
 
-        // Configure light
-        light.type = LightType.Point;
-        // light.lightmappingMode = LightmappingMode.Realtime;
-        light.range = 20;
-        light.intensity = 1f;
+        // Move placeholder to the right location
+        environmentGO.transform.position = hit.point;
+
+        // Point the light at the scene
+        environmentLight.transform.LookAt(EnvironmentLightsContainer.transform);
 
         // Notify
-        TextToSpeech.StartSpeaking("Light added");
+        TextToSpeech.StartSpeaking("Environment light defined");
 
-        // Now that we have at least one environment light,
-        // switch to environment mode
+        // Now that we have an environment light, switch to environment mode
         UseLights(environment: true, speak:false);
     }
 

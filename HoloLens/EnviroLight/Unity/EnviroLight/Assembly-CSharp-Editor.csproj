@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\DistanceTool\Editor\DistanceToolEditor.cs" />
     <Compile Include="Assets\DistanceTool\Editor\DistanceToolMenu.cs" />
+    <Compile Include="Assets\EnviroLight\Editor\TextToTextMeshPro.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
@@ -95,17 +96,17 @@
     <Reference Include="MSBuildForUnity">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/MSBuildForUnity.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.XR.WindowsMR.Editor">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.XR.WindowsMR.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.WindowsMR">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.XR.WindowsMR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.21f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

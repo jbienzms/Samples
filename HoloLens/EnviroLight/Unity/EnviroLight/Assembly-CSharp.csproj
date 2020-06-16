@@ -67,23 +67,33 @@
     <Compile Include="Assets\EnviroLight\Scripts\MainController.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\PlacementController.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\TextToSpeech.cs" />
-    <None Include="Assets\uGUI_Skin_FoG\Shaders\Scanlines.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\MRTK\Providers\Version.txt" />
-    <None Include="Assets\uGUI_Skin_FoG\Shaders\UITint.shader" />
-    <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated4.shader" />
-    <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated2.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\EnviroLight\Fonts\Share_Tech_Mono\OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\MRTK\Services\Version.txt" />
-    <None Include="Assets\uGUI_Skin_FoG\Fonts\LICENSE.txt" />
     <None Include="Assets\MRTK\Services\License.txt" />
     <None Include="Assets\MRTK\Providers\License.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\sky5X\README.txt" />
-    <None Include="Assets\uGUI_Skin_FoG\Shaders\UIScanlinesAnimatedFinal.shader" />
-    <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated.shader" />
-    <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated3.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\DistanceTool\READ ME.txt" />
-    <None Include="Assets\uGUI_Skin_FoG\Shaders\ScanlinesAnimated5.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\MRTK\Extensions\Version.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\MRTK\Extensions\License.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -108,17 +118,17 @@
     <Reference Include="MSBuildForUnity">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/MSBuildForUnity.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.XR.WindowsMR.Editor">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.XR.WindowsMR.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.XR.WindowsMR">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/Unity.XR.WindowsMR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.21f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
