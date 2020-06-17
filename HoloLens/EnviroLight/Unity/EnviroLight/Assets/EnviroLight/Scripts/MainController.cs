@@ -39,6 +39,9 @@ public class MainController : MonoBehaviour
     [Tooltip("Used for placing the whole scene.")]
     public PlacementController ScenePlacementController;
 
+    [Tooltip("The GameObject that represents the whole scene.")]
+    public GameObject SceneRoot;
+
     [Tooltip("Used for speaking notifications.")]
     public TextToSpeech TextToSpeech;
 
@@ -178,7 +181,7 @@ public class MainController : MonoBehaviour
         ScenePlacementController.TapToPlace.OnPlacingStopped.AddListener(OnPlacingStopped);
 
         // Hide the scene on start
-        ScenePlacementController.ObjectToPlace.SetActive(false);
+        SceneRoot.SetActive(false);
 
         // Start placing
         ScenePlacementController.StartPlacement();
@@ -195,7 +198,7 @@ public class MainController : MonoBehaviour
         var hit = CoreServices.InputSystem.GazeProvider.HitInfo;
 
         // Can only continue if the user is gazing at something
-        if (hit.raycastValid) { return; }
+        if (!hit.raycastValid) { return; }
 
         // Make sure placeholder GameObject has been created
         if (environmentGO == null)
@@ -210,7 +213,7 @@ public class MainController : MonoBehaviour
             environmentLight = environmentGO.AddComponent<Light>();
 
             // Configure the light
-            environmentLight.type = LightType.Point;
+            environmentLight.type = LightType.Directional;
             environmentLight.range = 20;
             environmentLight.intensity = 1f;
         }
@@ -219,7 +222,7 @@ public class MainController : MonoBehaviour
         environmentGO.transform.position = hit.point;
 
         // Point the light at the scene
-        environmentLight.transform.LookAt(EnvironmentLightsContainer.transform);
+        environmentLight.transform.LookAt(SceneRoot.transform);
 
         // Notify
         TextToSpeech.StartSpeaking("Environment light defined");

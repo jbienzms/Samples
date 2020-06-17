@@ -190,7 +190,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723621817159637463}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0.127}
+  m_LocalPosition: {x: 0, y: 0, z: 0.125}
   m_LocalScale: {x: 0.0002, y: 0.0002, z: 1}
   m_Children:
   - {fileID: 1723621818824434540}
@@ -627,8 +627,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: -140, y: -290}
+  m_AnchoredPosition: {x: 0, y: 30}
+  m_SizeDelta: {x: -140, y: -280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1723621818542127957
 CanvasRenderer:
@@ -657,13 +657,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'This experience was created by Angel Muniz and Jared Bienz. It was built
-    to demonstrate techniques for highly realistic holograms and lighting that matches
-    the users environment.
+    to showcase more realistic holograms by using PBR models and environment lights.
 
 
-    The 3D assets used in this sample are loving recreations from one of our favorite
-    games. They were created from scratch and are available freely on Sketchfab and
-    ArtStation.'
+    These models are loving recreations made from scratch by Angel. They are available
+    on Sketchfab and ArtStation.
+
+
+    Try this out: Point at the dominant light source in your room and say "Set Environment
+    Light"!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 042dd0fe1107f2641b287b3e0cbfeaf7, type: 2}
   m_sharedMaterial: {fileID: -8844280198183217669, guid: 042dd0fe1107f2641b287b3e0cbfeaf7,
@@ -692,8 +694,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -733,12 +735,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 7511776118848910357}
-    characterCount: 353
+    characterCount: 362
     spriteCount: 0
-    spaceCount: 56
-    wordCount: 56
+    spaceCount: 60
+    wordCount: 59
     linkCount: 0
-    lineCount: 11
+    lineCount: 12
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1093,12 +1095,12 @@ PrefabInstance:
     - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
         type: 3}
       propertyPath: m_text
-      value: Visit Dev
+      value: Visit Developer
       objectReference: {fileID: 0}
     - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
         type: 3}
@@ -1113,12 +1115,12 @@ PrefabInstance:
     - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
         type: 3}
       propertyPath: m_fontSize
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae, type: 3}
@@ -1262,12 +1264,37 @@ PrefabInstance:
     - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
         type: 3}
       propertyPath: m_text
-      value: Lights
+      value: Light Sources
       objectReference: {fileID: 0}
     - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 6
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae, type: 3}
@@ -1732,12 +1759,12 @@ PrefabInstance:
     - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
         type: 3}
       propertyPath: m_fontSize
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae, type: 3}
@@ -2538,6 +2565,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206829601519955667, guid: 576fca782fce8f84691c4f1f14711d3d,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 2.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206829601519955667, guid: 576fca782fce8f84691c4f1f14711d3d,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.87
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 576fca782fce8f84691c4f1f14711d3d, type: 3}

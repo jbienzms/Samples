@@ -78,7 +78,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Fast PBR
-    pixelLightCount: 1
+    pixelLightCount: 0
     shadows: 0
     shadowResolution: 0
     shadowProjection: 1
