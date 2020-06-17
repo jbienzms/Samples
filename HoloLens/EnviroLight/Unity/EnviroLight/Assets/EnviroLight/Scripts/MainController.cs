@@ -10,9 +10,9 @@ using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
 public class MainController : MonoBehaviour
 {
     #region Constants
-    private const string ARTICLE_URL = "http://roadtomr.com/";
+    private const string ARTICLE_URL = "http://www.roadtomr.com/2020/06/16/2835/envirolight-hl2/";
     private const string ARTIST_URL = "https://www.digitalangel3d.com";
-    private const string DEVELOPER_URL = "http://roadtomr.com/";
+    private const string DEVELOPER_URL = "https://jared.bienz.com/";
     #endregion // Constants
 
     #region Member Variables
