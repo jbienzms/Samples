@@ -9,9 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: NukaQuantum
   m_Shader: {fileID: 4800000, guid: 5bdea20278144b11916d77503ba1467a, type: 3}
-  m_ShaderKeywords: _CHANNEL_MAP _DIRECTIONAL_LIGHT _EMISSION _INNER_GLOW _IRIDESCENCE
-    _METALLICGLOSSMAP _METALLIC_TEXTURE_ALBEDO_CHANNEL_A _NORMALMAP _NORMAL_MAP _REFLECTIONS
-    _SPECULAR_HIGHLIGHTS _SPHERICAL_HARMONICS
+  m_ShaderKeywords: _CHANNEL_MAP _DIRECTIONAL_LIGHT _EMISSION _IRIDESCENCE _METALLICGLOSSMAP
+    _METALLIC_TEXTURE_ALBEDO_CHANNEL_A _NORMALMAP _NORMAL_MAP _REFLECTIONS _SPECULAR_HIGHLIGHTS
+    _SPHERICAL_HARMONICS
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -113,13 +113,13 @@ Material:
     - _HoverLight: 0
     - _IgnoreZScale: 0
     - _IndependentCorners: 0
-    - _InnerGlow: 1
+    - _InnerGlow: 0
     - _InnerGlowPower: 28.5
     - _InstancedColor: 0
     - _Iridescence: 1
     - _IridescenceAngle: -0.78
-    - _IridescenceIntensity: 0.753
-    - _IridescenceThreshold: 0.723
+    - _IridescenceIntensity: 1
+    - _IridescenceThreshold: 0.635
     - _Metallic: 0.422
     - _Mode: 0
     - _NearLightFade: 0
