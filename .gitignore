@@ -77,7 +77,8 @@ ehthumbs.db
 Thumbs.db
 
 
-
+## MSBuild for Unity Properties
+MSBuildForUnity.Common.props
 
 
 ## Ignore Visual Studio temporary files, build results, and
