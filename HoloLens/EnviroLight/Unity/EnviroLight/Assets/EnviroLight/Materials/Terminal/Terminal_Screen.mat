@@ -120,7 +120,7 @@ Material:
     - _IridescenceAngle: -0.78
     - _IridescenceIntensity: 0.5
     - _IridescenceThreshold: 0.05
-    - _Metallic: 0.254
+    - _Metallic: 0.85
     - _Mode: 5
     - _NearLightFade: 0
     - _NearPlaneFade: 0
