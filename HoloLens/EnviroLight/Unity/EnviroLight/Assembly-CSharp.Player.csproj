@@ -113,11 +113,11 @@
     <Reference Include="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics">
       <HintPath>Library/ScriptAssemblies/Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.MixedReality.Toolkit.Services.InputSimulation">
-      <HintPath>Library/ScriptAssemblies/Microsoft.MixedReality.Toolkit.Services.InputSimulation.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.XR.WindowsMR">
       <HintPath>Library/ScriptAssemblies/Unity.XR.WindowsMR.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.MixedReality.Toolkit.Services.InputSimulation">
+      <HintPath>Library/ScriptAssemblies/Microsoft.MixedReality.Toolkit.Services.InputSimulation.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.21f1/Editor/Data/PlaybackEngines/MetroSupport/Managed/il2cpp/UnityEngine.dll</HintPath>
@@ -362,6 +362,9 @@
     <Reference Include="Microsoft.MixedReality.Toolkit.Providers.LeapMotion.Editor">
       <HintPath>Library/ScriptAssemblies/Microsoft.MixedReality.Toolkit.Providers.LeapMotion.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.XR.WindowsMR.Editor">
+      <HintPath>Library/ScriptAssemblies/Unity.XR.WindowsMR.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.MixedReality.Toolkit.Providers.XRSDK.WindowsMixedReality.Editor">
       <HintPath>Library/ScriptAssemblies/Microsoft.MixedReality.Toolkit.Providers.XRSDK.WindowsMixedReality.Editor.dll</HintPath>
     </Reference>
@@ -385,9 +388,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.XR.WindowsMR.Editor">
-      <HintPath>Library/ScriptAssemblies/Unity.XR.WindowsMR.Editor.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.2.21f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>
@@ -1277,6 +1277,23 @@
     <Compile Include="Assets\EnviroLight\Scripts\MainController.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\PlacementController.cs" />
     <Compile Include="Assets\EnviroLight\Scripts\TextToSpeech.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\CameraCaptureARFoundation.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\CameraCaptureScreen.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\CameraCaptureUWP.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\CameraCaptureWebcam.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\ICameraCapture.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\Util\CameraResolution.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\Util\Color24.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\Util\ScriptDefine.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\Util\VideoDeviceControllerWrapperUWP.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\EditorGyro\EditorGyro.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\EditorGyro\FollowGyroscope.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\Examples\Scripts\Center.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\Examples\Scripts\DebugView.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\Examples\Scripts\LightPreviewController.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\LightCapture.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\Scripts\Utility\CubeMapper.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\Scripts\Utility\Histogram.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System;
 using Microsoft.MixedReality.Toolkit;
 using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
+using Microsoft.MixedReality.Toolkit.LightingTools;
 
 public class MainController : MonoBehaviour
 {
@@ -17,24 +18,19 @@ public class MainController : MonoBehaviour
 
     #region Member Variables
     private GameObject environmentGO;
-    private Light environmentLight;
     private bool isSwitchingLightModes;
-    private bool isUsingEnvironment;
     private List<GameObject> screens = new List<GameObject>();
     #endregion // Member Variables
 
     #region Inspector Fields
-    [Tooltip("The container for all default scene lights.")]
-    public GameObject DefaultLightsContainer;
-
     [Tooltip("Toggle for enabling default lights.")]
     public Toggle DefaultLightsToggle;
 
-    [Tooltip("The container where environment lights will be added.")]
-    public GameObject EnvironmentLightsContainer;
-
     [Tooltip("Toggle for enabling environment lights.")]
     public Toggle EnvironmentLightsToggle;
+
+    [Tooltip("Used for placing the whole scene.")]
+    public LightCapture LightCapture;
 
     [Tooltip("Used for placing the whole scene.")]
     public PlacementController ScenePlacementController;
@@ -121,27 +117,22 @@ public class MainController : MonoBehaviour
         }
 
         // Make sure changing
-        if (isUsingEnvironment == environment) { return; }
+        if (LightCapture.enabled == environment) { return; }
         isSwitchingLightModes = true;
-
-        // Update state flag
-        isUsingEnvironment = environment;
 
         // Enable / Disable lighting containers
         // The order is important due to the way
         // Unity decides how normals are baked at runtime
         if (environment)
         {
-            DefaultLightsContainer.SetActive(false);
+            LightCapture.enabled = true;
             DefaultLightsToggle.isOn = false;
-            EnvironmentLightsContainer.SetActive(true);
             EnvironmentLightsToggle.isOn = true;
         }
         else
         {
-            EnvironmentLightsContainer.SetActive(false);
+            LightCapture.enabled = false;
             EnvironmentLightsToggle.isOn = false;
-            DefaultLightsContainer.SetActive(true);
             DefaultLightsToggle.isOn = true;
         }
 
@@ -189,48 +180,6 @@ public class MainController : MonoBehaviour
     #endregion // Behavior Overrides
 
     #region Public Methods
-    /// <summary>
-    /// Sets the environmental light in the scene.
-    /// </summary>
-    public void SetEnvironmentLight()
-    {
-        // Try to get the point where the user is gazing
-        var hit = CoreServices.InputSystem.GazeProvider.HitInfo;
-
-        // Can only continue if the user is gazing at something
-        if (!hit.raycastValid) { return; }
-
-        // Make sure placeholder GameObject has been created
-        if (environmentGO == null)
-        {
-            // Create placeholder
-            environmentGO = new GameObject("EnvironmentLight");
-
-            // Parent the placeholder to the container
-            environmentGO.transform.SetParent(EnvironmentLightsContainer.transform, worldPositionStays: false);
-
-            // Add the light
-            environmentLight = environmentGO.AddComponent<Light>();
-
-            // Configure the light
-            environmentLight.type = LightType.Directional;
-            environmentLight.range = 20;
-            environmentLight.intensity = 1f;
-        }
-
-        // Move placeholder to the right location
-        environmentGO.transform.position = hit.point;
-
-        // Point the light at the scene
-        environmentLight.transform.LookAt(SceneRoot.transform);
-
-        // Notify
-        TextToSpeech.StartSpeaking("Environment light defined");
-
-        // Now that we have an environment light, switch to environment mode
-        UseLights(environment: true, speak:false);
-    }
-
     /// <summary>
     /// Starts placement of the scene.
     /// </summary>
@@ -318,7 +267,7 @@ public class MainController : MonoBehaviour
     {
         get
         {
-            return isUsingEnvironment;
+            return LightCapture.enabled;
         }
     }
     #endregion // Public Properties

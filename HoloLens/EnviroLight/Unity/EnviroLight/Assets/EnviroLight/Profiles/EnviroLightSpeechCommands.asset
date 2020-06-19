@@ -59,13 +59,6 @@ MonoBehaviour:
       description: Toggle Profiler
       axisConstraint: 0
   - localizationKey: 
-    keyword: Set Environment Light
-    keyCode: 92
-    action:
-      id: 0
-      description: Toggle Profiler
-      axisConstraint: 0
-  - localizationKey: 
     keyword: Home
     keyCode: 278
     action:
