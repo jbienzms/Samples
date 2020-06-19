@@ -10,8 +10,8 @@ Material:
   m_Name: NukaQuantum
   m_Shader: {fileID: 4800000, guid: 5bdea20278144b11916d77503ba1467a, type: 3}
   m_ShaderKeywords: _CHANNEL_MAP _DIRECTIONAL_LIGHT _EMISSION _IRIDESCENCE _METALLICGLOSSMAP
-    _METALLIC_TEXTURE_ALBEDO_CHANNEL_A _NORMALMAP _NORMAL_MAP _REFLECTIONS _SPECULAR_HIGHLIGHTS
-    _SPHERICAL_HARMONICS
+    _METALLIC_TEXTURE_ALBEDO_CHANNEL_A _NORMALMAP _NORMAL_MAP _REFLECTIONS _REFRACTION
+    _SPECULAR_HIGHLIGHTS _SPHERICAL_HARMONICS
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -117,9 +117,9 @@ Material:
     - _InnerGlowPower: 28.5
     - _InstancedColor: 0
     - _Iridescence: 1
-    - _IridescenceAngle: -0.78
-    - _IridescenceIntensity: 1
-    - _IridescenceThreshold: 0.635
+    - _IridescenceAngle: 0.78
+    - _IridescenceIntensity: 0.778
+    - _IridescenceThreshold: 0.627
     - _Metallic: 0.422
     - _Mode: 0
     - _NearLightFade: 0
@@ -131,8 +131,8 @@ Material:
     - _ProximityLightSubtractive: 0
     - _ProximityLightTwoSided: 0
     - _Reflections: 1
-    - _Refraction: 0
-    - _RefractiveIndex: 0
+    - _Refraction: 1
+    - _RefractiveIndex: 0.45
     - _RenderQueueOverride: -1
     - _RimLight: 0
     - _RimPower: 0.25
