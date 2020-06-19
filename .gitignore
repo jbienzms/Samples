@@ -35,6 +35,10 @@ Microsoft.MixedReality.Toolkit.*
 sysinfo.txt
 Lib/*.suo
 
+# CSProj and SLN files are pretty much always generated
+*.csproj
+*.sln
+
 # NuGet Files
 project.lock.json
 
