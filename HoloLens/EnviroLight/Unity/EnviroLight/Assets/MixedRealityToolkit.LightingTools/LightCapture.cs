@@ -7,78 +7,172 @@ using UnityEngine.Rendering;
 
 namespace Microsoft.MixedReality.Toolkit.LightingTools
 {
-    public class LightCapture : MonoBehaviour
+    public class LightCapture : MonoBehaviour, ICameraControl
     {
-        #region Fields
+        #region Member Variables
+        /// <summary> Interface to the camera we're using. This is different on different platforms. </summary>
+        private ICameraCapture cameraCapture;
+
+        /// <summary> Interface to control advanced camera settings, if supported. </summary>
+        private ICameraControl cameraControl;
+
+        /// <summary> The Cubemap tool we're using to generate the light information for Unity's probes. </summary>
+        private CubeMapper map = null;
+        /// <summary> Histogram of the Cubemap's colors. Used for primary light source color calculations. </summary>
+        private Histogram histogram = new Histogram();
+        /// <summary> Used to track the original skybox material, in case we want to disable light capture and restore state. </summary>
+        private Material startSky;
+        private Quaternion startLightRot;
+        private Color startLightColor;
+        private float startLightBrightness;
+        /// <summary> The number of stamps currently in our cubemap.  Used for singleStampOnly option. </summary>
+        private int stampCount;
+
+        // For easing the light directions
+        private Quaternion lightTargetDir;
+        private Quaternion lightStartDir;
+        private float lightStartTime = -1;
+        private float lightTargetDuration;
+        #endregion // Member Variables
+
+        #region Unity Inspector Variables
         [Header("Settings")]
         [Tooltip("Resolution (pixels) per-face of the generated lighting Cubemap.")]
         [SerializeField] private int mapResolution = 128;
 
         [Header("Stamp Optimizations")]
         [Tooltip("Should the component only do the initial wraparound stamp? If true, only one picture will be taken, at the very beginning.")]
-        [SerializeField]              private bool  singleStampOnly     = false;
+        [SerializeField] private bool singleStampOnly = false;
         [Tooltip("When stamping a camera picture onto the Cubemap, scale it up by this so it covers a little more space. This can mean fewer total stamps needed to complete the Cubemap, at the expense of a less perfect reflection.")]
-        [SerializeField, Range(1, 2)] private float stampFovMultiplier  = 1f;
+        [SerializeField, Range(1, 2)] private float stampFovMultiplier = 1f;
         [Tooltip("This is the distance (meters) the camera must travel for a stamp to expire. When a stamp expires, the Camera will take another picture in that direction when given the opportunity. Zero means no expiration.")]
-        [SerializeField]              private float stampExpireDistance = 0;
+        [SerializeField] private float stampExpireDistance = 0;
 
         [Header("Directional Lighting")]
         [Tooltip("Should the system calculate information for a directional light? This will scrape the lower mips of the Cubemap to find the direction and color of the brightest values, and apply it to the scene's light.")]
-        [SerializeField]             private bool  useDirectionalLight       = true;
+        [SerializeField] private bool useDirectionalLight = true;
         [Tooltip("When finding the primary light color, it will average the brightest 20% of the pixels, and use that color for the light. This sets the cap for the saturation of that color.")]
-        [SerializeField, Range(0,1)] private float maxLightColorSaturation   = 0.3f;
+        [SerializeField, Range(0, 1)] private float maxLightColorSaturation = 0.3f;
         [Tooltip("The light eases into its new location when the information is updated. This is the speed at which it eases to its new destination, measured in degrees per second.")]
-        [SerializeField]             private float lightAngleAdjustPerSecond = 45f;
+        [SerializeField] private float lightAngleAdjustPerSecond = 45f;
 
         [Header("Optional Overrides")]
         [Tooltip("Defaults to Camera.main. Which object should we be looking at for our orientation and position?")]
-        [SerializeField] private Transform       cameraOrientation;
+        [SerializeField] private Transform cameraOrientation;
         [Tooltip("Default will pick from the scene, or create one automatically. If you have settings you'd like to configure on your probe, hook it in here.")]
         [SerializeField] private ReflectionProbe probe;
         [Tooltip("Default will pick the first directional light in the scene. If no directional light is found, one will be created!")]
-        [SerializeField] private Light           directionalLight;
+        [SerializeField] private Light directionalLight;
+        #endregion // Unity Inspector Variables
 
-        /// <summary> Interface to the camera we're using. This is different on different platforms. </summary>
-        private ICameraCapture captureCamera;
-        /// <summary> The Cubemap tool we're using to generate the light information for Unity's probes. </summary>
-        private CubeMapper     map = null;
-        /// <summary> Histogram of the Cubemap's colors. Used for primary light source color calculations. </summary>
-        private Histogram      histogram = new Histogram();
-        /// <summary> Used to track the original skybox material, in case we want to disable light capture and restore state. </summary>
-        private Material       startSky;
-        private Quaternion     startLightRot;
-        private Color          startLightColor;
-        private float          startLightBrightness;
-        /// <summary> The number of stamps currently in our cubemap.  Used for singleStampOnly option. </summary>
-        private int            stampCount;
+        #region Private Methods
+        private async Task TakeStampAsync()
+        {
+            var result = await cameraCapture.RequestTextureAsync();
+            var texture = result.Texture;
+            var matrix = result.Matrix;
 
-        // For easing the light directions
-        private Quaternion lightTargetDir;
-        private Quaternion lightStartDir;
-        private float      lightStartTime = -1;
-        private float      lightTargetDuration;
+            map.Stamp(texture, matrix.GetColumn(3), matrix.rotation, matrix.MultiplyVector(Vector3.forward));
+            stampCount += 1;
+
+            DynamicGI.UpdateEnvironment();
+
+            if (useDirectionalLight)
+            {
+                UpdateDirectionalLight();
+            }
+        }
+
+        private void UpdateDirectionalLight()
+        {
+            if (directionalLight == null || map == null)
+            {
+                return;
+            }
+
+            // Calculate the light direction
+            Vector3 dir = map.GetWeightedDirection(ref histogram);
+            dir.y = Mathf.Abs(dir.y); // Don't allow upward facing lights! In many cases, 'light' from below is just a large surface that reflects from an overhead source
+
+            // Prevent zero vectors, Unity doesn't like them.
+            if (dir.sqrMagnitude < 0.000001f)
+                dir = Vector3.up;
+
+            if (lightStartTime < 0 || lightAngleAdjustPerSecond == 0)
+            {
+                directionalLight.transform.forward = -dir;
+                lightStartTime = 0;
+            }
+            else
+            {
+                lightTargetDir = Quaternion.LookRotation(-dir);
+                lightStartDir = directionalLight.transform.localRotation;
+                lightStartTime = Time.time;
+                lightTargetDuration = Quaternion.Angle(lightTargetDir, lightStartDir) / lightAngleAdjustPerSecond;
+
+                if (lightTargetDuration <= 0)
+                {
+                    directionalLight.transform.forward = -dir;
+                    lightStartTime = 0;
+                }
+            }
+
+            // Calculate a color and intensity from the cubemap's histogram
+
+            // grab the color for the brightest 20% of the image
+            float bright = histogram.FindPercentage(.8f);
+            Color color = histogram.GetColor(bright, 1);
+
+            // For the final color, we use a 'value' of 1, since we use the intensity for brightness of the light source.
+            // Also, light sources are rarely very saturated, so we cap that as well
+            float hue, sat, val;
+            Color.RGBToHSV(color, out hue, out sat, out val);
+            directionalLight.color = Color.HSVToRGB(hue, Mathf.Min(sat, maxLightColorSaturation), 1);
+            directionalLight.intensity = bright;
+        }
 
         /// <summary>
-        /// Direct access to the CubeMapper class we're using!
+        /// Warns if the the current camera does not support advanced control.
         /// </summary>
-        public CubeMapper CubeMapper
+        /// <returns>
+        /// <c>true</c> if statement if a warning was generated; otherwise <c>false</c>.
+        /// </returns>
+        private bool WarnIfNoControl()
         {
-            get
+            if (cameraControl == null)
             {
-                return map;
+                Debug.LogWarning($"{nameof(LightCapture)} {name} - The current system does not support advanced camera control.");
+                return true;
             }
+            return false;
+        }
+
+        /// <summary>
+        /// Warns if the system is not ready to perform an action.
+        /// </summary>
+        /// <returns>
+        /// <c>true</c> if statement if a warning was generated; otherwise <c>false</c>.
+        /// </returns>
+        private bool WarnIfNotReady()
+        {
+            if (cameraCapture == null)
+            {
+                Debug.LogWarning($"{nameof(LightCapture)} {name} is not enabled or has not been initialized.");
+                return true;
+            }
+            return false;
         }
         #endregion
 
-        #region Unity Events
-        private void Awake ()
+        #region Unity Overrides
+        protected virtual void Awake ()
         {
             // Save initial settings in case we wish to restore them
             startSky = RenderSettings.skybox;
 
             // Pick camera based on platform
             #if WINDOWS_UWP && !UNITY_EDITOR
-            captureCamera = new CameraCaptureUWP();
+            cameraCapture = new CameraCaptureUWP();
             #elif (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
             captureCamera = new CameraCaptureARFoundation();
             #else
@@ -95,9 +189,12 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             }
             else
             {
-                captureCamera = new CameraCaptureWebcam(Camera.main.transform, Camera.main.fieldOfView);
+                cameraCapture = new CameraCaptureWebcam(Camera.main.transform, Camera.main.fieldOfView);
             }
             #endif
+
+            // Try to get camera control as well
+            cameraControl = cameraCapture as ICameraControl;
 
             // Make sure we have access to a probe in the scene
             if (probe == null)
@@ -149,7 +246,8 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                 startLightBrightness = directionalLight.intensity;
             }
         }
-        private void OnDisable()
+
+        protected virtual void OnDisable()
         {
             // Restore and render a default probe
             if (probe != null && probe.isActiveAndEnabled)
@@ -168,12 +266,13 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                 directionalLight.intensity          = startLightBrightness;
             }
 
-            if (captureCamera != null)
-                captureCamera.Shutdown();
+            if (cameraCapture != null)
+                cameraCapture.Shutdown();
 
             DynamicGI.UpdateEnvironment();
         }
-        private async void OnEnable()
+
+        protected virtual async void OnEnable()
         {
             // Save initial settings in case we wish to restore them
             startSky = RenderSettings.skybox;
@@ -192,12 +291,12 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             resolution.nativeResolution = NativeResolutionMode.Smallest;
             resolution.resize           = ResizeWhen.Never;
 
-            await captureCamera.InitializeAsync(true, resolution);
+            await cameraCapture.InitializeAsync(true, resolution);
 
             if (map == null)
             {
                 map = new CubeMapper();
-                map.Create(captureCamera.FieldOfView * stampFovMultiplier, mapResolution);
+                map.Create(cameraCapture.FieldOfView * stampFovMultiplier, mapResolution);
                 map.StampExpireDistance = stampExpireDistance;
             }
             probe.customBakedTexture = map.Map;
@@ -207,7 +306,8 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
 
             DynamicGI.UpdateEnvironment();
         }
-        private void OnValidate()
+
+        protected virtual void OnValidate()
         {
             if (map != null)
             {
@@ -215,7 +315,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             }
         }
 
-        private void Update ()
+        protected virtual void Update ()
         {
             // ditch out if we already have our first stamp
             if ((stampCount > 0 && singleStampOnly) )
@@ -224,11 +324,12 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             }
 
             // check the cache to see if our current orientation would benefit from a new stamp
-            if (captureCamera.IsInitialized && !captureCamera.IsRequestingImage)
+            if (map != null && cameraCapture.IsReady && !cameraCapture.IsRequestingImage)
             {
                 if (!map.IsCached(cameraOrientation.position, cameraOrientation.forward))
                 {
-                    // Take stamp (do not await, let it run blindly)
+                    // Take stamp, but do not await. Let it run blindly so we don't block the
+                    // rest of our Update loop
                     var t = TakeStampAsync();
                 }
             }
@@ -247,97 +348,31 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                 directionalLight.transform.localRotation = Quaternion.Lerp(lightStartDir, lightTargetDir, t);
             }
         }
-        #endregion
-
-        #region Private Methods
-        private async Task TakeStampAsync()
-        {
-            var result = await captureCamera.RequestTextureAsync();
-            var texture = result.Texture;
-            var matrix = result.Matrix;
-
-            map.Stamp(texture, matrix.GetColumn(3), matrix.rotation, matrix.MultiplyVector(Vector3.forward));
-            stampCount += 1;
-
-            DynamicGI.UpdateEnvironment();
-
-            if (useDirectionalLight)
-            {
-                UpdateDirectionalLight();
-            }
-        }
-
-        private void UpdateDirectionalLight()
-        {
-            if (directionalLight == null || map == null)
-            {
-                return;
-            }
-
-            // Calculate the light direction
-            Vector3 dir = map.GetWeightedDirection(ref histogram);
-            dir.y = Mathf.Abs(dir.y); // Don't allow upward facing lights! In many cases, 'light' from below is just a large surface that reflects from an overhead source
-
-            // Prevent zero vectors, Unity doesn't like them.
-            if (dir.sqrMagnitude < 0.000001f)
-                dir = Vector3.up;
-
-            if (lightStartTime < 0 || lightAngleAdjustPerSecond == 0)
-            {
-                directionalLight.transform.forward = -dir;
-                lightStartTime = 0;
-            }
-            else
-            {
-                lightTargetDir = Quaternion.LookRotation( -dir );
-                lightStartDir  = directionalLight.transform.localRotation;
-                lightStartTime = Time.time;
-                lightTargetDuration = Quaternion.Angle(lightTargetDir, lightStartDir) / lightAngleAdjustPerSecond;
-
-                if (lightTargetDuration <= 0)
-                {
-                    directionalLight.transform.forward = -dir;
-                    lightStartTime = 0;
-                }
-            }
-
-            // Calculate a color and intensity from the cubemap's histogram
-
-            // grab the color for the brightest 20% of the image
-            float bright = histogram.FindPercentage(.8f);
-            Color color  = histogram.GetColor(bright, 1);
-
-            // For the final color, we use a 'value' of 1, since we use the intensity for brightness of the light source.
-            // Also, light sources are rarely very saturated, so we cap that as well
-            float hue, sat, val;
-            Color.RGBToHSV(color, out hue, out sat, out val);
-            directionalLight.color = Color.HSVToRGB(hue, Mathf.Min(sat, maxLightColorSaturation), 1);
-            directionalLight.intensity = bright;
-        }
-        #endregion
+        #endregion // Unity Overrides
 
         #region Public Methods
-        /// <summary> On UWP platforms, this will let you set the exposure of the active camera. Uncertain of the units, but try values in the range of -10 -> +10 </summary>
-        public void SetExposure(int exp)
+        /// <inheritdoc/>
+        public Task SetExposureAsync(int exposure)
         {
-            #if WINDOWS_UWP
-            CameraCaptureUWP cam = captureCamera as CameraCaptureUWP;
-            if (cam != null)
-            {
-                cam.Exposure = exp;
-            }
-            #endif
+            if (WarnIfNotReady()) { return Task.CompletedTask; }
+            if (WarnIfNoControl()) { return Task.CompletedTask; }
+            return cameraControl.SetExposureAsync(exposure);
         }
-        /// <summary> On UWP platforms, this will let you set the white balance of the active camera. Units are in (K) Kelvin, try values 1000 -> 10,000 </summary>
-        public void SetWhitebalance(int wb)
+
+        /// <inheritdoc/>
+        public Task SetWhiteBalanceAsync(int kelvin)
         {
-            #if WINDOWS_UWP
-            CameraCaptureUWP cam = captureCamera as CameraCaptureUWP;
-            if (cam != null)
-            {
-                cam.Whitebalance = wb;
-            }
-            #endif
+            if (WarnIfNotReady()) { return Task.CompletedTask; }
+            if (WarnIfNoControl()) { return Task.CompletedTask; }
+            return cameraControl.SetWhiteBalanceAsync(kelvin);
+        }
+
+        /// <inheritdoc/>
+        public Task SetISOAsync(int iso)
+        {
+            if (WarnIfNotReady()) { return Task.CompletedTask; }
+            if (WarnIfNoControl()) { return Task.CompletedTask; }
+            return cameraControl.SetISOAsync(iso);
         }
 
         /// <summary> Clear the internal representation of light, and start over again from scratch. </summary>
@@ -347,5 +382,18 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             stampCount = 0;
         }
         #endregion
+
+        #region Public Properties
+        /// <summary>
+        /// Direct access to the CubeMapper class we're using!
+        /// </summary>
+        public CubeMapper CubeMapper
+        {
+            get
+            {
+                return map;
+            }
+        }
+        #endregion // Public Properties
     }
 }

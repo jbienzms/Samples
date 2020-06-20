@@ -72,6 +72,7 @@
     <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\CameraCaptureUWP.cs" />
     <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\CameraCaptureWebcam.cs" />
     <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\ICameraCapture.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\Util\CameraExtensions.cs" />
     <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\Util\CameraResolution.cs" />
     <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\Util\Color24.cs" />
     <Compile Include="Assets\MixedRealityToolkit.LightingTools\CameraCapture\Util\ScriptDefine.cs" />

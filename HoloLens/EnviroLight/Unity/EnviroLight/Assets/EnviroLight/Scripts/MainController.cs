@@ -17,7 +17,6 @@ public class MainController : MonoBehaviour
     #endregion // Constants
 
     #region Member Variables
-    private GameObject environmentGO;
     private bool isSwitchingLightModes;
     private List<GameObject> screens = new List<GameObject>();
     #endregion // Member Variables

@@ -8,81 +8,75 @@ using UnityEngine;
 
 namespace Microsoft.MixedReality.Toolkit.LightingTools
 {
+    /// <summary>
+    /// An <see cref="ICameraCapture"/> service that works with a regular webcam.
+    /// </summary>
     public class CameraCaptureWebcam : ICameraCapture
     {
+        #region Constants
+        /// <summary>
+        /// The amount of time to wait for a webcam to initialize before frames are served.
+        /// </summary>
+        /// <remarks>
+        /// This delay is necessary because some webcams can take several seconds to fully initialize before sending valid frames.
+        /// During this time, many webcams will simply send a black frame. If LightCapture is in Single Frame mode, this will result
+        /// in the scene being unlit. Unfortunately there is no know way to query for the webcam to be fully initialized.
+        /// </remarks>
+        private const float CAMERA_START_DELAY = 2.0f;
+        #endregion // Constants
+
+        #region Member Variables
         /// <summary> A transform to reference for the position of the camera. </summary>
-        private Transform        poseSource     = null;
+        private Transform poseSource = null;
         /// <summary> The WebCamTexture we're using to get a webcam image. </summary>
-        private WebCamTexture    webcamTex      = null;
+        private WebCamTexture webcamTex = null;
         /// <summary> Webcam device that we picked to read from. </summary>
-        private WebCamDevice     device;
+        private WebCamDevice device;
         /// <summary> When was this created? WebCamTexture isn't ready right way, so we'll need to wait a bit.</summary>
-        private float            startTime      = 0;
+        private float startTime = 0;
         /// <summary> What field of view should this camera report? </summary>
-        private float            fieldOfView    = 45;
+        private float fieldOfView = 45;
         /// <summary>Preferred resolution for taking pictures, note that resolutions are not guaranteed! Refer to CameraResolution for details.</summary>
-        private CameraResolution resolution     = null;
-        /// <summary>Cache tex for storing the final image.</summary>
-        private Texture          resizedTexture = null;
+        private CameraResolution resolution = null;
+        /// <summary>Cache texture for storing the final image.</summary>
+        private Texture resizedTexture = null;
+        #endregion // Member Variables
 
+        #region Constructors
         /// <summary>
-        /// Is the camera completely initialized and ready to begin taking pictures?
+        /// Initializes a new <see cref="CameraCaptureWebcam"/>.
         /// </summary>
-        public bool  IsInitialized
+        /// <param name="poseSource">
+        /// The transform that serves as the origin and pose of the camera.
+        /// </param>
+        /// <param name="fieldOfView">
+        /// The field of view of the camera.
+        /// </param>
+        public CameraCaptureWebcam(Transform poseSource, float fieldOfView)
         {
-            get
-            {
-                return webcamTex != null && webcamTex.isPlaying && (Time.time - startTime) > 0.5f;
-            }
+            this.poseSource = poseSource;
+            this.fieldOfView = fieldOfView;
         }
-        /// <summary>
-        /// Is the camera currently already busy with taking a picture?
-        /// </summary>
-        public bool  IsRequestingImage
-        {
-            get;
-            private set;
-        }
-        /// <summary>
-        /// Field of View of the camera in degrees. This value is never ready until after
-        /// initialization, and in many cases, isn't accurate until after a picture has
-        /// been taken. It's best to check this after each picture if you need it.
-        /// </summary>
-        public float FieldOfView
-        {
-            get
-            {
-                return fieldOfView;
-            }
-        }
+        #endregion // Constructors
 
-        public CameraCaptureWebcam(Transform aPoseSource, float aFieldOfView)
+        #region Public Methods
+        /// <inheritdoc/>
+        public async Task InitializeAsync(bool preferGPUTexture, CameraResolution preferredResolution)
         {
-            poseSource  = aPoseSource;
-            fieldOfView = aFieldOfView;
-        }
-
-        /// <summary>
-        /// Starts up and selects a device's camera, and finds appropriate picture settings
-        /// based on the provided resolution!
-        /// </summary>
-        /// <param name="preferGPUTexture">Do you prefer GPU textures, or do you prefer a NativeArray of colors? Certain optimizations may be present to take advantage of this preference.</param>
-        /// <param name="preferredResolution">Preferred resolution for taking pictures, note that resolutions are not guaranteed! Refer to CameraResolution for details.</param>
-        /// <returns>
-        /// A <see cref="Task"/> that represents the operation.
-        /// </returns>
-        public Task InitializeAsync(bool preferGPUTexture, CameraResolution preferredResolution)
-        {
+            // Avoid double initialization
             if (webcamTex != null)
             {
-                throw new Exception("[CameraCapture] Only need to initialize once!");
+                throw new InvalidOperationException($"{nameof(CameraCaptureWebcam)} {nameof(InitializeAsync)} should only be called once unless it is shut down.");
             }
+
             // No cameras? Ditch out!
             if (WebCamTexture.devices.Length <= 0)
             {
-                return Task.CompletedTask;
+                Debug.LogWarning($"Could not initialize {nameof(CameraCaptureWebcam)} because there are no webcams attached to the system.");
+                return;
             }
 
+            // Store parameters
             resolution = preferredResolution;
 
             // Find a rear facing camera we can use, or use the first one
@@ -114,42 +108,34 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                 throw new NotImplementedException(resolution.nativeResolution.ToString());
             }
 
+            // Start the webcam playing
             webcamTex.Play();
 
+            // Bookmark the start time
             startTime = Time.time;
 
-            return Task.CompletedTask;
+            // Wait for camera to initialize
+            await Task.Delay(TimeSpan.FromSeconds(CAMERA_START_DELAY));
         }
 
-        /// <summary>
-        /// Requests an image from the camera and provide it as a Texture on the GPU and array of Colors on the CPU.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="Task"/> that represents the operation.
-        /// </returns>
+        /// <inheritdoc/>
         public Task<ColorResult> RequestColorAsync()
         {
             resolution.ResizeTexture(webcamTex, ref resizedTexture, true);
-            ColorResult result = new ColorResult(poseSource == null ? Matrix4x4.identity : poseSource.localToWorldMatrix, (Texture2D)resizedTexture);
+            Texture2D r2d = resizedTexture as Texture2D;
+            ColorResult result = new ColorResult(poseSource == null ? Matrix4x4.identity : poseSource.localToWorldMatrix, r2d);
             return Task.FromResult(result);
         }
 
-        /// <summary>
-        /// Requests an image from the camera and provides it as a Texture on the GPU.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="Task"/> that yields the <see cref="TextureResult"/>.
-        /// </returns>
+        /// <inheritdoc/>
         public Task<TextureResult> RequestTextureAsync()
         {
             resolution.ResizeTexture(webcamTex, ref resizedTexture, false);
-            TextureResult result = new TextureResult(poseSource == null ? Matrix4x4.identity : poseSource.localToWorldMatrix, (Texture2D)resizedTexture);
+            TextureResult result = new TextureResult(poseSource == null ? Matrix4x4.identity : poseSource.localToWorldMatrix, resizedTexture);
             return Task.FromResult(result);
         }
 
-        /// <summary>
-        /// Done with the camera, free up resources!
-        /// </summary>
+        /// <inheritdoc/>
         public void Shutdown()
         {
             if (webcamTex != null && webcamTex.isPlaying)
@@ -158,5 +144,33 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             }
             webcamTex = null;
         }
+        #endregion // Public Methods
+
+        #region Public Properties
+        /// <inheritdoc/>
+        public float FieldOfView
+        {
+            get
+            {
+                return fieldOfView;
+            }
+        }
+
+        /// <inheritdoc/>
+        public bool IsReady
+        {
+            get
+            {
+                return webcamTex != null && webcamTex.isPlaying && (Time.time - startTime) > CAMERA_START_DELAY;
+            }
+        }
+
+        /// <inheritdoc/>
+        public bool IsRequestingImage
+        {
+            get;
+            private set;
+        }
+        #endregion // Public Properties
     }
 }

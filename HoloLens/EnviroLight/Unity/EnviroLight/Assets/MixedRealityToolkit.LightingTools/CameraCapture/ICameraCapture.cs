@@ -8,23 +8,68 @@ using UnityEngine;
 
 namespace Microsoft.MixedReality.Toolkit.LightingTools
 {
-    public interface ICameraCapture
+    /// <summary>
+    /// The result of a camera capture as colors.
+    /// </summary>
+    public class ColorResult : TextureResult
     {
         /// <summary>
-        /// Is the camera completely initialized and ready to begin taking pictures?
+        /// Initialize a new <see cref="ColorResult"/>.
         /// </summary>
-        bool  IsInitialized { get; }
-        /// <summary>
-        /// Is the camera currently already busy with taking a picture?
-        /// </summary>
-        bool  IsRequestingImage { get; }
-        /// <summary>
-        /// Field of View of the camera in degrees. This value is never ready until after
-        /// initialization, and in many cases, isn't accurate until after a picture has
-        /// been taken. It's best to check this after each picture if you need it.
-        /// </summary>
-        float FieldOfView { get; }
+        /// <param name="matrix">
+        /// The camera matrix.
+        /// </param>
+        /// <param name="texture">
+        /// The texture.
+        /// </param>
+        public ColorResult(Matrix4x4 matrix, Texture2D texture) : base(matrix, texture)
+        {
+            Colors = texture.GetRawTextureData<Color24>();
+        }
 
+        /// <summary>
+        /// Gets the colors for the result.
+        /// </summary>
+        public NativeArray<Color24> Colors { get; }
+    }
+
+    /// <summary>
+    /// The result of a camera capture as a texture.
+    /// </summary>
+    public class TextureResult
+    {
+        /// <summary>
+        /// Initialize a new <see cref="TextureResult"/>.
+        /// </summary>
+        /// <param name="matrix">
+        /// The camera matrix.
+        /// </param>
+        /// <param name="texture">
+        /// The texture.
+        /// </param>
+        public TextureResult(Matrix4x4 matrix, Texture texture)
+        {
+            Matrix = matrix;
+            Texture = texture;
+        }
+
+        /// <summary>
+        /// Gets the camera matrix for the result.
+        /// </summary>
+        public Matrix4x4 Matrix { get; }
+
+        /// <summary>
+        /// Gets the texture for the result.
+        /// </summary>
+        public Texture Texture { get; }
+    }
+
+    /// <summary>
+    /// The interface for a camera capture service.
+    /// </summary>
+    public interface ICameraCapture
+    {
+        #region Public Methods
         /// <summary>
         /// Initializes a device's camera and finds appropriate picture settings based on the provided resolution.
         /// </summary>
@@ -59,5 +104,61 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         /// Done with the camera, free up resources!
         /// </summary>
         void Shutdown();
+        #endregion // Public Methods
+
+        #region Public Properties
+        /// <summary>
+        /// Is the camera completely initialized and ready to begin taking pictures?
+        /// </summary>
+        bool IsReady { get; }
+
+        /// <summary>
+        /// Is the camera currently already busy with taking a picture?
+        /// </summary>
+        bool IsRequestingImage { get; }
+
+        /// <summary>
+        /// Field of View of the camera in degrees. This value is never ready until after
+        /// initialization, and in many cases, isn't accurate until after a picture has
+        /// been taken. It's best to check this after each picture if you need it.
+        /// </summary>
+        float FieldOfView { get; }
+        #endregion // Public Properties
+    }
+
+    /// <summary>
+    /// The interface for advanced camera control services.
+    /// </summary>
+    public interface ICameraControl
+    {
+        /// <summary>
+        /// Manually override the camera's exposure.
+        /// </summary>
+        /// <param name="exposure">
+        /// These appear to be imaginary units of some kind. Seems to be integer values around, but not exactly -10 to +10.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> that represents the operation.
+        /// </returns>
+        Task SetExposureAsync(int exposure);
+
+        /// <summary>
+        /// Manually override the camera's white balance.
+        /// </summary>
+        /// <param name="kelvin">
+        /// White balance temperature in kelvin! Also seems a bit arbitrary as to what values it accepts.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> that represents the operation.
+        /// </returns>
+        Task SetWhiteBalanceAsync(int kelvin);
+
+        /// <summary>
+        /// Manually override the camera's ISO.
+        /// </summary>
+        /// <param name="iso">
+        /// Camera's sensitivity to light, kinda like gain.
+        /// </param>
+        Task SetISOAsync(int iso);
     }
 }
