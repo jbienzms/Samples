@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -172,7 +173,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
 
             DynamicGI.UpdateEnvironment();
         }
-        private void OnEnable()
+        private async void OnEnable()
         {
             // Save initial settings in case we wish to restore them
             startSky = RenderSettings.skybox;
@@ -191,18 +192,18 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             resolution.nativeResolution = NativeResolutionMode.Smallest;
             resolution.resize           = ResizeWhen.Never;
 
-            captureCamera.Initialize(true, resolution, ()=>
+            await captureCamera.InitializeAsync(true, resolution);
+
+            if (map == null)
             {
-                if (map == null)
-                {
-                    map = new CubeMapper();
-                    map.Create(captureCamera.FieldOfView * stampFovMultiplier, mapResolution);
-                    map.StampExpireDistance = stampExpireDistance;
-                }
-                probe.customBakedTexture = map.Map;
-                RenderSettings.skybox = map.SkyMaterial;
-                RenderSettings.ambientMode = AmbientMode.Skybox;
-            });
+                map = new CubeMapper();
+                map.Create(captureCamera.FieldOfView * stampFovMultiplier, mapResolution);
+                map.StampExpireDistance = stampExpireDistance;
+            }
+            probe.customBakedTexture = map.Map;
+            RenderSettings.skybox = map.SkyMaterial;
+            RenderSettings.ambientMode = AmbientMode.Skybox;
+
 
             DynamicGI.UpdateEnvironment();
         }
@@ -227,7 +228,8 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             {
                 if (!map.IsCached(cameraOrientation.position, cameraOrientation.forward))
                 {
-                    captureCamera.RequestImage(OnReceivedImage);
+                    // Take stamp (do not await, let it run blindly)
+                    var t = TakeStampAsync();
                 }
             }
 
@@ -248,9 +250,13 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         #endregion
 
         #region Private Methods
-        private void OnReceivedImage(Texture texture, Matrix4x4 camera)
+        private async Task TakeStampAsync()
         {
-            map.Stamp(texture, camera.GetColumn(3), camera.rotation, camera.MultiplyVector(Vector3.forward));
+            var result = await captureCamera.RequestTextureAsync();
+            var texture = result.Texture;
+            var matrix = result.Matrix;
+
+            map.Stamp(texture, matrix.GetColumn(3), matrix.rotation, matrix.MultiplyVector(Vector3.forward));
             stampCount += 1;
 
             DynamicGI.UpdateEnvironment();
@@ -260,6 +266,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                 UpdateDirectionalLight();
             }
         }
+
         private void UpdateDirectionalLight()
         {
             if (directionalLight == null || map == null)
