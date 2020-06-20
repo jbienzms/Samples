@@ -122,9 +122,12 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         public Task<ColorResult> RequestColorAsync()
         {
             resolution.ResizeTexture(webcamTex, ref resizedTexture, true);
-            Texture2D r2d = resizedTexture as Texture2D;
-            ColorResult result = new ColorResult(poseSource == null ? Matrix4x4.identity : poseSource.localToWorldMatrix, r2d);
-            return Task.FromResult(result);
+            Texture2D t2d = resizedTexture as Texture2D;
+            if (t2d != null)
+            {
+                return Task.FromResult(new ColorResult(poseSource == null ? Matrix4x4.identity : poseSource.localToWorldMatrix, t2d));
+            }
+            throw new NotSupportedException("This device does not support requesting colors.");
         }
 
         /// <inheritdoc/>

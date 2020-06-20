@@ -164,7 +164,12 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             var textureResult = await RequestTextureAsync();
 
             // Return color result
-            return new ColorResult(textureResult.Matrix, textureResult.Texture);
+            Texture2D t2d = textureResult.Texture as Texture2D;
+            if (t2d != null)
+            {
+                return new ColorResult(textureResult.Matrix, t2d);
+            }
+            throw new NotSupportedException("This device does not support requesting colors.");
         }
 
         /// <inheritdoc/>
@@ -243,13 +248,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
 
         #region Public Properties
         /// <inheritdoc/>
-        public float FieldOfView
-        {
-            get
-            {
-                return fieldOfView;
-            }
-        }
+        public float FieldOfView => fieldOfView;
 
         /// <inheritdoc/>
         public bool IsReady => (initializeTask != null && initializeTask.IsCompleted && !initializeTask.IsFaulted);

@@ -14,7 +14,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
     public class ColorResult : TextureResult
     {
         /// <summary>
-        /// Initialize a new <see cref="ColorResult"/>.
+        /// Initialize a new <see cref="ColorResult"/> from a <see cref="Texture2D"/>.
         /// </summary>
         /// <param name="matrix">
         /// The camera matrix.
@@ -25,6 +25,23 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         public ColorResult(Matrix4x4 matrix, Texture2D texture) : base(matrix, texture)
         {
             Colors = texture.GetRawTextureData<Color24>();
+        }
+
+        /// <summary>
+        /// Initialize a new <see cref="ColorResult"/> from a <see cref="Texture"/> and a color array.
+        /// </summary>
+        /// <param name="matrix">
+        /// The camera matrix.
+        /// </param>
+        /// <param name="texture">
+        /// The texture.
+        /// </param>
+        /// <param name="colors">
+        /// The manually supplied color array.
+        /// </param>
+        public ColorResult(Matrix4x4 matrix, Texture texture, NativeArray<Color24> colors) : base(matrix, texture)
+        {
+            this.Colors = colors;
         }
 
         /// <summary>
