@@ -9,6 +9,7 @@ using UnityEngine;
 using System.Runtime.InteropServices;
 
 using Windows.Media.Devices;
+using System.Threading.Tasks;
 
 namespace Microsoft.MixedReality.Toolkit.LightingTools
 {
@@ -36,8 +37,13 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         /// <summary>
         /// Manually override the camera's exposure.
         /// </summary>
-        /// <param name="exposure">These appear to be imaginary units of some kind. Seems to be integer values around, but not exactly -10 to +10.</param>
-        public async void SetExposure(int exposure)
+        /// <param name="exposure">
+        /// These appear to be imaginary units of some kind. Seems to be integer values around, but not exactly -10 to +10.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> that represents the operation.
+        /// </returns>
+        public async Task SetExposureAsync(int exposure)
         {
             //Debug.LogFormat("({3} : {0}-{1}) +{2}", controller.Exposure.Capabilities.Min, controller.Exposure.Capabilities.Max, controller.Exposure.Capabilities.Step, exposure);
 
@@ -57,7 +63,6 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
 
                 // Convert exposure to TimeSpan (starting with Minimum and adding to it)
                 TimeSpan expTime = controller.ExposureControl.Min + TimeSpan.FromMilliseconds(expms);
-
 
                 // Update the controller
                 try
@@ -89,26 +94,60 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         /// <summary>
         /// Manually override the camera's white balance.
         /// </summary>
-        /// <param name="kelvin">White balance temperature in kelvin! Also seems a bit arbitrary as to what values it accepts.</param>
-        public void SetWhiteBalance(int kelvin)
+        /// <param name="kelvin">
+        /// White balance temperature in kelvin! Also seems a bit arbitrary as to what values it accepts.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task"/> that represents the operation.
+        /// </returns>
+        public async Task SetWhiteBalanceAsync(int kelvin)
         {
-            if (!controller.WhiteBalance.TrySetAuto(false))
+            if (controller.WhiteBalanceControl.Supported)
             {
-                Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set auto WhiteBalance off", typeof(VideoDeviceControllerWrapperUWP));
-            }
+                Debug.Log("Setting white balance using WhiteBalanceControl.");
 
-            if (!controller.WhiteBalance.TrySetValue((double)kelvin))
+                // Update the controller
+                try
+                {
+                    // await controller.WhiteBalanceControl.SetPresetAsync(ColorTemperaturePreset.Manual);
+                    await controller.WhiteBalanceControl.SetValueAsync((uint)kelvin);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set white balance to {1}. {2}", typeof(VideoDeviceControllerWrapperUWP), kelvin, ex);
+                }
+            }
+            else
             {
-                Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set WhiteBalance to {1} as requested", typeof(VideoDeviceControllerWrapperUWP), kelvin);
+                Debug.Log("Setting white balance using regular WhiteBalance.");
+
+                if (!controller.WhiteBalance.TrySetAuto(false))
+                {
+                    Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set auto WhiteBalance off", typeof(VideoDeviceControllerWrapperUWP));
+                }
+
+                if (!controller.WhiteBalance.TrySetValue((double)kelvin))
+                {
+                    Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set WhiteBalance to {1} as requested", typeof(VideoDeviceControllerWrapperUWP), kelvin);
+                }
             }
         }
         /// <summary>
         /// Manually override the camera's ISO.
         /// </summary>
-        /// <param name="iso">Camera's sensitivity to light, kinda like gain.</param>
-        public void SetISO(int iso)
+        /// <param name="iso">
+        /// Camera's sensitivity to light, kinda like gain.
+        /// </param>
+        public async Task SetISOAsync(int iso)
         {
-            var task = controller.IsoSpeedControl.SetValueAsync((uint)iso);
+            try
+            {
+                await controller.IsoSpeedControl.SetValueAsync((uint)iso);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set ISO to {1}. {2}", typeof(VideoDeviceControllerWrapperUWP), iso, ex);
+            }
         }
 
         /// <summary>
@@ -119,6 +158,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
         /// <summary>
         /// Dispose(bool disposing) executes in two distinct scenarios.
         /// If disposing equals true, the method has been called directly
@@ -143,5 +183,4 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         }
     }
 }
-
 #endif
