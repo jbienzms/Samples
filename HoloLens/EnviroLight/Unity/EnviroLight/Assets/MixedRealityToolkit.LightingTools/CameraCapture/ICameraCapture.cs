@@ -152,30 +152,36 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         /// Manually override the camera's exposure.
         /// </summary>
         /// <param name="exposure">
-        /// These appear to be imaginary units of some kind. Seems to be integer values around, but not exactly -10 to +10.
+        /// This value can range from 0.0 to 1.0 inclusive. It will be scaled to the devices max exposure range.
         /// </param>
         /// <returns>
         /// A <see cref="Task"/> that represents the operation.
         /// </returns>
-        Task SetExposureAsync(int exposure);
+        Task SetExposureAsync(double exposure);
 
         /// <summary>
         /// Manually override the camera's white balance.
         /// </summary>
-        /// <param name="kelvin">
-        /// White balance temperature in kelvin! Also seems a bit arbitrary as to what values it accepts.
+        /// <param name="temperature">
+        /// White balance temperature in kelvin.
         /// </param>
         /// <returns>
         /// A <see cref="Task"/> that represents the operation.
         /// </returns>
-        Task SetWhiteBalanceAsync(int kelvin);
+        /// <remarks>
+        /// Though specified in kelvin, not all camera controllers follow the spec exactly.
+        /// </remarks>
+        Task SetWhiteBalanceAsync(uint temperature);
 
         /// <summary>
         /// Manually override the camera's ISO.
         /// </summary>
         /// <param name="iso">
-        /// Camera's sensitivity to light, kinda like gain.
+        /// Camera's sensitivity to light.
         /// </param>
-        Task SetISOAsync(int iso);
+        /// <remarks>
+        /// ISO is similar to gain.
+        /// </remarks>
+        Task SetISOAsync(uint iso);
     }
 }

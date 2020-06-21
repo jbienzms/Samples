@@ -19,12 +19,15 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         private Texture2D cacheTex = null;
         private PhotoCapture camera = null;
         private CameraParameters cameraParams;
+        private double exposure = 0.2f;
         private float fieldOfView = 45;
         private bool hasWarnedCameraMatrix = false;
         private Task initializeTask = null;
+        private uint iso = 80;
         private Task<TextureResult> requestImageTask;
         private CameraResolution resolution = null;
         private Texture2D resizedTex = null;
+        private uint temperature = 5000;
         private VideoDeviceControllerWrapperUWP wrapper;
         #endregion // Member Variables
 
@@ -42,6 +45,11 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
 
             // Wait for the camera to start photo mode
             await camera.StartPhotoModeAsync(cameraParams);
+
+            // Update camera values (which can only be done while streaming)
+            await wrapper.SetExposureAsync(exposure);
+            await wrapper.SetWhiteBalanceAsync(temperature);
+            await wrapper.SetISOAsync(iso);
 
             // Take a picture and get the result
             var takeResult = await camera.TakePhotoAsync();
@@ -65,7 +73,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                 if (!hasWarnedCameraMatrix)
                 {
                     hasWarnedCameraMatrix = true;
-                    Debug.Log("[CameraCapture] Can't get camera matrix!!");
+                    Debug.LogWarning($"{nameof(CameraCaptureUWP)} can't get camera matrix. Falling back to main camera.");
                 }
                 transform = Camera.main.transform.localToWorldMatrix;
             }
@@ -135,11 +143,6 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             // Create the wrapper
             IntPtr unknown = camera.GetUnsafePointerToVideoDeviceController();
             wrapper = new VideoDeviceControllerWrapperUWP(unknown);
-
-            // Set defaults for the camera
-            await wrapper.SetExposureAsync(-7);
-            await wrapper.SetWhiteBalanceAsync(5000);
-            await wrapper.SetISOAsync(80);
         }
         #endregion // Internal Methods
 
@@ -191,33 +194,48 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         }
 
         /// <inheritdoc/>
-        public Task SetExposureAsync(int exposure)
+        public async Task SetExposureAsync(double exposure)
         {
-            // Make sure we're initialized before proceeding
-            EnsureInitialized();
+            // Validate
+            if ((exposure < 0.0) || (exposure > 1.0)) { throw new ArgumentOutOfRangeException(nameof(exposure)); }
 
-            // Pass to wrapper
-            return wrapper.SetExposureAsync(exposure);
+            // Save value
+            this.exposure = exposure;
+
+            // If we're capturing, update right away
+            if (IsRequestingImage)
+            {
+                // Pass to wrapper
+                await wrapper.SetExposureAsync(exposure);
+            }
         }
 
         /// <inheritdoc/>
-        public Task SetWhiteBalanceAsync(int kelvin)
+        public async Task SetWhiteBalanceAsync(uint temperature)
         {
-            // Make sure we're initialized before proceeding
-            EnsureInitialized();
+            // Save value
+            this.temperature = temperature;
 
-            // Pass to wrapper
-            return wrapper.SetWhiteBalanceAsync(kelvin);
+            // If we're capturing, update right away
+            if (IsRequestingImage)
+            {
+                // Pass to wrapper
+                await wrapper.SetWhiteBalanceAsync(temperature);
+            }
         }
 
         /// <inheritdoc/>
-        public Task SetISOAsync(int iso)
+        public async Task SetISOAsync(uint iso)
         {
-            // Make sure we're initialized before proceeding
-            EnsureInitialized();
+            // Save value
+            this.iso = iso;
 
-            // Pass to wrapper
-            return wrapper.SetISOAsync(iso);
+            // If we're capturing, update right away
+            if (IsRequestingImage)
+            {
+                // Pass to wrapper
+                await wrapper.SetISOAsync(iso);
+            }
         }
 
         /// <inheritdoc/>

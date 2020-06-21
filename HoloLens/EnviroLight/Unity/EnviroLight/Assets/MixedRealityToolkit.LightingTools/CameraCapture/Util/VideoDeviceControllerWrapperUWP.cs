@@ -34,119 +34,200 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             Dispose(false);
         }
 
-        /// <summary>
-        /// Manually override the camera's exposure.
-        /// </summary>
-        /// <param name="exposure">
-        /// These appear to be imaginary units of some kind. Seems to be integer values around, but not exactly -10 to +10.
-        /// </param>
-        /// <returns>
-        /// A <see cref="Task"/> that represents the operation.
-        /// </returns>
-        public async Task SetExposureAsync(int exposure)
+        /// <inheritdoc/>
+        public async Task SetExposureAsync(double exposure)
         {
+            // Validate the range
+            if ((exposure < 0.0) || (exposure > 1.0)) { throw new ArgumentOutOfRangeException(nameof(exposure)); }
+
             //Debug.LogFormat("({3} : {0}-{1}) +{2}", controller.Exposure.Capabilities.Min, controller.Exposure.Capabilities.Max, controller.Exposure.Capabilities.Step, exposure);
 
-            // Use exposure control or exposure?
-            if (controller.ExposureControl.Supported)
+            // Shortcuts
+            var exp = controller.Exposure;
+            var expc = controller.ExposureControl;
+
+            // Try to use exposure control
+            if (expc.Supported)
             {
                 Debug.Log("Setting exposure using ExposureControl.");
 
-                // Get total possible exposure range as a TimeSpan
-                TimeSpan range = (controller.ExposureControl.Max - controller.ExposureControl.Min);
+                // If not in manual mode, attempt to put it in manual mode
+                if (expc.Auto)
+                {
+                    try
+                    {
+                        await expc.SetAutoAsync(false);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set exposure mode to manual. {ex}");
+                    }
+                }
 
-                // Convert exposure passed in (-10 to 10) to floating point range (0.0 to 1.0)
-                double exp = ((double)(exposure + 10)) / 20;
-
-                // Convert exposure to milliseconds
-                double expms = range.TotalMilliseconds * exp;
-
-                // Convert exposure to TimeSpan (starting with Minimum and adding to it)
-                TimeSpan expTime = controller.ExposureControl.Min + TimeSpan.FromMilliseconds(expms);
-
-                // Update the controller
+                // Wrap in case of bad controller implementation
                 try
                 {
-                    await controller.ExposureControl.SetAutoAsync(false);
-                    await controller.ExposureControl.SetValueAsync(expTime);
+                    // Get total possible exposure range as a TimeSpan
+                    TimeSpan range = (expc.Max - expc.Min);
+
+                    // Convert exposure to part of total time
+                    double exppart = range.TotalMilliseconds * exposure;
+
+                    // Convert exposure to TimeSpan (starting with Minimum and adding to it)
+                    TimeSpan exptarget = expc.Min + TimeSpan.FromMilliseconds(exppart);
+
+                    // Make sure we don't go outside the range
+                    if (exptarget < expc.Min) { exptarget = expc.Min; }
+                    if (exptarget > expc.Max) { exptarget = expc.Max; }
+
+                    // Update the controller
+                    await expc.SetValueAsync(exptarget);
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set exposure to {1}. {2}", typeof(VideoDeviceControllerWrapperUWP), expTime, ex);
+                    Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set exposure to {exposure}. {ex}");
                 }
             }
-            else
+
+            // Fall back to Exposure
+            else if (exp.Capabilities.Supported)
             {
                 Debug.Log("Setting exposure using regular Exposure.");
 
-                if (!controller.Exposure.TrySetAuto(false))
+                // Try to turn off auto exposure
+                if (!exp.TrySetAuto(false))
                 {
-                    Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set auto exposure off", typeof(VideoDeviceControllerWrapperUWP));
+                    Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to turn auto exposure off.");
                 }
 
-                if (!controller.Exposure.TrySetValue((double)exposure))
+                // Get total possible exposure range
+                double range = (exp.Capabilities.Max - exp.Capabilities.Min);
+
+                // Convert exposure to part of total range
+                double exppart = range * exposure;
+
+                // Convert exposure part to a value in exposure range (starting with Minimum and adding to it)
+                double exptarget = exp.Capabilities.Min + exppart;
+
+                // Make sure we don't go outside the range
+                if (exptarget < exp.Capabilities.Min) { exptarget = exp.Capabilities.Min; }
+                if (exptarget > exp.Capabilities.Max) { exptarget = exp.Capabilities.Max; }
+
+                // Apply range 10
+                if (!exp.TrySetValue(exptarget))
                 {
-                    Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set exposure to {1} as requested", typeof(VideoDeviceControllerWrapperUWP), exposure);
+                    Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set exposure to {exposure}.");
                 }
+            }
+
+            // No support
+            else
+            {
+                Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} current device does not support setting exposure.");
             }
         }
 
-        /// <summary>
-        /// Manually override the camera's white balance.
-        /// </summary>
-        /// <param name="kelvin">
-        /// White balance temperature in kelvin! Also seems a bit arbitrary as to what values it accepts.
-        /// </param>
-        /// <returns>
-        /// A <see cref="Task"/> that represents the operation.
-        /// </returns>
-        public async Task SetWhiteBalanceAsync(int kelvin)
+        /// <inheritdoc/>
+        public async Task SetWhiteBalanceAsync(uint temperature)
         {
-            if (controller.WhiteBalanceControl.Supported)
+            // Get shortcuts
+            var wb = controller.WhiteBalance;
+            var wbc = controller.WhiteBalanceControl;
+
+            // Try WhiteBalanceControl first
+            if (wbc.Supported)
             {
                 Debug.Log("Setting white balance using WhiteBalanceControl.");
 
-                // Update the controller
+                // If not in manual mode, attempt to put it in manual mode
+                if (wbc.Preset != ColorTemperaturePreset.Manual)
+                {
+                    try
+                    {
+                        await wbc.SetPresetAsync(ColorTemperaturePreset.Manual);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set white balance mode to manual. {ex}");
+                    }
+                }
+
+                // Attempt to set the temperature
                 try
                 {
-                    // await controller.WhiteBalanceControl.SetPresetAsync(ColorTemperaturePreset.Manual);
-                    await controller.WhiteBalanceControl.SetValueAsync((uint)kelvin);
+                    // Make sure the temperature stays within supported range of the controller
+                    uint wbtarget = Math.Max(wbc.Min, temperature);
+                    wbtarget = Math.Min(wbc.Max, wbtarget);
+
+                    // Update controller
+                    await wbc.SetValueAsync(wbtarget);
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set white balance to {1}. {2}", typeof(VideoDeviceControllerWrapperUWP), kelvin, ex);
+                    Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set white balance to {temperature}. {ex}");
                 }
             }
-            else
+
+            // Fall back to WhiteBalance
+            else if (wb.Capabilities.Supported)
             {
                 Debug.Log("Setting white balance using regular WhiteBalance.");
 
-                if (!controller.WhiteBalance.TrySetAuto(false))
+                // Attempt to put it in manual mode
+                if (!wb.TrySetAuto(false))
                 {
-                    Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set auto WhiteBalance off", typeof(VideoDeviceControllerWrapperUWP));
+                    Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to turn auto white balance off.");
                 }
 
-                if (!controller.WhiteBalance.TrySetValue((double)kelvin))
+                // Make sure the temperature stays within supported range of the controller
+                double wbtarget = Math.Max(wb.Capabilities.Min, temperature);
+                wbtarget = Math.Min(wb.Capabilities.Max, wbtarget);
+
+                // Attempt to set the temperature
+                if (!wb.TrySetValue(wbtarget))
                 {
-                    Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set WhiteBalance to {1} as requested", typeof(VideoDeviceControllerWrapperUWP), kelvin);
+                    Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set white balance to {temperature}.");
                 }
             }
-        }
-        /// <summary>
-        /// Manually override the camera's ISO.
-        /// </summary>
-        /// <param name="iso">
-        /// Camera's sensitivity to light, kinda like gain.
-        /// </param>
-        public async Task SetISOAsync(int iso)
-        {
-            try
+
+            // No support
+            else
             {
-                await controller.IsoSpeedControl.SetValueAsync((uint)iso);
+                Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} current device does not support setting white balance.");
             }
-            catch (Exception ex)
+        }
+
+        /// <inheritdoc/>
+        public async Task SetISOAsync(uint iso)
+        {
+            // Shortcuts
+            var isoc = controller.IsoSpeedControl;
+
+            // Only option is IsoSpeedControl
+            if (isoc.Supported)
             {
-                Debug.LogErrorFormat("[{0}] HoloLens locatable camera has failed to set ISO to {1}. {2}", typeof(VideoDeviceControllerWrapperUWP), iso, ex);
+                Debug.Log("Setting ISO using IsoSpeedControl.");
+
+                // Wrap in case of bad controller implementation
+                try
+                {
+                    // Make sure the temperature stays within supported range of the controller
+                    uint isotarget = Math.Max(isoc.Min, iso);
+                    isotarget = Math.Min(isoc.Max, isotarget);
+
+                    // Update the controller
+                    await isoc.SetValueAsync(isotarget);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set ISO to {iso}. {ex}");
+                }
+            }
+
+            // No support
+            else
+            {
+                Debug.LogWarning($"{nameof(VideoDeviceControllerWrapperUWP)} current device does not support ISO speed control.");
             }
         }
 

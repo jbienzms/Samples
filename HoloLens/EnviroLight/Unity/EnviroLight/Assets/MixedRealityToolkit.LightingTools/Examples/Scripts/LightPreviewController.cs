@@ -14,6 +14,16 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools.Examples
 {
     public class LightPreviewController : MonoBehaviour
     {
+        #region Constants
+        /// <summary>
+        /// How much the exposure will be adjusted each time.
+        /// </summary>
+        private const double EXPOSURE_ADJUST = 0.1;
+        private const double EXPOSURE_MAX = 1.0;
+        private const double EXPOSURE_MIN = 0.0;
+        private const uint WB_ADJUST = 250;
+        #endregion // Constants
+
         #region Fields
 #pragma warning disable 414, 649
         [Header("Scene/asset hooks")]
@@ -36,8 +46,8 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools.Examples
         private Vector3 lastPos;
         private float   lastTime;
 
-        private int exposure   = -7;
-        private int whitebalance = 6000;
+        private double exposure   = 0.2;
+        private uint whitebalance = 6000;
 
         private LightCapture lightCapture;
         private Component    tts;
@@ -197,19 +207,25 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools.Examples
             }
             else if (args.text == "up")
             {
-                exposure += 1;
-                await lightCapture.SetExposureAsync(exposure);
+                if (exposure + EXPOSURE_ADJUST <= EXPOSURE_MAX)
+                {
+                    exposure += EXPOSURE_ADJUST;
+                    await lightCapture.SetExposureAsync(exposure);
+                }
                 reply = ""+exposure;
             }
             else if (args.text == "down")
             {
-                exposure -= 1;
-                await lightCapture.SetExposureAsync(exposure);
+                if (exposure - EXPOSURE_ADJUST >= EXPOSURE_MIN)
+                {
+                    exposure -= EXPOSURE_ADJUST;
+                    await lightCapture.SetExposureAsync(exposure);
+                }
                 reply = ""+exposure;
             }
             else if (args.text == "white up")
             {
-                whitebalance += 250;
+                whitebalance += WB_ADJUST;
                 await lightCapture.SetWhiteBalanceAsync(whitebalance);
                 Debug.Log("WB: " + whitebalance);
                 reply = ""+whitebalance;

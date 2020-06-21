@@ -352,7 +352,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
 
         #region Public Methods
         /// <inheritdoc/>
-        public Task SetExposureAsync(int exposure)
+        public Task SetExposureAsync(double exposure)
         {
             if (WarnIfNotReady()) { return Task.CompletedTask; }
             if (WarnIfNoControl()) { return Task.CompletedTask; }
@@ -360,15 +360,15 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         }
 
         /// <inheritdoc/>
-        public Task SetWhiteBalanceAsync(int kelvin)
+        public Task SetWhiteBalanceAsync(uint temperature)
         {
             if (WarnIfNotReady()) { return Task.CompletedTask; }
             if (WarnIfNoControl()) { return Task.CompletedTask; }
-            return cameraControl.SetWhiteBalanceAsync(kelvin);
+            return cameraControl.SetWhiteBalanceAsync(temperature);
         }
 
         /// <inheritdoc/>
-        public Task SetISOAsync(int iso)
+        public Task SetISOAsync(uint iso)
         {
             if (WarnIfNotReady()) { return Task.CompletedTask; }
             if (WarnIfNoControl()) { return Task.CompletedTask; }
