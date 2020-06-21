@@ -118,8 +118,8 @@ Material:
     - _InstancedColor: 0
     - _Iridescence: 1
     - _IridescenceAngle: 0.78
-    - _IridescenceIntensity: 0.468
-    - _IridescenceThreshold: 0.579
+    - _IridescenceIntensity: 0.663
+    - _IridescenceThreshold: 0.573
     - _Metallic: 0.422
     - _Mode: 0
     - _NearLightFade: 0
@@ -132,7 +132,7 @@ Material:
     - _ProximityLightTwoSided: 0
     - _Reflections: 1
     - _Refraction: 1
-    - _RefractiveIndex: 0.45
+    - _RefractiveIndex: 0.883
     - _RenderQueueOverride: -1
     - _RimLight: 0
     - _RimPower: 0.25
@@ -162,7 +162,7 @@ Material:
     - _ClippingBorderColor: {r: 1, g: 0.2, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 0, g: 0.3567753, b: 0.3773585, a: 1}
+    - _EmissiveColor: {r: 0, g: 0.6611321, b: 0.6886792, a: 1}
     - _EnvironmentColorX: {r: 1, g: 0, b: 0, a: 1}
     - _EnvironmentColorY: {r: 0, g: 1, b: 0, a: 1}
     - _EnvironmentColorZ: {r: 0, g: 0, b: 1, a: 1}
