@@ -246,10 +246,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings:
-    nearRadius: 0.736
-    farRadius: 0.853
-    nearDistance: 0.076
-    minNearSizePercentage: 0.384
+    nearRadius: 0.359
+    farRadius: 0.647
+    nearDistance: 0.109
+    minNearSizePercentage: 0.44
     centerColor: {r: 0.21176466, g: 0.88091654, b: 0.98039216, a: 1}
     middleColor: {r: 0, g: 0.8901961, b: 1, a: 1}
     outerColor: {r: 0, g: 2.971698, b: 2.8788323, a: 1}
