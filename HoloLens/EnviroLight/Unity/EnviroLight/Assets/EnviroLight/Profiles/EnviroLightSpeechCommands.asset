@@ -101,8 +101,15 @@ MonoBehaviour:
       description: Toggle Profiler
       axisConstraint: 0
   - localizationKey: 
-    keyword: Read the Article
+    keyword: View the Article
     keyCode: 0
+    action:
+      id: 0
+      description: Toggle Profiler
+      axisConstraint: 0
+  - localizationKey: 
+    keyword: Reset Environment Lights
+    keyCode: 39
     action:
       id: 0
       description: Toggle Profiler

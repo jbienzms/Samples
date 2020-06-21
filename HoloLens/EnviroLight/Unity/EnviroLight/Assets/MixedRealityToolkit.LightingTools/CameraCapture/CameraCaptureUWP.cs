@@ -19,11 +19,11 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         private Texture2D cacheTex = null;
         private PhotoCapture camera = null;
         private CameraParameters cameraParams;
-        private double exposure = 0.2f;
+        private double exposure = 0.4f;
         private float fieldOfView = 45;
         private bool hasWarnedCameraMatrix = false;
         private Task initializeTask = null;
-        private uint iso = 80;
+        private uint iso = 800;
         private Task<TextureResult> requestImageTask;
         private CameraResolution resolution = null;
         private Texture2D resizedTex = null;

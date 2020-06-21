@@ -378,7 +378,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
         /// <summary> Clear the internal representation of light, and start over again from scratch. </summary>
         public void Clear()
         {
-            map.Clear();
+            if (map != null) { map.Clear(); }
             stampCount = 0;
         }
         #endregion

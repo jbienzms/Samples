@@ -60,7 +60,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                     }
                     catch (Exception ex)
                     {
-                        Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set exposure mode to manual. {ex}");
+                        Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set exposure mode to manual using ExposureControl. {ex}");
                     }
                 }
 
@@ -81,6 +81,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                     if (exptarget > expc.Max) { exptarget = expc.Max; }
 
                     // Update the controller
+                    Debug.Log($"Exposure Values - Min: {expc.Min}, Max: {expc.Max}, Input: {exposure}, Target: {exptarget}");
                     await expc.SetValueAsync(exptarget);
                 }
                 catch (Exception ex)
@@ -113,7 +114,8 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                 if (exptarget < exp.Capabilities.Min) { exptarget = exp.Capabilities.Min; }
                 if (exptarget > exp.Capabilities.Max) { exptarget = exp.Capabilities.Max; }
 
-                // Apply range 10
+                // Update controller
+                Debug.Log($"Exposure Values - Min: {exp.Capabilities.Min}, Max: {exp.Capabilities.Max}, Input: {exposure}, Target: {exptarget}");
                 if (!exp.TrySetValue(exptarget))
                 {
                     Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set exposure to {exposure}.");
@@ -160,6 +162,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                     wbtarget = Math.Min(wbc.Max, wbtarget);
 
                     // Update controller
+                    Debug.Log($"White Balance Values - Min: {wbc.Min}, Max: {wbc.Max}, Input: {temperature}, Target: {wbtarget}");
                     await wbc.SetValueAsync(wbtarget);
                 }
                 catch (Exception ex)
@@ -183,7 +186,8 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                 double wbtarget = Math.Max(wb.Capabilities.Min, temperature);
                 wbtarget = Math.Min(wb.Capabilities.Max, wbtarget);
 
-                // Attempt to set the temperature
+                // Update controller
+                Debug.Log($"White Balance Values - Min: {wb.Capabilities.Min}, Max: {wb.Capabilities.Max}, Input: {temperature}, Target: {wbtarget}");
                 if (!wb.TrySetValue(wbtarget))
                 {
                     Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set white balance to {temperature}.");
@@ -216,6 +220,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                     isotarget = Math.Min(isoc.Max, isotarget);
 
                     // Update the controller
+                    Debug.Log($"ISO Values - Min: {isoc.Min}, Max: {isoc.Max}, Input: {iso}, Target: {isotarget}");
                     await isoc.SetValueAsync(isotarget);
                 }
                 catch (Exception ex)

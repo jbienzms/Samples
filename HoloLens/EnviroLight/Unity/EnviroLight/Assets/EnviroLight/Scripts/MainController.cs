@@ -180,6 +180,14 @@ public class MainController : MonoBehaviour
 
     #region Public Methods
     /// <summary>
+    /// Resets the environment scan.
+    /// </summary>
+    public void ResetEnvironmentLights()
+    {
+        LightCapture.Clear();
+    }
+
+    /// <summary>
     /// Starts placement of the scene.
     /// </summary>
     public void StartPlacing()
