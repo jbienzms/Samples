@@ -15,9 +15,6 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools.Examples
     public class LightPreviewController : MonoBehaviour
     {
         #region Constants
-        /// <summary>
-        /// How much the exposure will be adjusted each time.
-        /// </summary>
         private const double EXPOSURE_ADJUST = 0.1;
         private const double EXPOSURE_MAX = 1.0;
         private const double EXPOSURE_MIN = 0.0;
@@ -25,7 +22,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools.Examples
         #endregion // Constants
 
         #region Fields
-#pragma warning disable 414, 649
+		#pragma warning disable 414, 649
         [Header("Scene/asset hooks")]
         [SerializeField] private GameObject   spheres      = null;
         [SerializeField] private GameObject   shaderBalls  = null;
@@ -56,7 +53,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools.Examples
         #if UNITY_EDITOR || WINDOWS_UWP
         private KeywordRecognizer keywordRecognizer;
         #endif
-#pragma warning restore 414, 649
+		#pragma warning restore 414, 649
         #endregion
 
         private void OnEnable()
