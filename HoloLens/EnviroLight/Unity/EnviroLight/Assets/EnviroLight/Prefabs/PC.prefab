@@ -190,7 +190,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723621817159637463}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0.125}
+  m_LocalPosition: {x: 0, y: 0, z: 0.124}
   m_LocalScale: {x: 0.0002, y: 0.0002, z: 1}
   m_Children:
   - {fileID: 1723621818824434540}
@@ -221,7 +221,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &1723621817159637448
 MonoBehaviour:
@@ -627,8 +627,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 30}
-  m_SizeDelta: {x: -140, y: -280}
+  m_AnchoredPosition: {x: 0, y: 37.5}
+  m_SizeDelta: {x: -140, y: -275}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1723621818542127957
 CanvasRenderer:
@@ -657,15 +657,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'This experience was created by Angel Muniz and Jared Bienz. It was built
-    to showcase more realistic holograms by using PBR models and environment lights.
+    to showcase more realistic holograms by using PBR models and environment-based
+    lighting.
 
 
     These models are loving recreations made from scratch by Angel. They are available
     on Sketchfab and ArtStation.
 
 
-    Try this out: Point at the dominant light source in your room and say "Set Environment
-    Light"!'
+    Huge thanks to Nick Klingensmith for the amazing MR Lighting Tools. It truly does
+    make our holograms look their best!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 042dd0fe1107f2641b287b3e0cbfeaf7, type: 2}
   m_sharedMaterial: {fileID: -8844280198183217669, guid: 042dd0fe1107f2641b287b3e0cbfeaf7,
@@ -735,10 +736,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 7511776118848910357}
-    characterCount: 362
+    characterCount: 393
     spriteCount: 0
-    spaceCount: 60
-    wordCount: 59
+    spaceCount: 63
+    wordCount: 62
     linkCount: 0
     lineCount: 12
     pageCount: 1

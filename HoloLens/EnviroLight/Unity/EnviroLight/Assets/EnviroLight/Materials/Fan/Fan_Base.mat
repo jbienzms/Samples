@@ -9,8 +9,9 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Fan_Base
   m_Shader: {fileID: 4800000, guid: 5bdea20278144b11916d77503ba1467a, type: 3}
-  m_ShaderKeywords: _DIRECTIONAL_LIGHT _HOVER_LIGHT _METALLICGLOSSMAP _METALLIC_TEXTURE_ALBEDO_CHANNEL_A
-    _NORMALMAP _NORMAL_MAP _PROXIMITY_LIGHT _SPECULAR_HIGHLIGHTS
+  m_ShaderKeywords: _CHANNEL_MAP _DIRECTIONAL_LIGHT _HOVER_LIGHT _METALLICGLOSSMAP
+    _METALLIC_TEXTURE_ALBEDO_CHANNEL_A _NORMALMAP _NORMAL_MAP _PROXIMITY_LIGHT _REFLECTIONS
+    _SPECULAR_HIGHLIGHTS _SPHERICAL_HARMONICS
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -26,7 +27,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ChannelMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f82f4838120ad3a4f89626c660c5755f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -92,7 +93,7 @@ Material:
     - _DirectionalLight: 1
     - _DstBlend: 0
     - _EdgeSmoothingValue: 0.002
-    - _EnableChannelMap: 0
+    - _EnableChannelMap: 1
     - _EnableEmission: 0
     - _EnableHoverColorOverride: 0
     - _EnableLocalSpaceTriplanarMapping: 0
@@ -129,7 +130,7 @@ Material:
     - _ProximityLight: 1
     - _ProximityLightSubtractive: 0
     - _ProximityLightTwoSided: 0
-    - _Reflections: 0
+    - _Reflections: 1
     - _Refraction: 0
     - _RefractiveIndex: 0
     - _RenderQueueOverride: -1
@@ -141,7 +142,7 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SphericalHarmonics: 0
+    - _SphericalHarmonics: 1
     - _SrcBlend: 1
     - _Stencil: 0
     - _StencilComparison: 0

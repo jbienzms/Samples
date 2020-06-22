@@ -10,7 +10,7 @@ Material:
   m_Name: NukaCola_Bottle
   m_Shader: {fileID: 4800000, guid: 5bdea20278144b11916d77503ba1467a, type: 3}
   m_ShaderKeywords: _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON _DIRECTIONAL_LIGHT _HOVER_LIGHT
-    _METALLICGLOSSMAP _NORMALMAP _SPECULAR_HIGHLIGHTS
+    _METALLICGLOSSMAP _NORMALMAP _REFLECTIONS _SPECULAR_HIGHLIGHTS _SPHERICAL_HARMONICS
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -129,7 +129,7 @@ Material:
     - _ProximityLight: 0
     - _ProximityLightSubtractive: 0
     - _ProximityLightTwoSided: 0
-    - _Reflections: 0
+    - _Reflections: 1
     - _Refraction: 0
     - _RefractiveIndex: 0
     - _RenderQueueOverride: -1
@@ -141,7 +141,7 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SphericalHarmonics: 0
+    - _SphericalHarmonics: 1
     - _SrcBlend: 1
     - _Stencil: 0
     - _StencilComparison: 0

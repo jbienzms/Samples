@@ -35,6 +35,10 @@ Microsoft.MixedReality.Toolkit.*
 sysinfo.txt
 Lib/*.suo
 
+# CSProj and SLN files are pretty much always generated
+*.csproj
+*.sln
+
 # NuGet Files
 project.lock.json
 
@@ -77,7 +81,8 @@ ehthumbs.db
 Thumbs.db
 
 
-
+## MSBuild for Unity Properties
+MSBuildForUnity.Common.props
 
 
 ## Ignore Visual Studio temporary files, build results, and

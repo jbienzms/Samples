@@ -66,6 +66,9 @@
     <Compile Include="Assets\DistanceTool\Editor\DistanceToolEditor.cs" />
     <Compile Include="Assets\DistanceTool\Editor\DistanceToolMenu.cs" />
     <Compile Include="Assets\EnviroLight\Editor\TextToTextMeshPro.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\Scripts\Editor\CubeCreator.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\Scripts\Editor\LightCaptureEditor.cs" />
+    <Compile Include="Assets\MixedRealityToolkit.LightingTools\Scripts\Editor\LightingToolsMenus.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>C:/Users/jbien/Code/JBienzMS/Samples/HoloLens/EnviroLight/Unity/EnviroLight/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>

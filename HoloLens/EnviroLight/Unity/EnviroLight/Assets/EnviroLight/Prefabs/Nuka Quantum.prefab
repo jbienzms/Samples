@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1441760802911966147}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.022, y: 0.022, z: 0.022}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -213,6 +213,7 @@ MonoBehaviour:
   manipulationType: 3
   twoHandedManipulationType: 3
   allowFarManipulation: 1
+  useForcesForNearManipulation: 0
   oneHandRotationModeNear: 1
   oneHandRotationModeFar: 1
   releaseBehavior: 3
@@ -245,10 +246,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings:
-    nearRadius: 0.727
-    farRadius: 1
-    nearDistance: 0
-    minNearSizePercentage: 0.35
-    centerColor: {r: 0, g: 1, b: 1, a: 0}
-    middleColor: {r: 0, g: 1, b: 1, a: 1}
-    outerColor: {r: 0, g: 1, b: 1, a: 1}
+    nearRadius: 0.359
+    farRadius: 0.647
+    nearDistance: 0.109
+    minNearSizePercentage: 0.44
+    centerColor: {r: 0.21176466, g: 0.88091654, b: 0.98039216, a: 1}
+    middleColor: {r: 0, g: 0.8901961, b: 1, a: 1}
+    outerColor: {r: 0, g: 2.971698, b: 2.8788323, a: 1}

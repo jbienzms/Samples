@@ -103,13 +103,13 @@ MonoBehaviour:
   lifetime: 0
   autoStart: 0
   defaultPlacementDistance: 1.5
-  maxRaycastDistance: 20
+  maxRaycastDistance: 30
   surfaceNormalOffset: 0
   keepOrientationVertical: 1
   rotateAccordingToSurface: 0
   magneticSurfaces:
   - serializedVersion: 2
-    m_Bits: 4294967291
+    m_Bits: 2147483904
   debugEnabled: 1
   onPlacingStarted:
     m_PersistentCalls:
