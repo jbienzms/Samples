@@ -89,6 +89,7 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\MixedRealityToolkit.LightingTools\Shaders\LightCaptureStamp.shader" />
     <None Include="Assets\MRTK\Providers\Version.txt" />
+    <None Include="Assets\EnviroLight\Materials\Skys\Industrial\Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\EnviroLight\Fonts\Share_Tech_Mono\OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -99,8 +100,10 @@
     <None Include="Assets\sky5X\README.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\EnviroLight\Materials\Skys\Leadenhall\Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\DistanceTool\READ ME.txt" />
+    <None Include="Assets\EnviroLight\Materials\Skys\AutoShop\Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\EnviroLight\Materials\Skys\Lebombo\Attribution.txt" />
