@@ -40,8 +40,6 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             // Validate the range
             if ((exposure < 0.0) || (exposure > 1.0)) { throw new ArgumentOutOfRangeException(nameof(exposure)); }
 
-            //Debug.LogFormat("({3} : {0}-{1}) +{2}", controller.Exposure.Capabilities.Min, controller.Exposure.Capabilities.Max, controller.Exposure.Capabilities.Step, exposure);
-
             // Shortcuts
             var exp = controller.Exposure;
             var expc = controller.ExposureControl;
@@ -49,7 +47,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             // Try to use exposure control
             if (expc.Supported)
             {
-                Debug.Log("Setting exposure using ExposureControl.");
+                // Debug.Log("Setting exposure using ExposureControl.");
 
                 // If not in manual mode, attempt to put it in manual mode
                 if (expc.Auto)
@@ -81,7 +79,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                     if (exptarget > expc.Max) { exptarget = expc.Max; }
 
                     // Update the controller
-                    Debug.Log($"Exposure Values - Min: {expc.Min}, Max: {expc.Max}, Input: {exposure}, Target: {exptarget}");
+                    // Debug.Log($"Exposure Values - Min: {expc.Min}, Max: {expc.Max}, Input: {exposure}, Target: {exptarget}");
                     await expc.SetValueAsync(exptarget);
                 }
                 catch (Exception ex)
@@ -93,7 +91,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             // Fall back to Exposure
             else if (exp.Capabilities.Supported)
             {
-                Debug.Log("Setting exposure using regular Exposure.");
+                // Debug.Log("Setting exposure using regular Exposure.");
 
                 // Try to turn off auto exposure
                 if (!exp.TrySetAuto(false))
@@ -115,7 +113,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                 if (exptarget > exp.Capabilities.Max) { exptarget = exp.Capabilities.Max; }
 
                 // Update controller
-                Debug.Log($"Exposure Values - Min: {exp.Capabilities.Min}, Max: {exp.Capabilities.Max}, Input: {exposure}, Target: {exptarget}");
+                // Debug.Log($"Exposure Values - Min: {exp.Capabilities.Min}, Max: {exp.Capabilities.Max}, Input: {exposure}, Target: {exptarget}");
                 if (!exp.TrySetValue(exptarget))
                 {
                     Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set exposure to {exposure}.");
@@ -125,7 +123,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             // No support
             else
             {
-                Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} current device does not support setting exposure.");
+                Debug.LogWarning($"{nameof(VideoDeviceControllerWrapperUWP)} current device does not support setting exposure.");
             }
         }
 
@@ -139,7 +137,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             // Try WhiteBalanceControl first
             if (wbc.Supported)
             {
-                Debug.Log("Setting white balance using WhiteBalanceControl.");
+                // Debug.Log("Setting white balance using WhiteBalanceControl.");
 
                 // If not in manual mode, attempt to put it in manual mode
                 if (wbc.Preset != ColorTemperaturePreset.Manual)
@@ -162,7 +160,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                     wbtarget = Math.Min(wbc.Max, wbtarget);
 
                     // Update controller
-                    Debug.Log($"White Balance Values - Min: {wbc.Min}, Max: {wbc.Max}, Input: {temperature}, Target: {wbtarget}");
+                    // Debug.Log($"White Balance Values - Min: {wbc.Min}, Max: {wbc.Max}, Input: {temperature}, Target: {wbtarget}");
                     await wbc.SetValueAsync(wbtarget);
                 }
                 catch (Exception ex)
@@ -174,7 +172,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             // Fall back to WhiteBalance
             else if (wb.Capabilities.Supported)
             {
-                Debug.Log("Setting white balance using regular WhiteBalance.");
+                // Debug.Log("Setting white balance using regular WhiteBalance.");
 
                 // Attempt to put it in manual mode
                 if (!wb.TrySetAuto(false))
@@ -187,7 +185,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                 wbtarget = Math.Min(wb.Capabilities.Max, wbtarget);
 
                 // Update controller
-                Debug.Log($"White Balance Values - Min: {wb.Capabilities.Min}, Max: {wb.Capabilities.Max}, Input: {temperature}, Target: {wbtarget}");
+                // Debug.Log($"White Balance Values - Min: {wb.Capabilities.Min}, Max: {wb.Capabilities.Max}, Input: {temperature}, Target: {wbtarget}");
                 if (!wb.TrySetValue(wbtarget))
                 {
                     Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} failed to set white balance to {temperature}.");
@@ -197,7 +195,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             // No support
             else
             {
-                Debug.LogError($"{nameof(VideoDeviceControllerWrapperUWP)} current device does not support setting white balance.");
+                Debug.LogWarning($"{nameof(VideoDeviceControllerWrapperUWP)} current device does not support setting white balance.");
             }
         }
 
@@ -210,7 +208,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
             // Only option is IsoSpeedControl
             if (isoc.Supported)
             {
-                Debug.Log("Setting ISO using IsoSpeedControl.");
+                // Debug.Log("Setting ISO using IsoSpeedControl.");
 
                 // Wrap in case of bad controller implementation
                 try
@@ -220,7 +218,7 @@ namespace Microsoft.MixedReality.Toolkit.LightingTools
                     isotarget = Math.Min(isoc.Max, isotarget);
 
                     // Update the controller
-                    Debug.Log($"ISO Values - Min: {isoc.Min}, Max: {isoc.Max}, Input: {iso}, Target: {isotarget}");
+                    // Debug.Log($"ISO Values - Min: {isoc.Min}, Max: {isoc.Max}, Input: {iso}, Target: {isotarget}");
                     await isoc.SetValueAsync(isotarget);
                 }
                 catch (Exception ex)
