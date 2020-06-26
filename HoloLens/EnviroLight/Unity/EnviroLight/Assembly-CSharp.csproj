@@ -86,6 +86,7 @@
     <Compile Include="Assets\MixedRealityToolkit.LightingTools\LightCapture.cs" />
     <Compile Include="Assets\MixedRealityToolkit.LightingTools\Scripts\Utility\CubeMapper.cs" />
     <Compile Include="Assets\MixedRealityToolkit.LightingTools\Scripts\Utility\Histogram.cs" />
+    <None Include="Assets\EnviroLight\Shaders\Scanlines.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\MixedRealityToolkit.LightingTools\Shaders\LightCaptureStamp.shader" />

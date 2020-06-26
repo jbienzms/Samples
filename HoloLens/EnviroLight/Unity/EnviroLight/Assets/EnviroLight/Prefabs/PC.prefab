@@ -361,8 +361,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278831885
-  m_fontColor: {r: 0.050980393, g: 0.79607844, b: 0.03529412, a: 1}
+    rgba: 4278255360
+  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1123,6 +1123,21 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae, type: 3}
 --- !u!224 &1723621817157256890 stripped
@@ -1297,6 +1312,21 @@ PrefabInstance:
       propertyPath: m_firstOverflowCharacterIndex
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae, type: 3}
 --- !u!224 &1723621817594199548 stripped
@@ -1437,6 +1467,21 @@ PrefabInstance:
     - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
         type: 3}
       propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1597,6 +1642,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.wordCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae, type: 3}
@@ -1767,6 +1827,21 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae, type: 3}
 --- !u!224 &1723621818139026243 stripped
@@ -1787,11 +1862,55 @@ PrefabInstance:
       value: EnviroLightsRadio
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
       propertyPath: m_Group
       value: 
       objectReference: {fileID: 1723621818615174081}
     - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
       propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UseEnvironmentLights
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400006, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
@@ -1902,6 +2021,26 @@ PrefabInstance:
       propertyPath: m_textInfo.wordCount
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4582432653004136656, guid: 87fac1bec31455840b2dcbc9b6113d31,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582432653004136656, guid: 87fac1bec31455840b2dcbc9b6113d31,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582432653004136656, guid: 87fac1bec31455840b2dcbc9b6113d31,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582432653004136656, guid: 87fac1bec31455840b2dcbc9b6113d31,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
 --- !u!224 &1723621818152265490 stripped
@@ -1922,9 +2061,53 @@ PrefabInstance:
       value: DefaultLightsRadio
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
       propertyPath: m_Group
       value: 
       objectReference: {fileID: 1723621818615174081}
+    - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UseDefaultLights
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 11400006, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
       propertyPath: m_Text
       value: Default Lights
@@ -2028,6 +2211,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.wordCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582432653004136656, guid: 87fac1bec31455840b2dcbc9b6113d31,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582432653004136656, guid: 87fac1bec31455840b2dcbc9b6113d31,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582432653004136656, guid: 87fac1bec31455840b2dcbc9b6113d31,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582432653004136656, guid: 87fac1bec31455840b2dcbc9b6113d31,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87fac1bec31455840b2dcbc9b6113d31, type: 3}
@@ -2177,6 +2380,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.characterCount
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae, type: 3}
@@ -2337,6 +2555,21 @@ PrefabInstance:
       propertyPath: m_textInfo.wordCount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae, type: 3}
 --- !u!224 &1723621818528142851 stripped
@@ -2481,6 +2714,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.characterCount
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3808079193738624154, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80056cad429a7ae4f97b4c6fc7e6f6ae, type: 3}
