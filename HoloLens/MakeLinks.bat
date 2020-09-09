@@ -5,15 +5,12 @@ ECHO ===========================================================================
 ECHO =                                 Make Links                                  =
 ECHO ===============================================================================
 ECHO.
-ECHO This batch file creates symbolic links for the HoloToolkit and other Unity 
-ECHO source-based libraries that are used by this project. The process for sharing 
-ECHO HoloToolkit across projects is documented here:
-ECHO.
-ECHO http://www.wikiholo.net/index.php?title=Sharing_HoloToolkit
+ECHO This batch file creates symbolic links for the MRTK and other Unity 
+ECHO source-based libraries that are used by this project. 
 ECHO.
 ECHO The libraries used by this project are:
 ECHO.
-ECHO * HoloToolkit for Unity
+ECHO * Mixed Reality Toolkit (MRTK) for Unity
 ECHO.
 ECHO All libraries should be downloaded and extracted before running this batch file. 
 ECHO If you continue you will be prompted for the full path of each of the above 
@@ -25,49 +22,39 @@ CHOICE /C:YN
 IF ERRORLEVEL == 2 GOTO End
 
 
-:HoloToolkit
+:MRTK
 
-SET /p HoloKitSource=HoloToolkit-Unity Path? 
-IF NOT EXIST "%HoloKitSource%\Assets\mcs.rsp" (
+SET /p MRTKSource=MRTK for Unity Path? 
+IF NOT EXIST "%MRTKSource%\Assets\MRTK\" (
 ECHO.
-ECHO HoloToolkit for Unity not found at %HoloKitSource%
+ECHO MRTK for Unity not found at %MRTKSource%
 ECHO.
-GOTO HoloToolkit
+GOTO MRTK
 )
-ECHO HoloToolkit for Unity FOUND
-ECHO.
-
-
-ECHO.
-ECHO ===============================================================================
-ECHO =                         Copying HoloToolkit RSPs                            =
-ECHO ===============================================================================
-ECHO.
-XCOPY /Y /Q "%HoloKitSource%\Assets\*.rsp" "EnviroLight\Unity\EnviroLight\Assets"
-XCOPY /Y /Q "%HoloKitSource%\Assets\*.rsp" "LearnBinary\Unity\LearnBinary\Assets"
-XCOPY /Y /Q "%HoloKitSource%\Assets\*.rsp" "VoiceMemo\Unity\VoiceMemo\Assets"
+ECHO MRTK for Unity FOUND
 ECHO.
 
 ECHO.
 ECHO ===============================================================================
-ECHO =                            Linking HoloToolkit                              =
+ECHO =                            Copying MRTK RSPs                                =
 ECHO ===============================================================================
 ECHO.
-mklink /J "EnviroLight\Unity\EnviroLight\Assets\HoloToolkit" "%HoloKitSource%\Assets\HoloToolkit"
-mklink /J "LearnBinary\Unity\LearnBinary\Assets\HoloToolkit" "%HoloKitSource%\Assets\HoloToolkit"
-mklink /J "VoiceMemo\Unity\VoiceMemo\Assets\HoloToolkit" "%HoloKitSource%\Assets\HoloToolkit"
+XCOPY /Y /Q "%MRTKSource%\Assets\*.rsp" "EnviroLight\Unity\EnviroLight\Assets"
+XCOPY /Y /Q "%MRTKSource%\Assets\*.rsp" "LearnBinary\Unity\LearnBinary\Assets"
+XCOPY /Y /Q "%MRTKSource%\Assets\*.rsp" "VoiceMemo\Unity\VoiceMemo\Assets"
+XCOPY /Y /Q "%MRTKSource%\Assets\*.rsp.meta" "EnviroLight\Unity\EnviroLight\Assets"
+XCOPY /Y /Q "%MRTKSource%\Assets\*.rsp.meta" "LearnBinary\Unity\LearnBinary\Assets"
+XCOPY /Y /Q "%MRTKSource%\Assets\*.rsp.meta" "VoiceMemo\Unity\VoiceMemo\Assets"
 ECHO.
 
 ECHO.
 ECHO ===============================================================================
-ECHO =                        Linking HoloToolkit Samples                          =
+ECHO =                               Linking MRTK                                  =
 ECHO ===============================================================================
 ECHO.
-mklink /J "EnviroLight\Unity\EnviroLight\Assets\HoloToolkit-Examples" "%HoloKitSource%\Assets\HoloToolkit-Examples"
-mklink /J "LearnBinary\Unity\LearnBinary\Assets\HoloToolkit-Examples" "%HoloKitSource%\Assets\HoloToolkit-Examples"
-mklink /J "VoiceMemo\Unity\VoiceMemo\Assets\HoloToolkit-Examples" "%HoloKitSource%\Assets\HoloToolkit-Examples"
+mklink /J "EnviroLight\Unity\EnviroLight\Assets\MRTK" "%MRTKSource%\Assets\MRTK"
+mklink /J "LearnBinary\Unity\LearnBinary\Assets\MRTK" "%MRTKSource%\Assets\MRTK"
+mklink /J "VoiceMemo\Unity\VoiceMemo\Assets\MRTK" "%MRTKSource%\Assets\MRTK"
 ECHO.
-
-PAUSE
 
 :End
