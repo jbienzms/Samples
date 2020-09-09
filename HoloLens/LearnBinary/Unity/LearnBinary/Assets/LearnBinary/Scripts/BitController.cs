@@ -1,11 +1,12 @@
-using HoloToolkit.Unity.InputModule;
+using Microsoft.MixedReality.Toolkit;
+using Microsoft.MixedReality.Toolkit.Input;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BitController : MonoBehaviour, IInputClickHandler
+public class BitController : BaseInputHandler, IMixedRealityPointerHandler
 {
     private bool isOn;
     public int power;
@@ -23,143 +24,171 @@ public class BitController : MonoBehaviour, IInputClickHandler
     public GameObject filament;
 
 
-	#region Behavior Overrides
-	// Use this for initialization
-	void Start()
-	{
-		CalculateValue();
-	}
-	#endregion // Behavior Overrides
+    #region Input Handlers
+    void IMixedRealityPointerHandler.OnPointerDown(MixedRealityPointerEventData eventData)
+    {
 
-	#region Input Handlers
-	void IInputClickHandler.OnInputClicked(InputClickedEventData eventData)
-	{
-		AnimateToggle();
-	}
-	#endregion // Input Handlers
+    }
 
-	#region Public Methods
-	/// <summary>
-	/// Animates a switch between the on / off state
-	/// </summary>
-	public void AnimateToggle()
-	{
-		AnimateSwitch(!isOn);
-	}
+    void IMixedRealityPointerHandler.OnPointerDragged(MixedRealityPointerEventData eventData)
+    {
 
-	/// <summary>
-	/// Animates the switch to the specified state.
-	/// </summary>
-	/// <param name="on">
-	/// Whether the switch should be on or off.
-	/// </param>
-	public void AnimateSwitch(bool on)
-	{
-		if (bitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-		{
-			bitAnimator.SetBool("toggleSwitch", on);
-		}
-	}
+    }
 
-	/// <summary>
-	/// Calculates the current value and updates materials.
-	/// </summary>
-	public void CalculateValue()
-	{
-		int realValue = (int)Mathf.Pow(2f, power);
-		valueSign.text = realValue.ToString();
-		Value = (isOn ? realValue : 0);
-		if (valueText != null)
-		{
-			valueText.text = (isOn | valueOverride ? realValue.ToString() : "0");
-		}
+    void IMixedRealityPointerHandler.OnPointerUp(MixedRealityPointerEventData eventData)
+    {
 
-		if (valueSign != null)
-		{
-			valueSign.text = realValue.ToString();
-		}
+    }
 
-		if (isOn)
-		{
-			filament.GetComponent<Renderer>().material = on;
-		}
-		else
-		{
-			Value = 0;
-			filament.GetComponent<Renderer>().material = off;
-		}
-	}
+    void IMixedRealityPointerHandler.OnPointerClicked(MixedRealityPointerEventData eventData)
+    {
+        AnimateToggle();
+    }
+    #endregion // Input Handlers
 
-	/// <summary>
-	/// Jumps directly to the specified state without any animate.
-	/// </summary>
-	/// <param name="on">
-	/// Whether the switch should be on or off.
-	/// </param>
-	public void SetSwitch(int on)
-	{
-		isOn = (on != 0);
-		CalculateValue();
-	}
-	#endregion // Public Methods
+    #region Overrides / Event Handlers
+    protected override void RegisterHandlers()
+    {
+        CoreServices.InputSystem?.RegisterHandler<IMixedRealityPointerHandler>(this);
+    }
 
-	#region Public Properties
-	/// <summary>
-	/// Gets a value that indicates if the bit is on.
-	/// </summary>
-	public bool IsOn
-	{
-		get { return isOn; }
-	}
+    protected override void UnregisterHandlers()
+    {
+        CoreServices.InputSystem?.UnregisterHandler<IMixedRealityPointerHandler>(this);
+    }
+    #endregion // Overrides / Event Handlers
 
-	/// <summary>
-	/// Gets the current value of the bit based on its state and power.
-	/// </summary>
-	public int Value
-	{
-		get
-		{
-			return value;
-		}
-		private set
-		{
-			this.value = value;
-			if (ValueChanged != null)
-			{
-				ValueChanged(this, EventArgs.Empty);
-			}
-		}
-	}
+    #region Unity Overrides
+    /// <inheritdoc/>
+    protected override void Start()
+    {
+        base.Start();
+        CalculateValue();
+    }
+    #endregion // Unity Overrides
 
-	public bool ValueOverride
-	{
-		get
-		{
-			return valueOverride;
-		}
+    #region Public Methods
+    /// <summary>
+    /// Animates a switch between the on / off state
+    /// </summary>
+    public void AnimateToggle()
+    {
+        AnimateSwitch(!isOn);
+    }
 
-		set
-		{
-			valueOverride = value;
-			CalculateValue();
-		}
-	}
+    /// <summary>
+    /// Animates the switch to the specified state.
+    /// </summary>
+    /// <param name="on">
+    /// Whether the switch should be on or off.
+    /// </param>
+    public void AnimateSwitch(bool on)
+    {
+        if (bitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+        {
+            bitAnimator.SetBool("toggleSwitch", on);
+        }
+    }
 
-	public Light Bitlight
-	{
-		get
-		{
-			return bitlight;
-		}
+    /// <summary>
+    /// Calculates the current value and updates materials.
+    /// </summary>
+    public void CalculateValue()
+    {
+        int realValue = (int)Mathf.Pow(2f, power);
+        valueSign.text = realValue.ToString();
+        Value = (isOn ? realValue : 0);
+        if (valueText != null)
+        {
+            valueText.text = (isOn | valueOverride ? realValue.ToString() : "0");
+        }
 
-		set
-		{
-			bitlight = value;
-		}
-	}
-	#endregion // Public Properties
+        if (valueSign != null)
+        {
+            valueSign.text = realValue.ToString();
+        }
 
-	#region Public Events
-	public event EventHandler ValueChanged;
-	#endregion // Public Events
+        if (isOn)
+        {
+            filament.GetComponent<Renderer>().material = on;
+        }
+        else
+        {
+            Value = 0;
+            filament.GetComponent<Renderer>().material = off;
+        }
+    }
+
+    /// <summary>
+    /// Jumps directly to the specified state without any animate.
+    /// </summary>
+    /// <param name="on">
+    /// Whether the switch should be on or off.
+    /// </param>
+    public void SetSwitch(int on)
+    {
+        isOn = (on != 0);
+        CalculateValue();
+    }
+    #endregion // Public Methods
+
+    #region Public Properties
+    /// <summary>
+    /// Gets a value that indicates if the bit is on.
+    /// </summary>
+    public bool IsOn
+    {
+        get { return isOn; }
+    }
+
+    /// <summary>
+    /// Gets the current value of the bit based on its state and power.
+    /// </summary>
+    public int Value
+    {
+        get
+        {
+            return value;
+        }
+        private set
+        {
+            this.value = value;
+            if (ValueChanged != null)
+            {
+                ValueChanged(this, EventArgs.Empty);
+            }
+        }
+    }
+
+    public bool ValueOverride
+    {
+        get
+        {
+            return valueOverride;
+        }
+
+        set
+        {
+            valueOverride = value;
+            CalculateValue();
+        }
+    }
+
+    public Light Bitlight
+    {
+        get
+        {
+            return bitlight;
+        }
+
+        set
+        {
+            bitlight = value;
+        }
+    }
+    #endregion // Public Properties
+
+    #region Public Events
+    public event EventHandler ValueChanged;
+    #endregion // Public Events
 }
